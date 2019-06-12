@@ -1,0 +1,7 @@
+{
+    "suggest.timeout": 500,
+    "suggest.autoTrigger": "trigger",
+    "suggest.triggerAfterInsertEnter": true,
+    "signature.enable": true,
+    "python.autoComplete.addBrackets": true
+}

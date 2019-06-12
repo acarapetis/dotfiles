@@ -28,22 +28,22 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-fugitive'
 
 " ui
-Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ap/vim-css-color'
 Plugin 'bling/vim-airline'
 
 " completion
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'ervandew/supertab'
+" Plugin 'Shougo/deoplete.nvim'
+" Plugin 'ervandew/supertab'
+Plugin 'neoclide/coc.nvim'
 
 " language support
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'acarapetis/vim-html-template-literals'
 Plugin 'digitaltoad/vim-pug'
-"Plugin 'carlitux/deoplete-ternjs'
 Plugin 'leafgarland/typescript-vim'
-"Plugin 'Quramy/tsuquyomi'
 Plugin 'mhartington/nvim-typescript'
 
 call vundle#end()            " required
@@ -82,10 +82,6 @@ set guioptions-=T
 
 autocmd FileType * set ts=4 | set sw=4
 autocmd FileType html set tabstop=2 | set sw=2
-" autocmd FileType javascript setlocal omnifunc=tern#Complete
-" vim: set ft=vim :
-autocmd FileType * IndentGuidesDisable
-autocmd FileType python IndentGuidesEnable
 
 set bg=dark
 colorscheme gruvbox
@@ -94,13 +90,32 @@ let g:airline#extensions#whitespace#enabled = 0
 
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
-let g:deoplete#enable_at_startup = 1
-let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:ctrlp_custom_ignore = 'node_modules'
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
 
-nnoremap <buffer> <silent> K :TSDoc<CR>
-nnoremap <buffer> <silent> <leader>tdp :TSDefPreview<CR>
-nnoremap <buffer> <silent> <leader>tt :TSType<CR>
+autocmd FileType typescript nnoremap <buffer> <silent> K :TSDoc<CR>
+autocmd FileType typescript nnoremap <buffer> <silent> <leader>tdp :TSDefPreview<CR>
+autocmd FileType typescript nnoremap <buffer> <silent> <leader>tt :TSType<CR>
 autocmd FileType typescript nnoremap <buffer> <silent> <c-]> :TSTypeDef<CR>
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+set updatetime=300
+
+call airline#parts#define_function('coc_status', 'coc#status')
+let g:airline_section_y = airline#section#create_right(['coc_status','ffenc'])
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
+noremap <silent> <Leader>G :Gstatus<CR>
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
