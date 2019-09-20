@@ -1,53 +1,42 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-"let tern#is_show_argument_hints_enabled=1
-"let g:tern_show_argument_hints='on_hold'
-"let g:tern_map_keys=1
-"let g:ycm_add_preview_to_completeopt=1
-"let g:ycm_autoclose_preview_window_after_insertion=1
 let g:html_indent_style1="inc" 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'junegunn/vim-easy-align'
 
 " colorschemes
-Plugin 'morhetz/gruvbox'
-Bundle 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'acarapetis/vim-colors-github'
-Plugin 'dracula/vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'acarapetis/vim-colors-github'
 
 " navigation
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-vinegar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
 
 " git
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " ui
-" Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'ap/vim-css-color'
-Plugin 'bling/vim-airline'
+Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
 
 " completion
-" Plugin 'Shougo/deoplete.nvim'
-" Plugin 'ervandew/supertab'
-Plugin 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " language support
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'acarapetis/vim-html-template-literals'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mhartington/nvim-typescript'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'StanAngeloff/php.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'acarapetis/vim-html-template-literals'
+Plug 'digitaltoad/vim-pug'
+Plug 'leafgarland/typescript-vim'
+Plug 'mhartington/nvim-typescript'
+call plug#end()
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin indent on
 
 set autoindent
 set nocindent
