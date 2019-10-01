@@ -9,7 +9,7 @@ if ! which nvim; then
             https://github.com/neovim/neovim/releases/download/v0.4.2/nvim.appimage
         chmod +x nvim.appimage
         ./nvim.appimage --appimage-extract >/dev/null
-        [ ! -d ~/.local ] && mkdir ~/.local
+        [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
         mv squashfs-root ~/.local/nvim
         ln -s ~/.local/nvim/usr/bin/nvim ~/.local/bin/
         echo "Neovim installed to ~/.local/bin/nvim"
