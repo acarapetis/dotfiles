@@ -23,7 +23,8 @@ fi
 
 [ ! -d ~/.config/nvim ] && mkdir -p ~/.config/nvim
 ln -s "$PWD/coc-settings.json" "$PWD/init.vim" ~/.config/nvim/ || true
-ln -s "$PWD/.tmux.conf" ~/ || true
+ln -s "$PWD/.tmux.conf" "$PWD/.pylintrc" ~/ || true
 
 sudo pip3 -q install neovim jedi
-~/.local/bin/nvim +PlugInstall +qall
+`which nvim` +PlugInstall +qall
+
