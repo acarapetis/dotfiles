@@ -21,6 +21,7 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim  ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+[ ! -d ~/.config/nvim ] && mkdir -p ~/.config/nvim
 ln -s "$PWD/coc-settings.json" "$PWD/init.vim" ~/.config/nvim/ || true
 ln -s "$PWD/.tmux.conf" ~/ || true
 
