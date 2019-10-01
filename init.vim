@@ -34,6 +34,7 @@ Plug 'acarapetis/vim-html-template-literals'
 Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 filetype plugin indent on
