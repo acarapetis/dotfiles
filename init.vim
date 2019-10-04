@@ -109,3 +109,5 @@ noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
 noremap <silent> <Leader>G :Gstatus<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
