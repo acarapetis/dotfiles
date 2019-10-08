@@ -35,6 +35,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript'
 Plug 'hashivim/vim-terraform'
+Plug 'acarapetis/vim-sh-heredoc-highlighting'
 call plug#end()
 
 filetype plugin indent on
