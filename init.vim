@@ -140,8 +140,8 @@ inoremap <silent><expr> <TAB>
 
 inoremap <silent><expr> <c-space> coc#refresh()
 noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
-noremap <silent> <Leader>G :Gstatus<CR>
 nnoremap K :call <SID>show_documentation()<CR>
+noremap <silent> <Leader>G :G<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> <C-t> :CocCommand<CR>
 
