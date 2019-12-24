@@ -5,8 +5,8 @@ cd "$(dirname "$0")"
 if ! which nvim; then
     read -p "nvim not found in path. Install appimage from github? [Y/n]" o
     if [ -z "$o" ] || [ "${o^^}" == Y ]; then
-        [ ! -f nvim.appimage ] && curl -fLo nvim.appimage --create-dirs \
-            https://github.com/neovim/neovim/releases/download/v0.4.2/nvim.appimage
+        [ ! -f nvim.appimage ] && curl -fL -o nvim.appimage --create-dirs \
+            "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage"
         chmod +x nvim.appimage
         ./nvim.appimage --appimage-extract >/dev/null
         [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin

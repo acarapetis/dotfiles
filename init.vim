@@ -5,8 +5,6 @@ let g:html_indent_style1="inc"
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'junegunn/vim-easy-align'
-
 " colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
@@ -15,18 +13,27 @@ Plug 'acarapetis/vim-colors-github'
 " navigation
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rhubarb'
 
 " git
 Plug 'tpope/vim-fugitive'
 
 " ui
-Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
+Plug 'ap/vim-css-color'
+
+" misc
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-speeddating'
+Plug 'junegunn/vim-easy-align'
 
 " completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " language support
+Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-sleuth'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'StanAngeloff/php.vim'
 Plug 'pangloss/vim-javascript'
@@ -63,8 +70,7 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 set termencoding=utf-8
 set wildmenu
 set t_Co=256
-set number relativenumber
-set numberwidth=2
+set nonumber
 set ttimeoutlen=10
 
 
@@ -73,12 +79,38 @@ set guioptions-=T
 "inoremap <expr>  <C-K>   HUDG_GetDigraph()
 
 autocmd FileType * set ts=4 | set sw=4
-autocmd FileType html set tabstop=2 | set sw=2
+autocmd FileType rst set ts=3 | set sw=3
+"autocmd FileType html set tabstop=2 | set sw=2
 
 set bg=dark
+let g:gruvbox_bold = '1'
+let g:gruvbox_italic = '1'
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_improved_strings = '0'
+let g:gruvbox_improved_warnings = '0'
 colorscheme gruvbox
+"hi link pythonFunction GruvboxAquaBold
+hi link pythonStatement GruvboxRedBold
+hi link pythonConditional GruvboxRedBold
+hi link pythonException GruvboxRedBold
+hi link pythonRepeat GruvboxRedBold
+hi link pythonOperator GruvboxRedBold
+hi link pythonAsync GruvboxRedBold
+hi CocFloating guibg=#32302f ctermbg=236
+hi link CocWarningFloat GruvboxYellow
+hi link CocWarningSign GruvboxYellowSign
+hi link CocErrorFloat GruvboxRed
+hi link CocErrorSign GruvboxRedSign
+hi link CocHintFloat GruvboxGreen
+hi link CocHintSign GruvboxGreenSign
+hi link CocInfoFloat GruvboxBlue
+hi link CocInfoSign GruvboxBlueSign
+"let s:gb.dark0       = ['#282828', 235]     " 40-40-40
+"hi link CocFloating GruvboxBg
+
 let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
 
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
@@ -107,9 +139,12 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+inoremap <silent><expr> <c-space> coc#refresh()
 noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
 noremap <silent> <Leader>G :Gstatus<CR>
+nnoremap K :call <SID>show_documentation()<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+nnoremap <silent> <C-t> :CocCommand<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)

@@ -3,5 +3,11 @@
     "suggest.autoTrigger": "trigger",
     "suggest.triggerAfterInsertEnter": true,
     "signature.enable": true,
-    "python.autoComplete.addBrackets": true
+    "python.autoComplete.addBrackets": true,
+    "suggest.floatEnable": true,
+    "suggest.enablePreview": true,
+    "diagnostic.warningSign": "😯️",
+    "diagnostic.errorSign": "😠",
+    "diagnostic.infoSign": "🤔️",
+    "diagnostic.hintSign": "🤔️"
 }
