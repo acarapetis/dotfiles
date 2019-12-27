@@ -27,6 +27,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-speeddating'
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-surround'
 
 " completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
