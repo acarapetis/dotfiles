@@ -36,12 +36,10 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-sleuth'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'StanAngeloff/php.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'acarapetis/vim-html-template-literals'
 Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
-Plug 'mhartington/nvim-typescript'
 Plug 'hashivim/vim-terraform'
 Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -119,10 +117,10 @@ let g:ctrlp_custom_ignore = 'node_modules'
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
 
-autocmd FileType typescript nnoremap <buffer> <silent> K :TSDoc<CR>
-autocmd FileType typescript nnoremap <buffer> <silent> <leader>tdp :TSDefPreview<CR>
-autocmd FileType typescript nnoremap <buffer> <silent> <leader>tt :TSType<CR>
-autocmd FileType typescript nnoremap <buffer> <silent> <c-]> :TSTypeDef<CR>
+"autocmd FileType typescript nnoremap <buffer> <silent> K :TSDoc<CR>
+"autocmd FileType typescript nnoremap <buffer> <silent> <leader>tdp :TSDefPreview<CR>
+"autocmd FileType typescript nnoremap <buffer> <silent> <leader>tt :TSType<CR>
+"autocmd FileType typescript nnoremap <buffer> <silent> <c-]> :TSTypeDef<CR>
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 set updatetime=300
