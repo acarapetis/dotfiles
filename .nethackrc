@@ -1,0 +1,28 @@
+OPTIONS=catname:Morris,boulder:0
+OPTIONS=windowtype:tty,toptenwin,hilite_pet,!number_pad,time
+OPTIONS=fixinv,safe_pet,sortpack,tombstone,nomail
+OPTIONS=verbose,news,fruit:potato
+OPTIONS=pickup_types:$,autodig
+OPTIONS=DECgraphics
+OPTIONS=altmeta,lit_corridor
+
+OPTIONS=color,menucolors
+MENUCOLOR="blessed"=cyan&bold
+MENUCOLOR="cursed"=orange&bold
+MENUCOLOR="ncursed"=green
+MENUCOLOR="loadstone\|wand \(of\|called\) cancellation"=brightred&underline
+MENUCOLOR="gold piece"=yellow
+
+OPTION=statushilites:10
+OPTION=hilite_status: characteristics/up/brightgreen
+OPTION=hilite_status: characteristics/down/brightred
+OPTION=hilite_status: hitpoints-max/green
+OPTION=hilite_status: hitpoints/100%/brightgreen
+OPTION=hilite_status: hitpoints/<100%/green
+OPTION=hilite_status: hitpoints/<50%/yellow
+OPTION=hilite_status: hitpoints/<20%/red
+OPTION=hilite_status: power-max/blue
+OPTION=hilite_status: power/100%/brightblue
+OPTION=hilite_status: power/<100%/blue
+OPTION=hilite_status: power/<30%/orange
+OPTION=hilite_status: gold/yellow
