@@ -71,6 +71,8 @@ set wildmenu
 set t_Co=256
 set nonumber
 set ttimeoutlen=10
+set list
+set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 
 set guioptions-=m
@@ -83,7 +85,7 @@ autocmd FileType rst set ts=3 | set sw=3
 
 set bg=dark
 let g:gruvbox_bold = '1'
-let g:gruvbox_italic = '1'
+"let g:gruvbox_italic = '1'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_improved_strings = '0'
 let g:gruvbox_improved_warnings = '0'
