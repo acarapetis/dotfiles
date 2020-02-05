@@ -5,9 +5,5 @@
     "signature.enable": true,
     "python.autoComplete.addBrackets": true,
     "suggest.floatEnable": true,
-    "suggest.enablePreview": true,
-    "diagnostic.warningSign": "😯️",
-    "diagnostic.errorSign": "😠",
-    "diagnostic.infoSign": "🤔️",
-    "diagnostic.hintSign": "🤔️"
+    "suggest.enablePreview": true
 }

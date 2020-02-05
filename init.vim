@@ -111,7 +111,7 @@ hi link CocInfoSign GruvboxBlueSign
 
 let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
