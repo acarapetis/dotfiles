@@ -149,3 +149,5 @@ nnoremap <silent> <C-t> :CocCommand<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+nnoremap <silent> <C-l> :nohl<CR>
