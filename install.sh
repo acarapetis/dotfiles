@@ -25,6 +25,6 @@ fi
 ln -s "$PWD/coc-settings.json" "$PWD/init.vim" ~/.config/nvim/ || true
 ln -s "$PWD/"{.tmux.conf,.nethackrc,.pylintrc} ~/ || true
 
-sudo pip3 -q install neovim jedi
+sudo pip3 -q install --upgrade pynvim jedi
 `which nvim` +PlugInstall +qall
-
+`which nvim` +"CocInstall coc-python" +"CocInstall coc-json" +"CocInstall coc-css" +"CocInstall coc-tsserver"
