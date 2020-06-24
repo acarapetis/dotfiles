@@ -4,6 +4,12 @@ filetype off
 let g:html_indent_style1="inc" 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
+" We have to unset $DISPLAY to stop netrw from trying to save/load X
+" clipboard, since this is VERY slow when using X forwarding.
+" should be fixed in next neovim release by this commit:
+" https://github.com/neovim/neovim/commit/5e47cf27b4d82cb0ccfa7859beaa29afb0af4bed
+let $DISPLAY = ''
+
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
@@ -12,7 +18,7 @@ Plug 'acarapetis/vim-colors-github'
 
 " navigation
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rhubarb'
 
 " git
