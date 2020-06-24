@@ -89,6 +89,8 @@ autocmd FileType * set ts=4 | set sw=4
 autocmd FileType rst set ts=3 | set sw=3
 "autocmd FileType html set tabstop=2 | set sw=2
 
+nmap _ <Plug>VinegarVerticalSplitUp
+
 set bg=dark
 let g:gruvbox_bold = '1'
 "let g:gruvbox_italic = '1'
