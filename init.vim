@@ -10,6 +10,8 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 " https://github.com/neovim/neovim/commit/5e47cf27b4d82cb0ccfa7859beaa29afb0af4bed
 let $DISPLAY = ''
 
+let g:htl_css_templates = 1
+
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
