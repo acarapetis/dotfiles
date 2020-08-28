@@ -40,7 +40,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " language support
 Plug 'tpope/vim-jdaddy'
-" Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'pangloss/vim-javascript'
 Plug 'acarapetis/vim-html-template-literals'
