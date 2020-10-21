@@ -124,7 +124,12 @@ let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_powerline_fonts = 1
 
-nnoremap <silent> <C-p> :Files<CR>
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2>/dev/null || pwd')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
 
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
