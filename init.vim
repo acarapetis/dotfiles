@@ -19,7 +19,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'acarapetis/vim-colors-github'
 
 " navigation
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rhubarb'
 
@@ -123,9 +124,9 @@ let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_powerline_fonts = 1
 
-nnoremap <silent> <C-b> :CtrlPBuffer<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-b> :Buffers<CR>
 
-let g:ctrlp_custom_ignore = 'node_modules'
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
 
