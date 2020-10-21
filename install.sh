@@ -1,18 +1,35 @@
 #!/bin/bash -e
 
+NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage"
+RG_API="https://api.github.com/repos/BurntSushi/ripgrep/releases"
+
 cd "$(dirname "$0")"
+
+[ -d ~/.local/bin ] || mkdir -p ~/.local/bin
+which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
 
 if ! which nvim; then
     read -p "nvim not found in path. Install appimage from github? [Y/n]" o
     if [ -z "$o" ] || [ "${o^^}" == Y ]; then
-        [ ! -f nvim.appimage ] && curl -fL -o nvim.appimage --create-dirs \
-            "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage"
+        [ ! -f nvim.appimage ] && curl -fL -o nvim.appimage --create-dirs $NVIM_LINK
         chmod +x nvim.appimage
         ./nvim.appimage --appimage-extract >/dev/null
-        [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
         mv squashfs-root ~/.local/nvim
         ln -s ~/.local/nvim/usr/bin/nvim ~/.local/bin/
         echo "Neovim installed to ~/.local/bin/nvim"
+    fi
+fi
+
+if ! which rg; then
+    read -p "rg not found in path. Install binary from github? [Y/n]" o
+    if [ -z "$o" ] || [ "${o^^}" == Y ]; then
+        dl_url=$(curl $RG_API/latest | jq -r '.assets[]|select(.name|test("x86_64.*linux-musl.tar.gz"))|.browser_download_url')
+	cd /tmp
+	curl -fLo rg.tar.gz "$dl_url"
+	tar xfz rg.tar.gz
+	cp ripgrep*/rg ~/.local/bin/
+	cd -
+        echo "Ripgrep installed to ~/.local/bin/rg"
     fi
 fi
 
