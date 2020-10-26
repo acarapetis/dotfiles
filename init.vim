@@ -124,6 +124,8 @@ let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_powerline_fonts = 1
 
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git/"'
+
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2>/dev/null || pwd')[:-2]
 endfunction
