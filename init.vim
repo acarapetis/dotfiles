@@ -133,7 +133,8 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <C-b> :Buffers<CR>
-nnoremap <C-f> :Rg 
+nnoremap <silent> <BS> :History<CR>
+nnoremap <C-f> :Rg
 
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
