@@ -19,7 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'acarapetis/vim-colors-github'
 
 " navigation
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rhubarb'
