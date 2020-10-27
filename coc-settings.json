@@ -5,5 +5,13 @@
     "signature.enable": true,
     "python.autoComplete.addBrackets": true,
     "suggest.floatEnable": true,
-    "suggest.enablePreview": true
+    "suggest.enablePreview": true,
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-lsp",
+            "filetypes": ["terraform"],
+            "initializationOptions": {}
+        }
+    }
+
 }
