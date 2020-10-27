@@ -19,7 +19,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'acarapetis/vim-colors-github'
 
 " navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
