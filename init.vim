@@ -148,6 +148,22 @@ nnoremap <C-f> :ProjectRg<Space>
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <BS> :History<CR>
 
+" C-A C-Q to send fzf results to quickfix
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
 
@@ -169,10 +185,7 @@ noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> <C-t> :CocCommand<CR>
 nnoremap <silent> <C-k> :CocAction<CR>
-
-" Add coc status to airline
-call airline#parts#define_function('coc_status', 'coc#status')
-let g:airline_section_y = airline#section#create_right(['coc_status','ffenc'])
+xmap <leader>a <Plug>(coc-codeaction-selected)
 
 " bind qga to autoalign
 xmap ga <Plug>(EasyAlign)
