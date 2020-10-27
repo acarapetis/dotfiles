@@ -6,7 +6,7 @@ a productive development environment. It's concentrated - just add internet!
 It does assume that python3 and pip3 are installed (usually from your system package manager).
 
 Mostly consists of neovim configuration for Python, Javascript and Terraform development.
-The script <./install.sh> will attempt to find the following pieces of
+The script [install.sh](install.sh) will attempt to find the following pieces of
 software, and install any missing ones from the internet:
 
 - jq
