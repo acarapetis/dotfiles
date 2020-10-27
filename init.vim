@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 
-let g:html_indent_style1="inc" 
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 " We have to unset $DISPLAY to stop netrw from trying to save/load X
@@ -10,6 +9,10 @@ let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 " https://github.com/neovim/neovim/commit/5e47cf27b4d82cb0ccfa7859beaa29afb0af4bed
 let $DISPLAY = ''
 
+" Indent styles and scripts in html appropriately
+let g:html_indent_style1="inc"
+let g:html_indent_script1="inc"
+" Highlight css inside css`` literals in javascript
 let g:htl_css_templates = 1
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -86,11 +89,8 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set guioptions-=m
 set guioptions-=T
-"inoremap <expr>  <C-K>   HUDG_GetDigraph()
 
-autocmd FileType * set ts=4 | set sw=4
 autocmd FileType rst set ts=3 | set sw=3
-"autocmd FileType html set tabstop=2 | set sw=2
 
 nmap _ <Plug>VinegarVerticalSplitUp
 
@@ -122,52 +122,61 @@ hi link CocInfoSign GruvboxBlueSign
 
 let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
-"let g:airline_powerline_fonts = 1
 
+" FZF settings:
+" - Include hidden files, except .git/
+" - Exclude anything in .gitignore (the default)
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git/"'
 
+" We usually want to search all of the current project, not just the pwd.
+" This helper function returns either the current git repo root dir, or
+" failing that, just the pwd.
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2>/dev/null || pwd')[:-2]
 endfunction
 
+" Search filenames in the current project
 command! ProjectFiles execute 'Files' s:find_git_root()
 nnoremap <silent> <C-p> :ProjectFiles<CR>
+
+" Search file content in the current project
+command! -bang -nargs=* ProjectRg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case "
+  \ .shellescape(<q-args>), 1, {'dir': s:find_git_root()}, <bang>0)
+nnoremap <C-f> :ProjectRg<Space>
+
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <BS> :History<CR>
-nnoremap <C-f> :Rg
 
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL='warn'
 
-"autocmd FileType typescript nnoremap <buffer> <silent> K :TSDoc<CR>
-"autocmd FileType typescript nnoremap <buffer> <silent> <leader>tdp :TSDefPreview<CR>
-"autocmd FileType typescript nnoremap <buffer> <silent> <leader>tt :TSType<CR>
-"autocmd FileType typescript nnoremap <buffer> <silent> <c-]> :TSTypeDef<CR>
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
 set updatetime=300
 
-call airline#parts#define_function('coc_status', 'coc#status')
-let g:airline_section_y = airline#section#create_right(['coc_status','ffenc'])
-
+" contextually use tab for coc autocomplete
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+" various simple keybinds
 inoremap <silent><expr> <c-space> coc#refresh()
 noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
-nnoremap K :call <SID>show_documentation()<CR>
-noremap <silent> <Leader>G :G<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> <C-t> :CocCommand<CR>
+nnoremap <silent> <C-k> :CocAction<CR>
 
+" Add coc status to airline
+call airline#parts#define_function('coc_status', 'coc#status')
+let g:airline_section_y = airline#section#create_right(['coc_status','ffenc'])
+
+" bind qga to autoalign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Bind <C-L> (the usual terminal refresh bind) to clear search
 nnoremap <silent> <C-l> :nohl<CR>
