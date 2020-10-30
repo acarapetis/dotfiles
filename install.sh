@@ -44,4 +44,4 @@ ln -s "$PWD/"{.tmux.conf,.nethackrc,.pylintrc} ~/ || true
 
 sudo pip3 -q install --upgrade pynvim jedi
 `which nvim` +PlugInstall +qall
-`which nvim` +"CocInstall coc-python" +"CocInstall coc-json" +"CocInstall coc-css" +"CocInstall coc-tsserver" +"CocInstall coc-terraform" +"CocInstall coc-html"
+`which nvim` +"CocInstall coc-python" +"CocInstall coc-json" +"CocInstall coc-css" +"CocInstall coc-tsserver" +"CocInstall coc-html"
