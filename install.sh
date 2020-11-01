@@ -40,7 +40,9 @@ fi
 
 [ ! -d ~/.config/nvim ] && mkdir -p ~/.config/nvim
 ln -s "$PWD/coc-settings.json" "$PWD/init.vim" ~/.config/nvim/ || true
-ln -s "$PWD/"{.tmux.conf,.nethackrc,.pylintrc} ~/ || true
+for x in tmux.conf nethackrc pylintrc; do
+    ln -s "$PWD/$x" ~/.$x || true
+done
 
 sudo pip3 -q install --upgrade pynvim jedi
 `which nvim` +PlugInstall +qall
