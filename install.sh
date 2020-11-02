@@ -24,11 +24,11 @@ if ! which rg; then
     read -p "rg not found in path. Install binary from github? [Y/n]" o
     if [ -z "$o" ] || [ "${o^^}" == Y ]; then
         dl_url=$(curl $RG_API/latest | jq -r '.assets[]|select(.name|test("x86_64.*linux-musl.tar.gz"))|.browser_download_url')
-	cd /tmp
-	curl -fLo rg.tar.gz "$dl_url"
-	tar xfz rg.tar.gz
-	cp ripgrep*/rg ~/.local/bin/
-	cd -
+        cd /tmp
+        curl -fLo rg.tar.gz "$dl_url"
+        tar xfz rg.tar.gz
+        cp ripgrep*/rg ~/.local/bin/
+        cd -
         echo "Ripgrep installed to ~/.local/bin/rg"
     fi
 fi
