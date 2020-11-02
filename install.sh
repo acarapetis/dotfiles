@@ -47,3 +47,8 @@ done
 sudo pip3 -q install --upgrade pynvim jedi
 `which nvim` +PlugInstall +qall
 `which nvim` +"CocInstall coc-python" +"CocInstall coc-json" +"CocInstall coc-css" +"CocInstall coc-tsserver" +"CocInstall coc-html"
+
+read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
+if [ "${o^^}" == Y ]; then
+    echo '. "'"$PWD/bashrc.inc"'"' >> ~/.bashrc
+fi
