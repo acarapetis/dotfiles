@@ -31,16 +31,24 @@ RED="\[\033[0;31m\]"
 GREEN="\[\033[38;5;108m\]"
 BLUE="\[\033[38;5;104m\]"
 YELLOW="\[\033[38;5;172m\]"
- 
+
 PS_LINE=`printf -- '——%.0s' {1..200}`
 function parse_git_branch {
-  PS_BRANCH=''
-  PS_FILL=${PS_LINE:0:$COLUMNS}
-  ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/' | sed 's/HEAD -> //') || return
-  [ -z "$ref" ] || PS_BRANCH="// $ref "
+    errcode=$?
+    PS_BRANCH=''
+    PS_FILL=${PS_LINE:0:$COLUMNS}
+    ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/' | sed 's/HEAD -> //') || return
+    [ -z "$ref" ] || PS_BRANCH="// $ref "
+}
+function errorcolor {
+    [ "$errcode" == 0 ] && echo -ne "\e[32m" || echo -ne "\e[31m"
+}
+function printretcode {
+    errorcolor
+    [ "$errcode" != 0 ] && printf " FAIL %3s" $errcode || echo -n "—————————"
 }
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$RESET\$PS_BRANCH"
-PS_TIME="\[\033[\$((COLUMNS-14))G\] "'`printf "%3s" $?` '"$RED[\t]"
-export PS1="\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
+PS_TIME="\[\033[\$((COLUMNS-19))G\]$RESET"'`printretcode $?`'$RESET" [\t]"
+export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
