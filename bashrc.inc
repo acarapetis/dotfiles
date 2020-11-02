@@ -36,18 +36,11 @@ PS_LINE=`printf -- '——%.0s' {1..200}`
 function parse_git_branch {
   PS_BRANCH=''
   PS_FILL=${PS_LINE:0:$COLUMNS}
-  if [ -d .svn ]; then
-    PS_BRANCH="(svn r$(svn info|awk '/Revision/{print $2}'))"
-    return
-  elif [ -f _FOSSIL_ -o -f .fslckout ]; then
-    PS_BRANCH="(fossil $(fossil status|awk '/tags/{print $2}')) "
-    return
-  fi
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  PS_BRANCH="(git ${ref#refs/heads/}) "
+  ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/') || return
+  PS_BRANCH="// $ref "
 }
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
-PS_GIT="$YELLOW\$PS_BRANCH"
+PS_GIT="$RESET\$PS_BRANCH"
 PS_TIME="\[\033[\$((COLUMNS-14))G\] "'`printf "%3s" $?` '"$RED[\t]"
 export PS1="\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
