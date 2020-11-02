@@ -49,5 +49,5 @@ function parse_git_branch {
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
-PS_TIME="\[\033[\$((COLUMNS-10))G\] $RED[\t]"
+PS_TIME="\[\033[\$((COLUMNS-14))G\] "'`printf "%3s" $?` '"$RED[\t]"
 export PS1="\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
