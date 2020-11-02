@@ -36,8 +36,8 @@ PS_LINE=`printf -- '——%.0s' {1..200}`
 function parse_git_branch {
   PS_BRANCH=''
   PS_FILL=${PS_LINE:0:$COLUMNS}
-  ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/') || return
-  PS_BRANCH="// $ref "
+  ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/' | sed 's/HEAD -> //') || return
+  [ -z "$ref" ] || PS_BRANCH="// $ref "
 }
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
