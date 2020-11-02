@@ -8,6 +8,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+export LC_ALL=en_US.utf-8 # REQUIRED for the PS1 to work properly
+
 # some more ls aliases
 alias ll='ls -alh --file-type'
 alias la='ls -a'
