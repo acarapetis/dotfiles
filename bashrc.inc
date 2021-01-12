@@ -48,3 +48,8 @@ PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$RESET\$PS_BRANCH"
 PS_TIME="\[\e[\$((COLUMNS-19))G\]$RESET"'`printretcode $?`'$RESET" [\t]"
 export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
+
+# helper functions
+gcd() {
+    cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"/"$1"
+}
