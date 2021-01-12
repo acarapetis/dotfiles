@@ -192,3 +192,5 @@ nmap ga <Plug>(EasyAlign)
 
 " Bind <C-L> (the usual terminal refresh bind) to clear search
 nnoremap <silent> <C-l> :nohl<CR>
+
+xnoremap <leader>j :!json2tf<CR>$=%

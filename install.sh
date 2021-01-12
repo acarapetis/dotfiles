@@ -7,6 +7,7 @@ cd "$(dirname "$0")"
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
+ln -s "$PWD/json2tf" ~/.local/bin/
 
 if ! which nvim; then
     read -p "nvim not found in path. Install appimage from github? [Y/n]" o

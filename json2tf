@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+#
+# Converts JSON into HashiCorp Configuration Language.
+# Designed to be used to replace JSON heredoc strings in Terraform
+# configurations with HCL data structures wrapped by jsonencode(), which is a
+# more maintainable format. (For example, you then get syntax highlighting, and
+# Terraform will catch syntax errors rather than passing them on to providers.)
+
+undef $/;
+$j = <>;
+chomp $j;
+$prefix = '';
+if ($j =~ s/^([^\n]*)<<(\w+)\s*\n(.*?)\s*\n\2\s*$/\3/s) {
+    $prefix = $1;
+}
+$j =~ s/"(\w+)"\s*:\s*"([^"]+)"[ \t]*,?[ \t]*\n?/\1 = "\2"\n/g;
+$j =~ s/"([^"]+)"\s*:\s*"([^"]+)"[ \t]*,?[ \t]*\n?/"\1" = "\2"\n/g;
+$j =~ s/"(\w+)"\s*:/\1 =/g;
+$j =~ s/"([^"]+)"\s*:/"\1" =/g;
+print "${prefix}jsonencode($j)";
