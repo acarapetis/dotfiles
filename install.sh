@@ -53,3 +53,5 @@ read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
 if [ "${o^^}" == Y ]; then
     echo '. "'"$PWD/bashrc.inc"'"' >> ~/.bashrc
 fi
+
+~/.local/share/nvim/plugged/fzf/install
