@@ -143,6 +143,7 @@ command! -bang -nargs=* ProjectRg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case "
   \ .shellescape(<q-args>), 1, {'dir': s:find_git_root()}, <bang>0)
 nnoremap <C-f> :ProjectRg<Space>
+nnoremap <silent> <C-g> :ProjectRg<Space>\b<C-R><C-W>\b<CR>
 
 nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <BS> :History<CR>
@@ -193,4 +194,5 @@ nmap ga <Plug>(EasyAlign)
 " Bind <C-L> (the usual terminal refresh bind) to clear search
 nnoremap <silent> <C-l> :nohl<CR>
 
+" Select a JSON heredoc in terraform and type \j to convert to HCL
 xnoremap <leader>j :!json2tf<CR>$=%
