@@ -16,6 +16,9 @@ alias la='ls -a'
 alias l='ls -CF'
 alias ltr='ls -Alhrt --file-type'
 
+# start fullscreen fugitive status
+alias fugitive="nvim +'call GFull()'"
+
 function lack {
     ack --color "$@" | less -R
 }
