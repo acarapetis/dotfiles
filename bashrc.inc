@@ -19,8 +19,9 @@ alias ltr='ls -Alhrt --file-type'
 # start fullscreen fugitive status
 alias fugitive="nvim +'call GFull()'"
 
-function lack {
-    ack --color "$@" | less -R
+# paged pretty ripgrep
+function rg {
+    command rg -p "$@" | less -RF
 }
 
 #export TERM=xterm-256color
