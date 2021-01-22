@@ -3,11 +3,15 @@
 These are my dotfiles, i.e. what I need to turn an arbitrary Linux machine into
 a productive development environment. It's concentrated - just add internet!
 
-It does assume that python3 and pip3 are installed (usually from your system package manager).
+It does assume that the following are pre-installed (should be done via your system package manager):
+
+- perl 5.8+
+- python3 and pip3
+- nodejs and npm (for CoC)
 
 Mostly consists of neovim configuration for Python, Javascript and Terraform development.
 The script [install.sh](install.sh) will attempt to find the following pieces of
-software, and install any missing ones from the internet:
+software, and install any missing ones as universal amd64 binaries from the internet:
 
 - jq
 - nvim
@@ -20,7 +24,8 @@ It will then install the following configuration files via symlinks:
 - tmux
 - nethack
 
-The vim configuration features the following (probably excessive) list of plugins:
+The vim configuration features the following (probably excessive) list of
+plugins, which will be automatically installed by install.sh:
 
 - `coc`, with language support extensions for python, typescript/javascript,
   terraform, HTML, CSS, and JSON
