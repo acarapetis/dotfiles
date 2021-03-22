@@ -47,13 +47,20 @@ function printretcode {
     errorcolor
     [ "$errcode" != 0 ] && printf " FAIL %3s" $errcode || echo -n "—————————"
 }
+function awsprofile {
+    if [ "${AWS_PROFILE-default}" != "default" ]; then
+        echo -ne "\e[31m[AWS=$AWS_PROFILE] "
+    fi
+}
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$RESET\$PS_BRANCH"
 PS_TIME="\[\e[\$((COLUMNS-19))G\]$RESET"'`printretcode $?`'$RESET" [\t]"
-export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
+export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]"'`awsprofile`'"$RESET${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
 
 # helper functions
 gcd() {
     cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"/"$1"
 }
+
+set -o noclobber # don't allow > to overwrite existing files
