@@ -54,6 +54,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 filetype plugin indent on
