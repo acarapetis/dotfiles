@@ -59,6 +59,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
@@ -94,6 +95,8 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 set guioptions-=m
 set guioptions-=T
+
+au BufNewFile,BufRead *.hcl set ft=terraform
 
 autocmd FileType rst set ts=3 | set sw=3
 
