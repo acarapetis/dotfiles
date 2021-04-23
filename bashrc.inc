@@ -64,3 +64,8 @@ gcd() {
 }
 
 set -o noclobber # don't allow > to overwrite existing files
+alias tf=terraform
+
+export TF_CLI_ARGS_apply='-parallelism 64'
+export TF_CLI_ARGS_plan='-parallelism 64'
+export TF_CLI_ARGS_destroy='-parallelism 64'
