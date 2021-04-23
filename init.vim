@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 
+set termguicolors
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
 
 " We have to unset $DISPLAY to stop netrw from trying to save/load X
@@ -14,6 +15,9 @@ let g:html_indent_style1="inc"
 let g:html_indent_script1="inc"
 " Highlight css inside css`` literals in javascript
 let g:htl_css_templates = 1
+
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple_hex'
+let g:Hexokinase_highlighters = ['virtual']
 
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
@@ -31,7 +35,7 @@ Plug 'tpope/vim-fugitive'
 
 " ui
 Plug 'bling/vim-airline'
-Plug 'ap/vim-css-color'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " misc
 Plug 'tpope/vim-commentary'
