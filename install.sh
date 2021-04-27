@@ -22,14 +22,14 @@ if ! which nvim; then
 fi
 
 if which nvim && ! which go; then
-    read -p "go not found in path. Install from yum/apt? [Y/n]" o
+    read -p "go not found in path. Install from yum/apt? (Needed for vim-hexokinase) [Y/n]" o
     if [ -z "$o" ] || [ "${o^^}" == Y ]; then
         sudo yum install -y golang || sudo apt-get install -y golang
     fi
 fi
 
 if ! which rg; then
-    read -p "rg not found in path. Install binary from github? (Needed for vim-hexokinase) [Y/n]" o
+    read -p "rg not found in path. Install binary from github? [Y/n]" o
     if [ -z "$o" ] || [ "${o^^}" == Y ]; then
         dl_url=$(curl $RG_API/latest | jq -r '.assets[]|select(.name|test("x86_64.*linux-musl.tar.gz"))|.browser_download_url')
         cd /tmp
