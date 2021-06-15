@@ -1,10 +1,15 @@
 {
-    "suggest.timeout": 500,
-    "suggest.autoTrigger": "trigger",
-    "suggest.triggerAfterInsertEnter": true,
+    "diagnostic.errorSign": "⚫ ",
+    "diagnostic.hintSign": " •",
+    "diagnostic.infoSign": " •",
+    "diagnostic.warningSign": "⚫ ",
+    "pyright.completion.snippetSupport": true,
     "signature.enable": true,
-    "suggest.floatEnable": true,
+    "suggest.autoTrigger": "trigger",
     "suggest.enablePreview": true,
+    "suggest.floatEnable": true,
+    "suggest.timeout": 500,
+    "suggest.triggerAfterInsertEnter": true,
     "languageserver": {
         "terraform": {
             "command": "terraform-lsp",

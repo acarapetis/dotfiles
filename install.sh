@@ -60,7 +60,7 @@ done
 
 sudo pip3 -q install --upgrade pynvim jedi
 `which nvim` +PlugInstall +qall
-`which nvim` +"CocInstall -sync coc-python coc-json coc-css coc-tsserver coc-html" +qall
+`which nvim` +"CocInstall -sync coc-pyright coc-json coc-css coc-tsserver coc-html" +qall
 
 read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
 if [ "$SCRIPT_ARG" == "-y" ] || [ "${o^^}" == Y ]; then
