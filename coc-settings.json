@@ -3,7 +3,6 @@
     "suggest.autoTrigger": "trigger",
     "suggest.triggerAfterInsertEnter": true,
     "signature.enable": true,
-    "python.autoComplete.addBrackets": true,
     "suggest.floatEnable": true,
     "suggest.enablePreview": true,
     "languageserver": {

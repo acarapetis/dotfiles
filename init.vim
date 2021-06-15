@@ -210,3 +210,9 @@ nnoremap <silent> <C-l> :nohl<CR>
 
 " Select a JSON heredoc in terraform and type \j to convert to HCL
 xnoremap <leader>j :!json2tf<CR>$=%
+
+nnoremap <leader>t :!pytest -x<CR>
+nnoremap <leader>T :!pytest %<CR>
+
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
