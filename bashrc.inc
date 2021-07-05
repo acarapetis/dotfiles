@@ -83,3 +83,6 @@ function rg {
     command rg -p "$@" | less -RF
 }
 
+function keep_trying {
+    while ! "$@"; do sleep 1; done
+}
