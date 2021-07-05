@@ -72,7 +72,7 @@ function fug {
     if [ -z "$1" ]; then
         nvim +'call GFull()'
     else
-        nvim +":G $@" +":normal o"
+        nvim +":G $*" +":normal o"
     fi
 }
 
