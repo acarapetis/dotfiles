@@ -3,6 +3,8 @@ filetype off
 
 set termguicolors
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'xhtml']
+
 
 " We have to unset $DISPLAY to stop netrw from trying to save/load X
 " clipboard, since this is VERY slow when using X forwarding.
@@ -60,6 +62,7 @@ Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'AndrewRadev/tagalong.vim'
 
 call plug#end()
 
