@@ -5,5 +5,9 @@
     ff = only
 [diff]
     algorithm = patience
+[push]
+    default = simple
 [alias]
     po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    graph = "log --oneline --graph"
+    search = "!git rev-list --all | xargs git grep"
