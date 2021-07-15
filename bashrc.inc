@@ -53,6 +53,13 @@ set -o noclobber # don't allow > to overwrite existing files
 export EDITOR=nvim
 
 
+g() {
+    if [ -z "$1" ]; then
+        git status
+    else
+        git "$@"
+    fi
+}
 alias tf=terraform
 
 export TF_CLI_ARGS_apply='-parallelism 64'

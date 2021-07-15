@@ -12,7 +12,6 @@
     ff = only
 
 [alias]
-    s = "status"
     graph = "log --oneline --graph"
     search = "!git rev-list --all | xargs git grep"
 
