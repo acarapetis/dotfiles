@@ -7,7 +7,7 @@ RG_API="https://api.github.com/repos/BurntSushi/ripgrep/releases"
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
 
-[ -d ~/.local/bin ] || mkdir -p ~/.local/bin
+mkdir -p ~/.local/bin
 which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
 ln -fs "$DOTFILES/json2tf" ~/.local/bin/
 
@@ -53,8 +53,10 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim  ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-[ ! -d ~/.config/nvim ] && mkdir -p ~/.config/nvim
-ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/ || true
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/coc
+ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/
+ln -fs "$DOTFILES/ultisnips" ~/.config/coc/
 for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
 done
