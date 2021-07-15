@@ -18,13 +18,16 @@ software, and install any missing ones as universal amd64 binaries from the inte
 - ripgrep
 - vim-plug
 
-It will then install the following configuration files via symlinks:
+It will then install configuration files for the following via symlinks or includes:
 
-- nvim
+- bash
 - tmux
+- nvim
+- git
+- pylint
 - nethack
 
-The vim configuration features the following (probably excessive) list of
+The nvim configuration features the following (probably excessive) list of
 plugins, which will be automatically installed by install.sh:
 
 - `coc`, with language support extensions for python, typescript/javascript,
@@ -35,11 +38,12 @@ plugins, which will be automatically installed by install.sh:
 - the `airline` status bar
 - many of Tim Pope's brilliant plugins:
   - `vinegar` for a smoother directory navigation experience in netrw
-  - `fugitive` is a nice built-in Git UI
+  - `fugitive` and `rhubarb` for a nice git(hub) UI
   - `commentary` for easy (un)commenting
   - `speeddating` extend C-A/C-X bindings to work for dates and times
   - `surround` to manipulate surrounding pairs of brackets, etc
   - `sleuth` to automatically determine indentation conventions
+- `hexokinase` to show true colour swatch previews
 - my own `sh-heredoc-highlighting` for syntax highlighting of embedded code in
   shell heredocs
 - various syntax plugins for better language support

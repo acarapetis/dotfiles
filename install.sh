@@ -59,9 +59,8 @@ for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
 done
 
-sudo pip3 -q install --upgrade pynvim jedi
+sudo pip3 -q install --upgrade pynvim
 `which nvim` +PlugInstall +qall
-`which nvim` +"CocInstall -sync coc-pyright coc-json coc-css coc-tsserver coc-html" +qall
 
 read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
 if [ "$SCRIPT_ARG" == "-y" ] || [ "${o^^}" == Y ]; then

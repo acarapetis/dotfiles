@@ -1,25 +1,13 @@
 set nocompatible
 filetype off
 
-set termguicolors
 let g:node_host_prog = '/usr/local/bin/neovim-node-host'
-let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'xhtml']
-
 
 " We have to unset $DISPLAY to stop netrw from trying to save/load X
 " clipboard, since this is VERY slow when using X forwarding.
 " should be fixed in next neovim release by this commit:
 " https://github.com/neovim/neovim/commit/5e47cf27b4d82cb0ccfa7859beaa29afb0af4bed
 let $DISPLAY = ''
-
-" Indent styles and scripts in html appropriately
-let g:html_indent_style1="inc"
-let g:html_indent_script1="inc"
-" Highlight css inside css`` literals in javascript
-let g:htl_css_templates = 1
-
-let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple_hex'
-let g:Hexokinase_highlighters = ['virtual']
 
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
@@ -99,12 +87,32 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set guioptions-=m
 set guioptions-=T
 
+" Indent styles and scripts in html appropriately
+let g:html_indent_style1="inc"
+let g:html_indent_script1="inc"
+" Highlight css inside css`` literals in javascript
+let g:htl_css_templates = 1
+
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple_hex'
+let g:Hexokinase_highlighters = ['virtual']
+let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'xhtml']
+
+let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-snippets',
+      \ 'coc-html',
+      \ 'coc-tsserver',
+      \ 'coc-rls',
+      \ 'coc-pyright',
+      \ 'coc-css',
+      \ ]
 au BufNewFile,BufRead *.hcl set ft=terraform
 
 autocmd FileType rst set ts=3 | set sw=3
 
 nmap _ <Plug>VinegarVerticalSplitUp
 
+set termguicolors
 set bg=dark
 let g:gruvbox_bold = '1'
 "let g:gruvbox_italic = '1'
