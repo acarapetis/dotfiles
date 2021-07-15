@@ -5,10 +5,11 @@ NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appima
 RG_API="https://api.github.com/repos/BurntSushi/ripgrep/releases"
 
 cd "$(dirname "$0")"
+DOTFILES="$PWD"
 
 [ -d ~/.local/bin ] || mkdir -p ~/.local/bin
 which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
-ln -fs "$PWD/json2tf" ~/.local/bin/
+ln -fs "$DOTFILES/json2tf" ~/.local/bin/
 
 confirm() {
     if [ "$SCRIPT_ARG" == "-y" ]; then
@@ -53,9 +54,9 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim  ]; then
 fi
 
 [ ! -d ~/.config/nvim ] && mkdir -p ~/.config/nvim
-ln -fs "$PWD/coc-settings.json" "$PWD/init.vim" ~/.config/nvim/ || true
+ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/ || true
 for x in tmux.conf nethackrc pylintrc; do
-    ln -fs "$PWD/$x" ~/.$x || true
+    ln -fs "$DOTFILES/$x" ~/.$x || true
 done
 
 sudo pip3 -q install --upgrade pynvim jedi
@@ -64,7 +65,10 @@ sudo pip3 -q install --upgrade pynvim jedi
 
 read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
 if [ "$SCRIPT_ARG" == "-y" ] || [ "${o^^}" == Y ]; then
-    echo '. "'"$PWD/bashrc.inc"'"' >> ~/.bashrc
+    echo '. "'"$DOTFILES/bashrc.inc"'"' >> ~/.bashrc
 fi
 
 ~/.local/share/nvim/plugged/fzf/install
+
+# Git config + aliases:
+git config --global include.path "$DOTFILES/gitconfig"

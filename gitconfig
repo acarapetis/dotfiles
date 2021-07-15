@@ -1,0 +1,9 @@
+# Include this in .gitconfig:
+# [include]
+#     path = /path/to/gitconfig
+[pull]
+    ff = only
+[diff]
+    algorithm = patience
+[alias]
+    po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
