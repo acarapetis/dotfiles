@@ -74,6 +74,17 @@ alias la='ls -a'
 alias l='ls -CF'
 alias ltr='ls -Alhrt --file-type'
 
+function lsd {
+    if [ -z "$1" ]; then
+        pf=""
+    elif [[ "$1" == */ ]]; then
+        pf="$1"
+    else
+        pf="$1/"
+    fi
+    ls -d "$pf".*/ "$pf"*/
+}
+
 # start fugitive in fullscreen, optionally with a git command
 function fug {
     if [ -z "$1" ]; then
@@ -93,3 +104,8 @@ function rg {
 function keep_trying {
     while ! "$@"; do sleep 1; done
 }
+
+function duh {
+    du -h "$@" | sort -h
+}
+
