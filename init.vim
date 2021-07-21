@@ -233,3 +233,6 @@ vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+nnoremap <leader>G :G 
+nnoremap <leader>g :G<CR>
