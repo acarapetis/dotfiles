@@ -18,3 +18,4 @@
     pullr = "pull --rebase --autostash"
     newbranch = "!f() { git fetch origin $1 && git checkout --no-track origin/$1 -b $2; }; f"
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    rewrite = "rebase --interactive --autostash"
