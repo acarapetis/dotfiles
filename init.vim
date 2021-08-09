@@ -31,6 +31,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-eunuch'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 
