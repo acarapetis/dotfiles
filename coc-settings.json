@@ -1,8 +1,4 @@
 {
-    "diagnostic.errorSign": "⚫ ",
-    "diagnostic.hintSign": " •",
-    "diagnostic.infoSign": " •",
-    "diagnostic.warningSign": "⚫ ",
     "pyright.completion.snippetSupport": true,
     "signature.enable": true,
     "suggest.autoTrigger": "trigger",
