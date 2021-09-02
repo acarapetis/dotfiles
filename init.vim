@@ -34,6 +34,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }

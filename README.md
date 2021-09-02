@@ -63,6 +63,7 @@ plugins, which will be automatically installed by install.sh:
   - `jdaddy` for JSON motions
   - `dadbod` for easy iteration on SQL queries
   - `eunuch` for the convenience of `:SudoWrite` and `:Rename`
+  - `repeat` to allow . to repeat mappings from plugins
 - `hexokinase` to show true-colour swatch previews
 - my own `sh-heredoc-highlighting` for syntax highlighting of embedded code in
   shell heredocs
