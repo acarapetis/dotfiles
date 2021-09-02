@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 SCRIPT_ARG="$1"
-NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage"
+NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage"
 RG_API="https://api.github.com/repos/BurntSushi/ripgrep/releases"
 
 cd "$(dirname "$0")"
@@ -30,7 +30,7 @@ if ! which nvim; then
     fi
 fi
 
-if which nvim && ! which go; then
+if ! which go; then
     if confirm "go not found in path. Install from yum/apt? (Needed for vim-hexokinase)"; then
         sudo yum install -y golang || sudo apt-get install -y golang
     fi
@@ -62,7 +62,7 @@ for x in tmux.conf nethackrc pylintrc; do
 done
 
 sudo pip3 -q install --upgrade pynvim
-`which nvim` +PlugInstall +qall
+~/.local/bin/nvim +PlugInstall +qall
 
 read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
 if [ "$SCRIPT_ARG" == "-y" ] || [ "${o^^}" == Y ]; then
