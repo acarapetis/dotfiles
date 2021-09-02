@@ -3,16 +3,33 @@
 These are my dotfiles, i.e. what I need to turn an arbitrary Linux machine into
 a productive development environment. It's concentrated - just add internet!
 
-It does assume that the following are pre-installed (should be done via your system package manager):
+By "arbitrary Linux machine", I really mean "An amd64 machine running a recent
+version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE".
+
+It **assumes that NodeJS 12+ is pre-installed** - the best way to do this
+varies by your distribution and situation. I usually use either the NodeSource
+repositories for the system package manager, or conda-forge.
+
+## Contents
+
+Mostly consists of neovim configuration for development using:
+
+- Python (+Jinja2)
+- TypeScript/JavaScript (including lit-html template support)
+- Haskell
+- Rust
+- Bash
+- Terraform
+- Docker
+- HTML/XML
+- JSON
+
+The script [install.sh](install.sh) will attempt to find the following pieces of
+software, and install any missing ones from your system package manager or as
+universal amd64 binaries from the internet:
 
 - perl 5.8+
 - python3 and pip3
-- nodejs and npm (for CoC)
-
-Mostly consists of neovim configuration for Python, Javascript and Terraform development.
-The script [install.sh](install.sh) will attempt to find the following pieces of
-software, and install any missing ones as universal amd64 binaries from the internet:
-
 - jq
 - nvim
 - ripgrep
@@ -30,8 +47,8 @@ It will then install configuration files for the following via symlinks or inclu
 The nvim configuration features the following (probably excessive) list of
 plugins, which will be automatically installed by install.sh:
 
-- `coc`, with language support extensions for python, typescript/javascript,
-  terraform, HTML, CSS, and JSON
+- `coc`, with language support extensions and/or language server configuration
+  for Python, TypeScript/JavaScript, terraform, HTML, CSS, JSON, Haskell
 - `fzf` and `fzf.vim`, with custom ripgrep options and custom keybinds
 - `easy-align` for easy (but still manually triggered) alignment
 - the `gruvbox` colorscheme
@@ -43,7 +60,10 @@ plugins, which will be automatically installed by install.sh:
   - `speeddating` extend C-A/C-X bindings to work for dates and times
   - `surround` to manipulate surrounding pairs of brackets, etc
   - `sleuth` to automatically determine indentation conventions
-- `hexokinase` to show true colour swatch previews
+  - `jdaddy` for JSON motions
+  - `dadbod` for easy iteration on SQL queries
+  - `eunuch` for the convenience of `:SudoWrite` and `:Rename`
+- `hexokinase` to show true-colour swatch previews
 - my own `sh-heredoc-highlighting` for syntax highlighting of embedded code in
   shell heredocs
 - various syntax plugins for better language support
