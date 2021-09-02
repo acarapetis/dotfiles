@@ -8,9 +8,12 @@
     "suggest.triggerAfterInsertEnter": true,
     "languageserver": {
         "terraform": {
-            "command": "terraform-lsp",
             "filetypes": ["terraform", "tf"],
-            "initializationOptions": {}
+            "initializationOptions": {},
+            "settings": {},
+
+            "command": "terraform-ls",
+            "args": ["serve"]
         },
         "haskell": {
             "command": "haskell-language-server-wrapper",
