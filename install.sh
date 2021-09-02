@@ -19,6 +19,12 @@ confirm() {
     [ -z "$o" ] || [ "${o^^}" == Y ]
 }
 
+tryinstall() {
+    sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
+}
+
+tryinstall golang python3-pip perl
+
 if ! which nvim; then
     if confirm "nvim not found in path. Install appimage from github?"; then
         [ ! -f nvim.appimage ] && curl -fL -o nvim.appimage --create-dirs $NVIM_LINK
@@ -27,12 +33,6 @@ if ! which nvim; then
         mv squashfs-root ~/.local/nvim
         ln -fs ~/.local/nvim/usr/bin/nvim ~/.local/bin/
         echo "Neovim installed to ~/.local/bin/nvim"
-    fi
-fi
-
-if ! which go; then
-    if confirm "go not found in path. Install from yum/apt? (Needed for vim-hexokinase)"; then
-        sudo yum install -y golang || sudo apt-get install -y golang
     fi
 fi
 
@@ -64,12 +64,15 @@ done
 sudo pip3 -q install --upgrade pynvim
 ~/.local/bin/nvim +PlugInstall +qall
 
-read -p "Add bashrc.inc to ~/.bashrc? [y/N]" o
-if [ "$SCRIPT_ARG" == "-y" ] || [ "${o^^}" == Y ]; then
-    echo '. "'"$DOTFILES/bashrc.inc"'"' >> ~/.bashrc
+bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
+if match=$(grep -F "$bashrcinc" ~/.bashrc) && [ "$match" = "$bashrcinc" ]; then
+    >&2 echo "bashrc.inc already included in ~/.bashrc."
+else
+    >&2 echo "Including bashrc.inc in ~/.bashrc."
+    echo "$bashrcinc" >> ~/.bashrc
 fi
 
-~/.local/share/nvim/plugged/fzf/install
+~/.local/share/nvim/plugged/fzf/install --all
 
 # Git config + aliases:
 git config --global include.path "$DOTFILES/gitconfig"
