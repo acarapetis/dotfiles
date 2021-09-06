@@ -109,3 +109,25 @@ function duh {
     du -h "$@" | sort -h
 }
 
+function ripsed {
+    pattern="$1"
+    replacement="$2"
+    mapfile -t files < <(command rg --files-with-matches "$pattern")
+    count=${#files[@]}
+    if [ "$count" == 0 ]; then
+        >&2 echo "No matches found."
+    else
+        command rg "$pattern"
+        >&2 echo -n "Found $count files - perform replacement on all [y/n]? "
+        read answer
+        if [[ "${answer^}" =~ ^Y ]]; then
+            for x in "${files[@]}"; do
+                sed -i "s/$pattern/$replacement/g" "$x"
+            done
+            >&2 echo "Done."
+        else
+            >&2 echo "Cancelling."
+        fi
+    fi
+}
+
