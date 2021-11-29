@@ -117,8 +117,8 @@ function ripsed {
     if [ "$count" == 0 ]; then
         >&2 echo "No matches found."
     else
-        command rg "$pattern"
-        >&2 echo -n "Found $count files - perform replacement on all [y/n]? "
+        command rg "$pattern" -r "$replacement"
+        >&2 echo -n "Perform above replacements on all $count files [y/n]? "
         read answer
         if [[ "${answer^}" =~ ^Y ]]; then
             for x in "${files[@]}"; do
