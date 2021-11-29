@@ -131,3 +131,6 @@ function ripsed {
     fi
 }
 
+function get_aws_secret {
+    aws secretsmanager get-secret-value --secret-id "$@" | jq -r '.SecretString'
+}
