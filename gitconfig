@@ -1,4 +1,5 @@
-# Include this in .gitconfig:
+# vim: ft=gitconfig
+# Include this file in .gitconfig:
 # [include]
 #     path = /path/to/gitconfig
 [diff]
@@ -11,6 +12,9 @@
 [pull]
     ff = only
 
+[merge]
+    conflictstyle = diff3
+
 [alias]
     graph = "log --oneline --graph"
     search = "!git rev-list --all | xargs git grep"
@@ -19,3 +23,4 @@
     newbranch = "!f() { git fetch origin $1 && git checkout --no-track origin/$1 -b $2; }; f"
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     rewrite = "rebase --interactive --autostash"
+    gethash = "rev-parse HEAD"
