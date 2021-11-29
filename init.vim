@@ -35,24 +35,25 @@ Plug 'tpope/vim-eunuch'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
 
 " completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " language support
-Plug 'tpope/vim-jdaddy'
-Plug 'tpope/vim-sleuth'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'acarapetis/vim-html-template-literals'
-Plug 'digitaltoad/vim-pug'
 Plug 'leafgarland/typescript-vim'
+Plug 'acarapetis/vim-html-template-literals'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'digitaltoad/vim-pug'
 Plug 'hashivim/vim-terraform'
 Plug 'acarapetis/vim-sh-heredoc-highlighting'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'AndrewRadev/tagalong.vim'
+Plug 'tpope/vim-jdaddy'
 
 call plug#end()
 
@@ -98,6 +99,8 @@ let g:htl_css_templates = 1
 let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple_hex'
 let g:Hexokinase_highlighters = ['virtual']
 let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'xhtml']
+
+let g:pydocstring_formatter = 'numpy'
 
 let g:coc_global_extensions = [
       \ 'coc-json',
@@ -238,3 +241,5 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 nnoremap <leader>G :G 
 nnoremap <leader>g :G<CR>
+
+nnoremap <leader>D :Pydocstring<CR>
