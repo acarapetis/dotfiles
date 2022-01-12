@@ -12,6 +12,9 @@
 [pull]
     ff = only
 
+[submodule]
+    recurse = true
+
 [merge]
     conflictstyle = diff3
 
