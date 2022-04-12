@@ -8,6 +8,8 @@ cd "$(dirname "$0")"
 DOTFILES="$PWD"
 
 mkdir -p ~/.local/bin
+PATH="$PATH:$HOME/.local/bin"
+
 which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
 ln -fs "$DOTFILES/json2tf" ~/.local/bin/
 
