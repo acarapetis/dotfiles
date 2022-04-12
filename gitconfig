@@ -1,4 +1,4 @@
-# vim: ft=gitconfig
+# vim: ft=gitconfig et sw=4 ts=4
 # Include this file in .gitconfig:
 # [include]
 #     path = /path/to/gitconfig
@@ -15,8 +15,14 @@
 [submodule]
     recurse = true
 
+[clone]
+    recurse = true
+
 [merge]
     conflictstyle = diff3
+
+[blame]
+    ignoreRevsFile = .git-blame-ignore-revs
 
 [alias]
     graph = "log --oneline --graph"
@@ -27,3 +33,6 @@
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     rewrite = "rebase --interactive --autostash"
     gethash = "rev-parse HEAD"
+
+    co = "checkout"
+    sw = "switch"
