@@ -106,7 +106,7 @@ function keep_trying {
 }
 
 function duh {
-    du -h "$@" | sort -h
+    du -ha "$@" | sort -h
 }
 
 function ripsed {
