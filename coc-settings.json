@@ -1,4 +1,5 @@
 {
+    "coc.source.file.triggerCharacters": [ "/" ],
     "pyright.completion.snippetSupport": true,
     "signature.enable": true,
     "suggest.autoTrigger": "trigger",
