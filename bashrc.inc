@@ -122,7 +122,7 @@ function ripsed {
         read answer
         if [[ "${answer^}" =~ ^Y ]]; then
             for x in "${files[@]}"; do
-                sed -i "s/$pattern/$replacement/g" "$x"
+                sed -i "s|$pattern|$replacement|g" "$x"
             done
             >&2 echo "Done."
         else
