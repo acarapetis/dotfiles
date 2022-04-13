@@ -3,8 +3,8 @@
 These are my dotfiles, i.e. what I need to turn an arbitrary Linux machine into
 a productive development environment. It's concentrated - just add internet!
 
-By "arbitrary Linux machine", I really mean "An amd64 machine running a recent
-version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE".
+By "arbitrary Linux machine", I really mean "An x86\_64 machine running a
+recent version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE".
 
 It **assumes that NodeJS 12+ is pre-installed** - the best way to do this
 varies by your distribution and situation. I usually use either the NodeSource
@@ -28,8 +28,9 @@ The script [install.sh](install.sh) will attempt to find the following pieces of
 software, and install any missing ones from your system package manager or as
 universal amd64 binaries from the internet:
 
-- perl 5.8+
+- perl5
 - python3 and pip3
+- golang
 - jq
 - nvim
 - ripgrep
