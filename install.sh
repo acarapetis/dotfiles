@@ -58,6 +58,7 @@ fi
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/coc
 ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/
+[ -d ~/.config/coc/ultisnips ] && rmdir ~/.config/coc/ultisnips
 ln -fs "$DOTFILES/ultisnips" ~/.config/coc/
 for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
