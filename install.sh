@@ -2,7 +2,7 @@
 
 SCRIPT_ARG="$1"
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage"
-RG_API="https://api.github.com/repos/BurntSushi/ripgrep/releases"
+RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
 
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
@@ -10,8 +10,8 @@ DOTFILES="$PWD"
 mkdir -p ~/.local/bin
 PATH="$PATH:$HOME/.local/bin"
 
-which jq || curl https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq
-ln -fs "$DOTFILES/json2tf" ~/.local/bin/
+which jq || curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq
+ln -fs "$PWD/json2tf" ~/.local/bin/
 
 confirm() {
     if [ "$SCRIPT_ARG" == "-y" ]; then
@@ -40,12 +40,13 @@ fi
 
 if ! which rg; then
     if confirm "rg not found in path. Install binary from github?"; then
-        dl_url=$(curl $RG_API/latest | jq -r '.assets[]|select(.name|test("x86_64.*linux-musl.tar.gz"))|.browser_download_url')
-        cd /tmp
-        curl -fLo rg.tar.gz "$dl_url"
-        tar xfz rg.tar.gz
-        cp ripgrep*/rg ~/.local/bin/
-        cd -
+        (
+            d=$(mktemp -d)
+            cd "$d"
+            curl -fLo rg.tar.gz "$RG_LINK"
+            tar xfz rg.tar.gz
+            cp ripgrep*/rg ~/.local/bin/
+        )
         echo "Ripgrep installed to ~/.local/bin/rg"
     fi
 fi
