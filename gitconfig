@@ -22,8 +22,8 @@
 [merge]
     conflictstyle = diff3
 
-[blame]
-    ignoreRevsFile = .git-blame-ignore-revs
+#[blame]
+    #ignoreRevsFile = .git-blame-ignore-revs
 
 [alias]
     graph = "log --oneline --graph"
