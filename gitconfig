@@ -14,6 +14,7 @@
 
 [submodule]
     recurse = true
+    fetchJobs = 4
 
 [clone]
     recurse = true
