@@ -6,6 +6,9 @@
     algorithm = patience
     renameLimit = 10000
 
+[fetch]
+    prune = true
+
 [push]
     default = simple
 
@@ -34,6 +37,7 @@
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     rewrite = "rebase --interactive --autostash"
     gethash = "rev-parse HEAD"
+    pullother = "!f() { git fetch origin $1:$1; }; f"
 
     co = "checkout"
     sw = "switch"
