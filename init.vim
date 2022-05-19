@@ -242,4 +242,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 nnoremap <leader>G :G 
 nnoremap <leader>g :G<CR>
 
-nnoremap <leader>D :Pydocstring<CR>
+" Change default pydocstring mapping to \D
+let g:pydocstring_enable_mapping = 0
+nnoremap <leader>D <Plug>(pydocstring)
