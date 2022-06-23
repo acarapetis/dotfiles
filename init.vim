@@ -215,7 +215,8 @@ noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> <C-t> :CocCommand<CR>
 nnoremap <silent> <C-k> :CocAction<CR>
-xmap <leader>a <Plug>(coc-codeaction-selected)
+nnoremap <leader>a <Plug>(coc-codeaction-selected)<CR>
+"xmap <leader>a <Plug>(coc-codeaction-selected)
 
 " bind qga to autoalign
 xmap ga <Plug>(EasyAlign)
@@ -245,3 +246,4 @@ nnoremap <leader>g :G<CR>
 " Change default pydocstring mapping to \D
 let g:pydocstring_enable_mapping = 0
 nnoremap <leader>D <Plug>(pydocstring)
+nnoremap <leader>E :CocDiagnostics<CR>
