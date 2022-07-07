@@ -134,3 +134,5 @@ function ripsed {
 function get_aws_secret {
     aws secretsmanager get-secret-value --secret-id "$@" | jq -r '.SecretString'
 }
+
+alias xml=xmlstarlet
