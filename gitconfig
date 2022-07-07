@@ -25,6 +25,9 @@
 [merge]
     conflictstyle = diff3
 
+[rebase]
+    autoStash = true
+
 #[blame]
     #ignoreRevsFile = .git-blame-ignore-revs
 
@@ -32,10 +35,10 @@
     graph = "log --oneline --graph"
     search = "!git rev-list --all | xargs git grep"
 
-    pullr = "pull --rebase --autostash"
+    pullr = "pull --rebase"
     newbranch = "!f() { git fetch origin $1 && git checkout --no-track origin/$1 -b $2; }; f"
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
-    rewrite = "rebase --interactive --autostash"
+    rewrite = "rebase --interactive"
     gethash = "rev-parse HEAD"
     pullother = "!f() { git fetch origin $1:$1; }; f"
 
