@@ -3,6 +3,7 @@
 SCRIPT_ARG="$1"
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.7.0/nvim.appimage"
 RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
+UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
@@ -35,6 +36,18 @@ if ! which nvim; then
         mv squashfs-root ~/.local/nvim
         ln -fs ~/.local/nvim/usr/bin/nvim ~/.local/bin/
         echo "Neovim installed to ~/.local/bin/nvim"
+    fi
+fi
+
+if ! which up; then
+    if confirm "Ultimate Plumber not found in path. Install binary from github?"; then
+        (
+            d=$(mktemp -d)
+            cd "$d"
+            curl -fLo ~/.local/bin/up "$UP_LINK"
+            chmod +x ~/.local/bin/up
+        )
+        echo "up installed to ~/.local/bin/up"
     fi
 fi
 
