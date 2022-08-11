@@ -4,8 +4,6 @@
     "pyright.completion.snippetSupport": true,
     "signature.enable": true,
     "suggest.autoTrigger": "trigger",
-    "suggest.enablePreview": true,
-    "suggest.floatEnable": true,
     "suggest.timeout": 500,
     "suggest.triggerAfterInsertEnter": true,
     "languageserver": {
