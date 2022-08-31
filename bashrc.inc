@@ -136,3 +136,5 @@ function get_aws_secret {
 }
 
 alias xml=xmlstarlet
+
+alias csvalign="column -t -s,"
