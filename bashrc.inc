@@ -138,3 +138,6 @@ function get_aws_secret {
 alias xml=xmlstarlet
 
 alias csvalign="column -t -s,"
+alias pcsv="pspg -s 6 --csv -f"
+export PSQL_PAGER="pspg -s 6"
+alias mysql="mysql --pager='pspg -s 6'"

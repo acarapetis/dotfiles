@@ -27,6 +27,7 @@ tryinstall() {
 }
 
 tryinstall golang python3-pip perl
+tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
 if ! which nvim; then
     if confirm "nvim not found in path. Install appimage from github?"; then
