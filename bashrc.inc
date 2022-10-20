@@ -38,11 +38,14 @@ function awsprofile {
         echo -ne "\e[31m[AWS=$AWS_PROFILE] "
     fi
 }
+function ps1_prefix {
+    :
+}
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$RESET\$PS_BRANCH"
 PS_TIME="\[\e[\$((COLUMNS-19))G\]$RESET"'`printretcode $?`'$RESET" [\t]"
-export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]"'`awsprofile`'"$RESET${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
+export PS1='`errorcolor`'"\${PS_FILL}\[\033[0G\]"$RESET'`ps1_prefix``awsprofile`'"$RESET${PS_INFO} ${PS_GIT}${PS_TIME}\n${RESET}"'\$ '
 
 # helper functions
 gcd() {
