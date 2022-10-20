@@ -36,6 +36,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-abolish'
 
 " completion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
