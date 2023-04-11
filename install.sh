@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 SCRIPT_ARG="$1"
-NVIM_LINK="https://github.com/neovim/neovim/releases/download/v0.7.0/nvim.appimage"
+NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 
