@@ -65,9 +65,9 @@ g() {
 }
 alias tf=terraform
 
-export TF_CLI_ARGS_apply='-parallelism 64'
-export TF_CLI_ARGS_plan='-parallelism 64'
-export TF_CLI_ARGS_destroy='-parallelism 64'
+export TF_CLI_ARGS_apply='-parallelism 24'
+export TF_CLI_ARGS_plan='-parallelism 24'
+export TF_CLI_ARGS_destroy='-parallelism 24'
 
 alias dive="sudo docker run -v /var/run/docker.sock:/var/run/docker.sock -it wagoodman/dive"
 
