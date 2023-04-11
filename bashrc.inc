@@ -144,3 +144,9 @@ alias csvalign="column -t -s,"
 alias pcsv="pspg -s 6 --csv -f"
 export PSQL_PAGER="pspg -s 6"
 alias mysql="mysql --pager='pspg -s 6'"
+
+function privateip {
+    ip a show dev "${1:-eth0}" | perl -ne '/^\s*inet ([\d\.]+)\// and print $1'
+}
+
+alias renumber="tmux movew -r"
