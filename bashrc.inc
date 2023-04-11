@@ -23,7 +23,7 @@ function parse_git_branch {
     errcode=$?
     PS_BRANCH=''
     PS_FILL=${PS_LINE:0:$COLUMNS}
-    ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/' | sed 's/HEAD -> //' | sed 's#origin/#o/#g') || return
+    ref=$(git -c color.ui=always log -n1 --oneline --decorate=short 2>/dev/null| sed 's/).*/)/' | sed 's/HEAD -> //; s#origin/#o/#g; s#upstream/#u/#g') || return
     [ -z "$ref" ] || PS_BRANCH="// $ref "
 }
 function errorcolor {
