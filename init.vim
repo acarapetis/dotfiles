@@ -100,6 +100,8 @@ let g:htl_css_templates = 1
 let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names,triple_hex'
 let g:Hexokinase_highlighters = ['virtual']
 let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'eruby', 'ejs', 'eco', 'php', 'htmldjango', 'javascriptreact', 'typescriptreact', 'xhtml']
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 let g:pydocstring_formatter = 'numpy'
 
