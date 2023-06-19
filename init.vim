@@ -220,10 +220,10 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " various simple keybinds
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent> <C-]> <C-\><C-O>:call CocActionAsync('showSignatureHelp')<cr>
 noremap <silent> <Leader>d :call CocAction('jumpDefinition')<CR>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 nnoremap <silent> <C-t> :CocCommand<CR>
@@ -257,3 +257,14 @@ nnoremap <leader>g :G<CR>
 let g:pydocstring_enable_mapping = 0
 nnoremap <leader>D <Plug>(pydocstring)
 nnoremap <leader>E :CocDiagnostics<CR>
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
