@@ -55,6 +55,10 @@ Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'rust-lang/rust.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-jdaddy'
+Plug 'vim-scripts/Vim-R-plugin'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'LnL7/vim-nix'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
