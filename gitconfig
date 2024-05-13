@@ -28,6 +28,15 @@
 [rebase]
     autoStash = true
 
+[rerere]
+    enable = true
+
+[column]
+    ui = auto
+
+[branch]
+    sort = -committerdate
+
 #[blame]
     #ignoreRevsFile = .git-blame-ignore-revs
 
