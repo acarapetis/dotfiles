@@ -26,7 +26,7 @@ tryinstall() {
     sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall golang python3-pip perl
+tryinstall golang python3-pip perl curl python3-pynvim
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
 if ! which nvim; then
@@ -83,7 +83,6 @@ for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
 done
 
-sudo pip3 -q install --upgrade pynvim
 ~/.local/bin/nvim +PlugInstall +qall
 
 bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
