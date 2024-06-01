@@ -13,6 +13,7 @@ PATH="$PATH:$HOME/.local/bin"
 
 which jq || (curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq)
 ln -fs "$PWD/json2tf" ~/.local/bin/
+ln -fs "$PWD/tmux-sessionizer" ~/.local/bin/
 
 confirm() {
     if [ "$SCRIPT_ARG" == "-y" ]; then
