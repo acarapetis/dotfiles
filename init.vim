@@ -12,7 +12,7 @@ let $DISPLAY = ''
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline-themes'
 
 " navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -24,7 +24,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 
 " ui
-Plug 'bling/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+"Plug 'bling/vim-airline'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " misc
@@ -151,8 +153,12 @@ hi link CocInfoSign GruvboxBlueSign
 "let s:gb.dark0       = ['#282828', 235]     " 40-40-40
 "hi link CocFloating GruvboxBg
 
-let g:airline_theme='gruvbox'
-let g:airline#extensions#whitespace#enabled = 0
+" let g:airline_theme='gruvbox'
+" let g:airline#extensions#whitespace#enabled = 0
+
+lua << END
+require('lualine').setup()
+END
 
 " FZF settings:
 " - Include hidden files, except .git/

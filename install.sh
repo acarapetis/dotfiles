@@ -78,7 +78,7 @@ ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/
 ln -fs "$DOTFILES/ultisnips" ~/.config/coc/
 
 mkdir -p ~/.config/kitty
-ln -s "$DOTFILES/kitty.conf" ~/.config/kitty
+ln -fs "$DOTFILES/kitty.conf" ~/.config/kitty
 
 for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true

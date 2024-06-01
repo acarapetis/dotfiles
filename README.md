@@ -53,7 +53,7 @@ plugins, which will be automatically installed by install.sh:
 - `fzf` and `fzf.vim`, with custom ripgrep options and custom keybinds
 - `easy-align` for easy (but still manually triggered) alignment
 - the `gruvbox` colorscheme
-- the `airline` status bar
+- the `lualine` status bar
 - many of Tim Pope's brilliant plugins:
   - `vinegar` for a smoother directory navigation experience in netrw
   - `fugitive` and `rhubarb` for a nice git(hub) UI
