@@ -1,4 +1,6 @@
 {
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.parameterTypes": false,
     "coc.source.file.triggerCharacters": [ "/" ],
     "coc.preferences.enableMarkdown": false,
     "pyright.completion.snippetSupport": true,
