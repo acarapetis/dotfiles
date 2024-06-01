@@ -1,8 +1,6 @@
 set nocompatible
 filetype off
 
-let g:node_host_prog = '/usr/local/bin/neovim-node-host'
-
 " We have to unset $DISPLAY to stop netrw from trying to save/load X
 " clipboard, since this is VERY slow when using X forwarding.
 " should be fixed in next neovim release by this commit:

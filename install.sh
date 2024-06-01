@@ -73,7 +73,7 @@ fi
 
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/coc
-ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/init.vim" ~/.config/nvim/
+ln -fs "$DOTFILES/coc-settings.json" "$DOTFILES/oldinit.vim" "$DOTFILES/init.lua" ~/.config/nvim/
 [ -d ~/.config/coc/ultisnips ] && [ ! -L ~/.config/coc/ultisnips ] && rmdir ~/.config/coc/ultisnips
 ln -fs "$DOTFILES/ultisnips" ~/.config/coc/
 
