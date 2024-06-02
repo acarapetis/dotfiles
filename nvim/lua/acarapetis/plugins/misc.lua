@@ -35,5 +35,7 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
-    }
+    },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
 }
