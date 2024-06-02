@@ -14,9 +14,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins")
 -- end lazy.nvim bootstrap
 
-require("bindings")
-require("vimconfig")
-require("fug")
+require("lazy").setup("acarapetis.plugins")
+require("acarapetis.bindings")
+require("acarapetis.vimconfig")
+require("acarapetis.fug")
