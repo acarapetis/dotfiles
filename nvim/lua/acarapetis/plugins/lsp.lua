@@ -33,9 +33,11 @@ return {
                 version = "v2.*",
                 build = "make install_jsregexp",
             },
+            "onsails/lspkind.nvim",
         },
         config = function()
             local cmp = require("cmp")
+            local lspkind = require("lspkind")
             local luasnip = require("luasnip")
             -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local has_words_before = function()
@@ -45,6 +47,12 @@ return {
                     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
             cmp.setup({
+                formatting = {
+                    format = lspkind.cmp_format({ mode = "symbol" }),
+                },
+                matching = {
+                    disallow_fuzzy_matching = true,
+                },
                 sources = {
                     { name = "path" },
                     { name = "nvim_lsp" },
