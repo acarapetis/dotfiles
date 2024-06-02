@@ -72,9 +72,6 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim  ]; then
 fi
 
 ln -sfT "$PWD"/nvim ~/.config/nvim
-mkdir -p ~/.config/coc
-[ -d ~/.config/coc/ultisnips ] && [ ! -L ~/.config/coc/ultisnips ] && rmdir ~/.config/coc/ultisnips
-ln -fs "$DOTFILES/ultisnips" ~/.config/coc/
 
 mkdir -p ~/.config/kitty
 ln -fs "$DOTFILES/kitty.conf" ~/.config/kitty
