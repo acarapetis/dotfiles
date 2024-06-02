@@ -10,7 +10,6 @@ let $DISPLAY = ''
 call plug#begin('~/.local/share/nvim/plugged')
 " colorschemes
 Plug 'morhetz/gruvbox'
-"Plug 'vim-airline/vim-airline-themes'
 
 " navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -24,8 +23,6 @@ Plug 'tpope/vim-fugitive'
 " ui
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
-"Plug 'bling/vim-airline'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " misc
 Plug 'tpope/vim-commentary'
@@ -49,16 +46,15 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'acarapetis/vim-html-template-literals'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'digitaltoad/vim-pug'
 Plug 'hashivim/vim-terraform'
 Plug 'acarapetis/vim-sh-heredoc-highlighting'
 Plug 'rust-lang/rust.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-jdaddy'
-Plug 'vim-scripts/Vim-R-plugin'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'LnL7/vim-nix'
-Plug 'jparise/vim-graphql'
+" Plug 'vim-scripts/Vim-R-plugin'
+" Plug 'LnL7/vim-nix'
+" Plug 'jparise/vim-graphql'
 
 call plug#end()
 

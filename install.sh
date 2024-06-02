@@ -27,7 +27,7 @@ tryinstall() {
     sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall golang python3-pip perl curl python3-pynvim
+tryinstall python3-pip perl curl python3-pynvim
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
 if ! which nvim; then
