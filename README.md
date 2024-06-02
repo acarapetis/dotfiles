@@ -4,7 +4,9 @@ These are my dotfiles, i.e. what I need to turn an arbitrary Linux machine into
 a productive development environment. It's concentrated - just add internet!
 
 By "arbitrary Linux machine", I really mean "An x86\_64 machine running a
-recent version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE".
+recent version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE". Note that
+I've been using exclusively Debian-based distros for a few years now, so the
+redhat/SUSE support is untested.
 
 It **assumes that NodeJS 12+ is pre-installed** - the best way to do this
 varies by your distribution and situation. I usually use either the NodeSource
@@ -45,12 +47,16 @@ It will then install configuration files for the following via symlinks or inclu
 - pylint
 - nethack
 
-The nvim configuration features the following (probably excessive) list of
-plugins, which will be automatically installed by install.sh:
+The nvim configuration features the following (non-exhaustive and probably
+excessive) list of plugins, which will be automatically installed by
+install.sh:
 
-- `coc`, with language support extensions and/or language server configuration
-  for Python, TypeScript/JavaScript, terraform, HTML, CSS, JSON, Haskell
-- `fzf` and `fzf.vim`, with custom ripgrep options and custom keybinds
+- `nvim-cmp`, `mason-lspconfig`, and another 6 or so plugins that all come
+  together to provide a solid language server experience - see `lsp.lua` for
+  the complete list, or just check out [this
+  article](https://lsp-zero.netlify.app/v3.x/blog/theprimeagens-config-from-2022.html)
+  that I used as a starting point.
+- `fzf` and `fzf-lua` to get around quickly
 - `easy-align` for easy (but still manually triggered) alignment
 - the `gruvbox` colorscheme
 - the `lualine` status bar
@@ -65,7 +71,6 @@ plugins, which will be automatically installed by install.sh:
   - `dadbod` for easy iteration on SQL queries
   - `eunuch` for the convenience of `:SudoWrite` and `:Rename`
   - `repeat` to allow . to repeat mappings from plugins
-- `hexokinase` to show true-colour swatch previews
 - my own `sh-heredoc-highlighting` for syntax highlighting of embedded code in
   shell heredocs
 - various syntax plugins for better language support
