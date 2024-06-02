@@ -4,7 +4,7 @@ return {
         lazy = false,
         keys = {
             { "<leader>G", ":G" },
-            { "<leader>g", "<cmd>:G<CR>" },
+            { "<leader>g", vim.cmd.G },
         },
     },
     "tpope/vim-rhubarb",

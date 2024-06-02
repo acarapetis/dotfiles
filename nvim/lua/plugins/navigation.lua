@@ -1,5 +1,4 @@
 return {
-    -- Navigation
     {
         "tpope/vim-vinegar",
         lazy = false,
@@ -18,11 +17,11 @@ return {
             },
         },
         keys = {
-            { "<C-p>", "<cmd>:Files<CR>", silent = true },
+            { "<C-p>", vim.cmd.Files, silent = true },
             { "<C-f>", ":Rg<Space>" },
             { "<C-g>", ":Rg<Space> \b<C-R><C-W>\b<CR>" },
-            { "<C-b>", "<cmd>:Buffers<CR>" },
-            { "<BS>", "<cmd>:History<CR>" },
+            { "<C-b>", vim.cmd.Buffers },
+            { "<BS>", vim.cmd.History },
         },
         config = function()
             -- - Include hidden files, except .git/
