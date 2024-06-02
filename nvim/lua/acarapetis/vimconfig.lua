@@ -43,4 +43,7 @@ vim.cmd([[
 ]])
 
 vim.opt.bg = "dark"
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("gruvbox")
+
+
+

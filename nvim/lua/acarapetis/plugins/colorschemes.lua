@@ -1,12 +1,14 @@
 return {
     {
-        "morhetz/gruvbox",
+        "ellisonleao/gruvbox.nvim",
         config = function()
-            vim.opt.termguicolors = true
-            vim.g.gruvbox_bold = "1"
-            vim.g.gruvbox_contrast_dark = "hard"
-            vim.g.gruvbox_improved_strings = "0"
-            vim.g.gruvbox_improved_warnings = "0"
+            require("gruvbox").setup({
+                contrast = "hard",
+                palette_overrides = {
+                    dark0_hard = "#111111",
+                    dark1 = "#282828",
+                },
+            })
         end,
     },
     { "https://github.com/rebelot/kanagawa.nvim", lazy = true },
