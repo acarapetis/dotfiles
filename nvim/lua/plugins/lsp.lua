@@ -1,18 +1,22 @@
+-- LSP + Completion
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
     callback = function(event)
-        local opts = { buffer = event.buf }
+        local remap = function(mode, key, action, opts)
+            local opts2 = vim.tbl_extend("keep", opts or {}, { buffer = event.buf })
+            vim.keymap.set(mode, key, action, opts2)
+        end
 
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        remap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
+        remap("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
+        remap("n", "<leader>vf", function() vim.lsp.buf.workspace_symbol() end, { desc = "Find symbol" })
+        remap("n", "<leader>vd", function() vim.diagnostic.open_float() end, { desc = "Show floating diagnostics" })
+        remap("n", "[d", function() vim.diagnostic.goto_next() end)
+        remap("n", "]d", function() vim.diagnostic.goto_prev() end)
+        remap("n", "<leader>va", function() vim.lsp.buf.code_action() end, { desc = "Code action" })
+        remap("n", "<leader>vrf", function() vim.lsp.buf.references() end, { desc = "Find references" })
+        remap("n", "<leader>vrn", function() vim.lsp.buf.rename() end, { desc = "Rename" })
+        remap("i", "<C-]>", function() vim.lsp.buf.signature_help() end)
     end,
 })
 
@@ -20,21 +24,56 @@ return {
     "neovim/nvim-lspconfig",
     {
         "hrsh7th/nvim-cmp",
-        dependencies = { "hrsh7th/cmp-buffer", "hrsh7th/cmp-path" },
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            {
+                "L3MON4D3/LuaSnip",
+                version = "v2.*",
+                build = "make install_jsregexp",
+            },
+        },
         config = function()
             local cmp = require("cmp")
-            local cmp_select = { behavior = cmp.SelectBehavior.Select }
+            local luasnip = require("luasnip")
+            -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+            local has_words_before = function()
+                unpack = unpack or table.unpack
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0
+                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+            end
             cmp.setup({
                 sources = {
                     { name = "path" },
                     { name = "nvim_lsp" },
-                    { name = "buffer", keyword_length = 3 },
+                    { name = "buffer", keyword_length = 5 },
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-                    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                    -- ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+                    -- ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                    -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        elseif has_words_before() then
+                            cmp.complete()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
                 }),
             })
         end,
@@ -52,6 +91,18 @@ return {
                     function(server_name)
                         require("lspconfig")[server_name].setup({
                             capabilities = lsp_capabilities,
+                        })
+                    end,
+                    basedpyright = function()
+                        require("lspconfig").basedpyright.setup({
+                            capabilities = lsp_capabilities,
+                            settings = {
+                                basedpyright = {
+                                    analysis = {
+                                        typeCheckingMode = "standard",
+                                    },
+                                },
+                            },
                         })
                     end,
                     lua_ls = function()
@@ -78,4 +129,42 @@ return {
             })
         end,
     },
+    {
+        "folke/trouble.nvim",
+        cmd = "Trouble",
+        opts = {},
+        dependencies = { "nvim-web-devicons" },
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    }
 }
