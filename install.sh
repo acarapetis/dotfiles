@@ -83,6 +83,8 @@ for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
 done
 
+ln -fsT "$DOTFILES/stylua.toml" ~/.config/stylua.toml
+
 ~/.local/bin/nvim +PlugInstall +qall
 
 bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
@@ -93,7 +95,7 @@ else
     echo "$bashrcinc" >> ~/.bashrc
 fi
 
-~/.local/share/nvim/plugged/fzf/install --all
+~/.local/share/nvim/lazy/fzf/install --all
 
 # Git config + aliases:
 git config --global include.path "$DOTFILES/gitconfig"
