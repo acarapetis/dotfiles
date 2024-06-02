@@ -36,6 +36,10 @@ vim.cmd([[
     au FileType xml setlocal foldmethod=syntax
     au BufNewFile,BufRead *.hcl set ft=terraform
     autocmd FileType rst set ts=3 | set sw=3
+    sign define DiagnosticSignError text=  texthl=TextError linehl= numhl= 
+    sign define DiagnosticSignWarn text=  texthl=TextWarn linehl= numhl= 
+    sign define DiagnosticSignInfo text=  texthl=TextInfo linehl= numhl= 
+    sign define DiagnosticSignHint text=  texthl=TextHint linehl= numhl=
 ]])
 
 vim.opt.bg = "dark"
