@@ -7,8 +7,9 @@ return {
         },
     },
     {
-        "junegunn/fzf.vim",
+        "ibhagwan/fzf-lua",
         dependencies = {
+            "nvim-tree/nvim-web-devicons",
             {
                 "junegunn/fzf",
                 build = function()
@@ -17,33 +18,12 @@ return {
             },
         },
         keys = {
-            { "<C-p>", vim.cmd.Files, silent = true },
-            { "<C-f>", ":Rg<Space>" },
-            { "<C-g>", ":Rg<Space> \b<C-R><C-W>\b<CR>" },
-            { "<C-b>", vim.cmd.Buffers },
-            { "<BS>", vim.cmd.History },
+            { "<C-p>", function() require("fzf-lua").files() end },
+            { "<C-f>", function() require("fzf-lua").live_grep_native() end },
+            { "<C-g>", function() require("fzf-lua").grep_cword() end },
+            { "<C-b>", function() require("fzf-lua").buffers() end },
+            { "<BS>", function() require("fzf-lua").oldfiles() end },
         },
-        config = function()
-            -- - Include hidden files, except .git/
-            -- - Exclude anything in .gitignore (the default)
-            vim.env.FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git/"'
-            vim.env.FZF_DEFAULT_OPTS = "--bind ctrl-a:select-all"
-            -- TODO: translate all this to lua:
-            vim.cmd([[
-                " C-A C-Q to send fzf results to quickfix
-                function! s:build_quickfix_list(lines)
-                  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-                  copen
-                  cc
-                endfunction
-
-                let g:fzf_action = {
-                  \ 'ctrl-q': function('s:build_quickfix_list'),
-                  \ 'ctrl-t': 'tab split',
-                  \ 'ctrl-s': 'split',
-                  \ 'ctrl-v': 'vsplit' }
-           ]])
-        end,
     },
     {
         "mbbill/undotree",
