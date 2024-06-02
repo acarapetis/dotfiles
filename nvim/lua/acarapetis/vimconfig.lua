@@ -37,3 +37,6 @@ vim.cmd([[
     au BufNewFile,BufRead *.hcl set ft=terraform
     autocmd FileType rst set ts=3 | set sw=3
 ]])
+
+vim.opt.bg = "dark"
+vim.cmd.colorscheme("rose-pine")
