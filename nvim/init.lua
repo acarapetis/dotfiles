@@ -17,5 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 -- end lazy.nvim bootstrap
 
+require("bindings")
 require("vimconfig")
 require("fug")
