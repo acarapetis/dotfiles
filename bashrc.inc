@@ -150,4 +150,3 @@ function privateip {
 }
 
 alias renumber="tmux movew -r"
-alias sess="tmux new-session -A -s"
