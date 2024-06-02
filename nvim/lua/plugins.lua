@@ -70,11 +70,6 @@ return {
                   cc
                 endfunction
 
-                function! GFull()
-                  execute ':G'
-                  only
-                endfunction
-
                 let g:fzf_action = {
                   \ 'ctrl-q': function('s:build_quickfix_list'),
                   \ 'ctrl-t': 'tab split',

@@ -18,4 +18,5 @@ require("lazy").setup("plugins")
 -- end lazy.nvim bootstrap
 
 require("vimconfig")
+require("fug")
 vim.cmd("source ~/.config/nvim/oldinit.vim")
