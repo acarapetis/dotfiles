@@ -3,14 +3,13 @@ size = 15
 normal = { family = "Iosevka Nerd Font" }
 offset = { x=0, y=-3 }
 
-[env]
-TERM = "xterm-256color"
 
 [keyboard]
 bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 
 [colors.primary]
 background = "#060606" 
+foreground = "#ffffff"
 
 # Normal colors
 [colors.normal]
