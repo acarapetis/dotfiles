@@ -11,18 +11,9 @@ return {
     {
         "junegunn/vim-easy-align",
         keys = {
-            { "ga", mode = { "x", "n" }, "<Plug>(EasyAlign)", desc="EasyAlign" },
+            { "ga", mode = { "x", "n" }, "<Plug>(EasyAlign)", desc = "EasyAlign" },
         },
     },
-
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("lualine").setup()
-        end,
-    },
-
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -34,8 +25,18 @@ return {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
-        }
+        },
     },
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {
+            indent = { highlight = { "CursorColumn", "Whitespace" }, char = "" },
+            whitespace = {
+                highlight = { "CursorColumn", "Whitespace" },
+                remove_blankline_trail = false,
+            },
+            scope = { enabled = false },
+        },
+    },
 }

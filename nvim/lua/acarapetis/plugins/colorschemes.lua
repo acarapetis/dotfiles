@@ -6,7 +6,9 @@ return {
                 contrast = "hard",
                 palette_overrides = {
                     dark0_hard = "#111111",
-                    dark1 = "#282828",
+                    dark1 = "#181818",
+                    dark2 = "#242424",
+                    dark3 = "#363636",
                 },
             })
         end,
@@ -28,6 +30,24 @@ return {
             vim.api.nvim_set_hl(0, "Normal", { fg = white })
             vim.api.nvim_set_hl(0, "icebergNormalFg", { fg = white })
             vim.api.nvim_set_hl(0, "DiffText", { fg = white })
+        end,
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            local theme = require("lualine.themes.gruvbox_dark")
+            for mode in pairs(theme) do
+                theme[mode].c.bg = "#242424"
+                theme[mode].b.bg = "#363636"
+                theme[mode].a.bg = "#484848"
+                theme[mode].a.fg = "#ebdbb2"
+            end
+            theme.inactive.c.bg = "#181818"
+
+            require("lualine").setup({
+                options = { theme = theme },
+            })
         end,
     },
 }
