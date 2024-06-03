@@ -4,6 +4,7 @@ return {
         lazy = false,
         keys = {
             { "_", "<Plug>VinegarVerticalSplitUp" },
+            { "<S-_>", "<Plug>VinegarVerticalSplitUp" },
         },
     },
     {
