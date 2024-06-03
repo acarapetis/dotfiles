@@ -150,3 +150,11 @@ function privateip {
 }
 
 alias renumber="tmux movew -r"
+
+function tmux {
+    if [ "$1" == "" ]; then
+        "$(which tmux)" new-session -A -s anthony
+    else
+        "$(which tmux)" "$@"
+    fi
+}
