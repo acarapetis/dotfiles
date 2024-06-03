@@ -73,8 +73,9 @@ fi
 
 ln -sfT "$PWD"/nvim ~/.config/nvim
 
-mkdir -p ~/.config/kitty
+mkdir -p ~/.config/{kitty,alacritty}
 ln -fs "$DOTFILES/kitty.conf" ~/.config/kitty
+ln -fs "$DOTFILES/alacritty.toml" ~/.config/alacritty
 
 for x in tmux.conf nethackrc pylintrc; do
     ln -fs "$DOTFILES/$x" ~/.$x || true
