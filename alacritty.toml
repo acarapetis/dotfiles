@@ -1,10 +1,39 @@
 [font]
 size = 15
 normal = { family = "Iosevka Nerd Font" }
-offset = { x=0, y=-2 }
-
-[colors]
-primary = { background = "#111111" }
+offset = { x=0, y=-3 }
 
 [env]
 TERM = "xterm-256color"
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]
+
+[colors.primary]
+background = "#060606" 
+
+# Normal colors
+[colors.normal]
+black   = '#060606'
+red     = '#ec641d'
+green   = '#98c71a'
+yellow  = '#f7a921'
+blue    = '#4585a8'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#a89984'
+
+[colors.dim]
+green = "#ffffff"
+cyan = "#ffffff"
+
+# Bright colors
+[colors.bright]
+black   = '#928374'
+red     = '#fb8934'
+green   = '#b8cb26'
+yellow  = '#ffcd2f'
+blue    = '#83a5a8'
+magenta = '#d3869b'
+cyan    = '#8ec07c'
+white   = '#ebdbb2'
