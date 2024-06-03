@@ -15,8 +15,8 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 
 # Two-line prompt with $? and git branch info
 RESET="\[\e[0m\]"
-GREEN="\[\e[38;5;108m\]"
-BLUE="\[\e[38;5;104m\]"
+GREEN="\[\e[38;5;2m\]"
+BLUE="\[\e[38;5;4m\]"
 
 PS_LINE=`printf -- '——%.0s' {1..200}`
 function parse_git_branch {
