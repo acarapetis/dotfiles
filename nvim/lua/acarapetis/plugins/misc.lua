@@ -27,11 +27,4 @@ return {
             -- refer to the configuration section below
         },
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {
-            scope = { enabled = false },
-        },
-    },
 }
