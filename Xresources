@@ -27,3 +27,9 @@ XTerm.vt100.color12: rgb:83/a5/a8
 XTerm.vt100.color13: rgb:d3/86/9b
 XTerm.vt100.color14: rgb:8e/c0/7c
 XTerm.vt100.color15: rgb:eb/db/b2
+
+Xft.autohint: 0
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: none
