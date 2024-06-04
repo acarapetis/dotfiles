@@ -25,6 +25,12 @@ return {
             { "<C-b>", function() require("fzf-lua").buffers() end },
             { "<BS>", function() require("fzf-lua").oldfiles() end },
         },
+        opts = {
+            fzf_opts = {["--layout"] = "default"},
+            oldfiles = {
+                include_current_session = true,
+            }
+        },
     },
     {
         "mbbill/undotree",
