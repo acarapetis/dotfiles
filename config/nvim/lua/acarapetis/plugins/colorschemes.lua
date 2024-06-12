@@ -5,8 +5,8 @@ return {
             require("gruvbox").setup({
                 contrast = "hard",
                 palette_overrides = {
-                    dark0_hard = "#111111",
-                    dark1 = "#181818",
+                    dark0_hard = "#151515",
+                    dark1 = "#1c1c1c",
                     dark2 = "#242424",
                     dark3 = "#363636",
                 },

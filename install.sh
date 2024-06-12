@@ -11,9 +11,19 @@ DOTFILES="$PWD"
 mkdir -p ~/.local/bin
 PATH="$PATH:$HOME/.local/bin"
 
-which jq || (curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq)
-ln -fs "$PWD/json2tf" ~/.local/bin/
-ln -fs "$PWD/tmux-sessionizer" ~/.local/bin/
+for x in bin/*; do
+    ln -fs "$DOTFILES/$x" ~/.local/bin/
+done
+
+for x in config/*; do
+    ln -fs "$DOTFILES/$x" ~/.config/
+done
+
+pushd home_dotfiles
+for x in *; do
+    ln -fs "$DOTFILES/home_dotfiles/$x" ~/.$x
+done
+popd
 
 confirm() {
     if [ "$SCRIPT_ARG" == "-y" ]; then
@@ -29,6 +39,8 @@ tryinstall() {
 
 tryinstall python3-pip perl curl python3-pynvim
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
+
+which jq || (curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq)
 
 if ! which nvim; then
     if confirm "nvim not found in path. Install appimage from github?"; then
@@ -65,19 +77,6 @@ if ! which rg; then
         echo "Ripgrep installed to ~/.local/bin/rg"
     fi
 fi
-
-ln -sfT "$PWD"/nvim ~/.config/nvim
-
-mkdir -p ~/.config/{kitty,alacritty,i3}
-ln -fs "$DOTFILES/kitty.conf" ~/.config/kitty
-ln -fs "$DOTFILES/alacritty.toml" ~/.config/alacritty
-ln -fs "$DOTFILES/i3config" ~/.config/i3
-
-for x in tmux.conf nethackrc pylintrc; do
-    ln -fs "$DOTFILES/$x" ~/.$x || true
-done
-
-ln -fsT "$DOTFILES/stylua.toml" ~/.config/stylua.toml
 
 bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
 if match=$(grep -F "$bashrcinc" ~/.bashrc) && [ "$match" = "$bashrcinc" ]; then
