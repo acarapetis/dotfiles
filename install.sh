@@ -5,6 +5,7 @@ NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim.appima
 RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
+FZF_LINK="https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz"
 
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
@@ -80,6 +81,19 @@ if ! which rg; then
     fi
 fi
 
+if ! which fzf; then
+    if confirm "fzf not found in path. Install binary from github?"; then
+        (
+            d=$(mktemp -d)
+            cd "$d"
+            curl -fLo fzf.tar.gz "$FZF_LINK"
+            tar xfz fzf.tar.gz
+            cp fzf ~/.local/bin/
+        )
+        echo "fzf installed to ~/.local/bin/fzf"
+    fi
+fi
+
 bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
 if match=$(grep -F "$bashrcinc" ~/.bashrc) && [ "$match" = "$bashrcinc" ]; then
     >&2 echo "bashrc.inc already included in ~/.bashrc."
@@ -87,10 +101,6 @@ else
     >&2 echo "Including bashrc.inc in ~/.bashrc."
     echo "$bashrcinc" >> ~/.bashrc
 fi
-
-# We install fzf as an nvim plugin, but we actually want it available on the
-# CLI too, so use the built-in installer:
-~/.local/share/nvim/lazy/fzf/install --all
 
 # Git config + aliases:
 git config --global include.path "$DOTFILES/gitconfig"

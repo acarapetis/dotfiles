@@ -11,12 +11,6 @@ return {
         "ibhagwan/fzf-lua",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
-            {
-                "junegunn/fzf",
-                build = function()
-                    vim.cmd("exec fzf#install()")
-                end,
-            },
         },
         keys = {
             { "<C-p>", function() require("fzf-lua").files() end },

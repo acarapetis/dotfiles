@@ -160,3 +160,5 @@ function tmux {
         "$(which tmux)" "$@"
     fi
 }
+
+eval "$(fzf --bash)"
