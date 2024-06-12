@@ -66,11 +66,6 @@ if ! which rg; then
     fi
 fi
 
-if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim  ]; then
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 ln -sfT "$PWD"/nvim ~/.config/nvim
 
 mkdir -p ~/.config/{kitty,alacritty,i3}
@@ -83,8 +78,6 @@ for x in tmux.conf nethackrc pylintrc; do
 done
 
 ln -fsT "$DOTFILES/stylua.toml" ~/.config/stylua.toml
-
-~/.local/bin/nvim +PlugInstall +qall
 
 bashrcinc='. "'"$DOTFILES/bashrc.inc"'"'
 if match=$(grep -F "$bashrcinc" ~/.bashrc) && [ "$match" = "$bashrcinc" ]; then
