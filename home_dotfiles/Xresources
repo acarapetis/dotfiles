@@ -13,7 +13,8 @@ XTerm*vt100.scaleHeight: 0.92
 	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 
 XTerm.vt100.color0: rgb:06/06/06
-XTerm.vt100.color1: rgb:ec/64/1d
+XTerm.vt100.color1: rgb:cc/24/1d
+!XTerm.vt100.color1: rgb:ec/64/1d
 XTerm.vt100.color2: rgb:98/c7/1a
 XTerm.vt100.color3: rgb:f7/a9/21
 XTerm.vt100.color4: rgb:45/85/a8
@@ -21,7 +22,8 @@ XTerm.vt100.color5: rgb:b1/62/86
 XTerm.vt100.color6: rgb:68/9d/6a
 XTerm.vt100.color7: rgb:a8/99/84
 XTerm.vt100.color8: rgb:92/83/74
-XTerm.vt100.color9: rgb:fb/89/34
+!XTerm.vt100.color9: rgb:fb/89/34
+XTerm.vt100.color9: rgb:fb/49/34
 XTerm.vt100.color10: rgb:b8/cb/26
 XTerm.vt100.color11: rgb:ff/cd/2f
 XTerm.vt100.color12: rgb:83/a5/a8
