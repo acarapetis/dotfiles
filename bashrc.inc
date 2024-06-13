@@ -160,5 +160,8 @@ function tmux {
         "$(which tmux)" "$@"
     fi
 }
+# Ubuntu 24.04 gets uppity about pip installing in the system python env;
+# but it's really not that dangerous if you keep it to ~/.local/lib.
+alias pipinstall="pip3 install --break-system-packages --user"
 
 eval "$(fzf --bash)"
