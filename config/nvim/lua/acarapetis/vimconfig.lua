@@ -15,6 +15,7 @@ vim.opt.listchars = "tab:→ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨"
 vim.opt.mouse = "a"
 vim.opt.number = false
 vim.opt.ruler = true
+vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.showcmd = true
 vim.opt.smartcase = true
