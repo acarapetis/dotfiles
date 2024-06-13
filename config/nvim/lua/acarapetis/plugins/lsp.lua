@@ -39,7 +39,7 @@ return {
             local cmp = require("cmp")
             local lspkind = require("lspkind")
             local luasnip = require("luasnip")
-            -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+            local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local has_words_before = function()
                 unpack = unpack or table.unpack
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -56,11 +56,17 @@ return {
                 sources = {
                     { name = "path" },
                     { name = "nvim_lsp" },
-                    { name = "buffer", keyword_length = 5 },
+                    {
+                        name = "buffer",
+                        keyword_length = 5,
+                        option = {
+                            get_bufnrs = function() return vim.api.nvim_list_bufs() end,
+                        },
+                    },
                 },
                 mapping = cmp.mapping.preset.insert({
-                    -- ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-                    -- ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+                    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
                     -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<Tab>"] = cmp.mapping(function(fallback)
