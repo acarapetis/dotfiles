@@ -39,7 +39,7 @@ tryinstall() {
     sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall python3-pip perl curl python3-pynvim
+tryinstall python3-pip perl curl python3-pynvim moreutils rofi
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
 which jq || (curl -L "$JQ_LINK" -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq)

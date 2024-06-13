@@ -1,0 +1,7 @@
+#!/bin/sh -e
+# https://aduros.com/blog/xterm-its-better-than-you-thought/
+
+grep -Eo '\bhttps?://\S+\b' |
+    uniq |
+    ifne rofi -dmenu -i -p "Open URL" -auto-select |
+    xargs xdg-open

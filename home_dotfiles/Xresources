@@ -8,9 +8,11 @@ XTerm.vt100.faceName: Iosevka Nerd Font:size=13.5:antialias=True
 XTerm.vt100.foreground: white
 XTerm.vt100.background: black
 XTerm*vt100.scaleHeight: 0.92
+XTerm.vt100.printerCommand: select-url
 *VT100*translations:	#override \n\
 	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)\n\
+	Ctrl Shift <Key>W: print(noAttrs, noNewLine)
 
 XTerm.vt100.color0: rgb:06/06/06
 XTerm.vt100.color1: rgb:cc/24/1d
