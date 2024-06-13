@@ -47,6 +47,7 @@
     pullr = "pull --rebase"
     newbranch = "!f() { git fetch origin $1 && git checkout --no-track origin/$1 -b $2; }; f"
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    pushf = "push --force-with-lease"
     rewrite = "rebase --interactive"
     gethash = "rev-parse HEAD"
     pullother = "!f() { git fetch origin $1:$1; }; f"
