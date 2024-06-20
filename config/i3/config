@@ -42,6 +42,8 @@ exec --no-startup-id dex --autostart --environment i3
 # Hide edge borders when only one window is visible
 hide_edge_borders smart
 
+focus_follows_mouse no
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
