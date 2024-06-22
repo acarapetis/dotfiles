@@ -21,6 +21,38 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- Sort items starting with underscores last
+local underscore_comparator = function(entry1, entry2)
+    local _, entry1_under = entry1.completion_item.label:find "^_+"
+    local _, entry2_under = entry2.completion_item.label:find "^_+"
+    entry1_under = entry1_under or 0
+    entry2_under = entry2_under or 0
+    if entry1_under > entry2_under then
+        return false
+    elseif entry1_under < entry2_under then
+        return true
+    end
+end
+
+-- Sort items starting with model_ last (pydantic meta fields/methods)
+local pydantic_comparator = function(entry1, entry2)
+    local _, entry1_model = entry1.completion_item.label:find "^model_"
+    local _, entry2_model = entry2.completion_item.label:find "^model_"
+    entry1_model = entry1_model or 0
+    entry2_model = entry2_model or 0
+    if entry1_model > entry2_model then
+        return false
+    elseif entry1_model < entry2_model then
+        return true
+    end
+end
+
+local kind_priority_list = {
+    'Snippet', 'Field', 'Variable', 'Method', 'Function', 'Constructor', 'Class', 'Interface',
+    'Module', 'Property', 'Unit', 'Value', 'Enum', 'Keyword', 'Color', 'File', 'Reference',
+    'Folder', 'EnumMember', 'Constant', 'Struct', 'Event', 'Operator', 'TypeParameter', 'Text',
+}
+
 return {
     "neovim/nvim-lspconfig",
     {
@@ -46,9 +78,38 @@ return {
                 return col ~= 0
                     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
+
+            -- Comparator to sort by kind with custom order
+            local kind_enum = require("cmp.types.lsp").CompletionItemKind
+            local kind_priority = {}
+            for i, kind_name in ipairs(kind_priority_list) do
+                kind_priority[kind_enum[kind_name]] = i
+            end
+            local kind_comparator = function(entry1, entry2)
+                local kind1 = kind_priority[entry1:get_kind()]
+                local kind2 = kind_priority[entry2:get_kind()]
+                if kind1 ~= kind2 then
+                    local diff = kind1 - kind2
+                    if diff < 0 then
+                        return true
+                    elseif diff > 0 then
+                        return false
+                    end
+                end
+            end
+
             cmp.setup({
                 formatting = {
-                    format = lspkind.cmp_format({ mode = "symbol" }),
+                    format = lspkind.cmp_format {
+                        mode = "symbol_text",
+                        with_text = true,
+                        menu = {
+                            buffer = "[text]",
+                            nvim_lsp = "[LSP]",
+                            path = "[path]",
+                        },
+                    },
+
                 },
                 matching = {
                     disallow_fuzzy_matching = true,
@@ -62,6 +123,21 @@ return {
                         option = {
                             get_bufnrs = function() return vim.api.nvim_list_bufs() end,
                         },
+                    },
+                },
+                sorting = {
+                    comparators = {
+                        -- If I've started typing, prioritize best match:
+                        cmp.config.compare.exact,
+                        cmp.config.compare.score,
+
+                        -- Otherwise, try to put e.g. struct members first:
+                        underscore_comparator,
+                        kind_comparator,
+                        pydantic_comparator,
+
+                        -- Finally, alphabetical order
+                        cmp.config.compare.sort_text,
                     },
                 },
                 mapping = cmp.mapping.preset.insert({
