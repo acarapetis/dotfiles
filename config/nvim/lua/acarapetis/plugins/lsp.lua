@@ -67,7 +67,7 @@ return {
                 mapping = cmp.mapping.preset.insert({
                     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                    -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
