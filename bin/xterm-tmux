@@ -2,4 +2,4 @@
 
 # Start tmux into my default session in a graphical terminal, but leave the
 # terminal open if I exit tmux
-i3-sensible-terminal -e "tmux new-session -A -s anthony; bash"
+i3-sensible-terminal -e bash -c "tmux new-session -A -s anthony; bash"
