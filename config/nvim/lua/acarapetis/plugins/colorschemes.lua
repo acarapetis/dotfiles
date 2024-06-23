@@ -5,10 +5,15 @@ return {
             require("gruvbox").setup({
                 contrast = "hard",
                 palette_overrides = {
+                    -- Darker backgrounds
                     dark0_hard = "#151515",
                     dark1 = "#1c1c1c",
                     dark2 = "#242424",
                     dark3 = "#363636",
+                },
+                overrides = {
+                    Delimiter = { link = "GruvboxFg2" },
+                    ["@constructor.lua"] = { link = "Delimiter" },
                 },
             })
         end,
