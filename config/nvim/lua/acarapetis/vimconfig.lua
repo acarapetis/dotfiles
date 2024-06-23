@@ -7,7 +7,7 @@ vim.opt.fileencodings = "ucs-bom,utf-8,default,latin1"
 vim.opt.grepprg = "grep -H $*"
 vim.opt.helplang = "en"
 vim.opt.hidden = true
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.laststatus = 2
 vim.opt.list = true
@@ -45,6 +45,3 @@ vim.cmd([[
 
 vim.opt.bg = "dark"
 vim.cmd.colorscheme("gruvbox")
-
-
-
