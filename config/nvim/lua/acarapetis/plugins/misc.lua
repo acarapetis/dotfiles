@@ -22,9 +22,17 @@ return {
             vim.o.timeoutlen = 300
         end,
         opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
+            defaults = {
+                ["<leader>f"] = { name = "+format..." },
+                ["<leader>r"] = { name = "+refactor..." },
+                ["<leader>v"] = { name = "+lsp..." },
+                ["<leader>x"] = { name = "+trouble..." },
+            },
         },
+        config = function(_, opts)
+            local wk = require("which-key")
+            wk.setup(opts)
+            wk.register(opts.defaults)
+        end,
     },
 }
