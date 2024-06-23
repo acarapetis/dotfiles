@@ -8,10 +8,6 @@ recent version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE". Note that
 I've been using exclusively Debian-based distros for a few years now, so the
 redhat/SUSE support is untested.
 
-It **assumes that NodeJS 12+ is pre-installed** - the best way to do this
-varies by your distribution and situation. I usually use either the NodeSource
-repositories for the system package manager, or conda-forge.
-
 ## Contents
 
 Mostly consists of neovim configuration for development using:
@@ -23,6 +19,7 @@ Mostly consists of neovim configuration for development using:
 - Bash
 - Terraform
 - Docker
+- Lua
 - HTML/XML
 - JSON
 
@@ -36,16 +33,10 @@ universal amd64 binaries from the internet:
 - jq
 - nvim
 - ripgrep
-- vim-plug
+- fzf
 
-It will then install configuration files for the following via symlinks or includes:
-
-- bash
-- tmux
-- nvim
-- git
-- pylint
-- nethack
+It will then install the configuration files in ./config and ./home_dotfiles
+using symlinks, and ./bashrc.inc and ./gitconfig using includes.
 
 The nvim configuration features the following (non-exhaustive and probably
 excessive) list of plugins, which will be automatically installed by
