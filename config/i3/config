@@ -42,6 +42,10 @@ exec --no-startup-id dex --autostart --environment i3
 # Hide edge borders when only one window is visible
 hide_edge_borders smart
 
+# Hide titlebars on google-chrome and xterm
+for_window [class="Google-chrome"] border pixel 1
+for_window [class="XTerm"] border pixel 1
+
 focus_follows_mouse no
 
 # use these keys for focus, movement, and resize directions when reaching for
@@ -50,6 +54,9 @@ set $up k
 set $down j
 set $left h
 set $right l
+
+# Use alt as modifier key (I'm typically using this via VNC from windows so
+# many super+ shortcuts are not viable)
 set $mod Mod1
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
@@ -65,6 +72,7 @@ bindsym $mod+Shift+b exec sensible-browser
 
 # kill focused window
 bindsym $mod+F4 kill
+bindsym $mod+Shift+q kill
 
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
