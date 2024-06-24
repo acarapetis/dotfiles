@@ -165,3 +165,9 @@ function tmux {
 alias pipinstall="pip3 install --break-system-packages --user"
 
 eval "$(fzf --bash)"
+
+# Hook to allow activating micromamba envs automatically
+# See bin/tmux-sessionizer for the other half
+if [ ! -z "$ACTIVATE_MICROMAMBA_ENV" ]; then
+    micromamba activate "$ACTIVATE_MICROMAMBA_ENV"
+fi
