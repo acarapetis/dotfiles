@@ -52,5 +52,7 @@
     gethash = "rev-parse HEAD"
     pullother = "!f() { git fetch origin $1:$1; }; f"
 
+    branch-cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -p -n 1 -r git branch -d"
+
     co = "checkout"
     sw = "switch"
