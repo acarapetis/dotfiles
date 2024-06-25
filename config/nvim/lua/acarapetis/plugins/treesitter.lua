@@ -29,7 +29,7 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = { "tmux" },
+                    disable = { "tmux", "dockerfile" },
                 },
                 -- indent = { enable = true },
             })
