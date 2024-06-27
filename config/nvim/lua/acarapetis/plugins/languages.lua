@@ -11,9 +11,6 @@ return {
             { "<leader>D", "<Plug>(pydocstring)" },
         },
     },
-    "Glench/Vim-Jinja2-Syntax",
-    "pangloss/vim-javascript",
-    "leafgarland/typescript-vim",
     {
         "acarapetis/vim-html-template-literals",
         config = function()
@@ -35,10 +32,14 @@ return {
             }
         end,
     },
-    "hashivim/vim-terraform",
-    "acarapetis/vim-sh-heredoc-highlighting",
-    "rust-lang/rust.vim",
-    "ekalinin/Dockerfile.vim",
+    "Glench/Vim-Jinja2-Syntax",
     "tpope/vim-jdaddy",
-    "peitalin/vim-jsx-typescript",
+    -- Trialing treesitter + LSP only for the following:
+    --"pangloss/vim-javascript",
+    --"leafgarland/typescript-vim",
+    --"hashivim/vim-terraform",
+    --"acarapetis/vim-sh-heredoc-highlighting",
+    --"rust-lang/rust.vim",
+    --"ekalinin/Dockerfile.vim",
+    --"peitalin/vim-jsx-typescript",
 }

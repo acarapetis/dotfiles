@@ -31,7 +31,10 @@ return {
                     additional_vim_regex_highlighting = false,
                     disable = { "tmux", "dockerfile" },
                 },
-                -- indent = { enable = true },
+                indent = {
+                    enable = true,
+                    disable = { "python" },
+                },
             })
         end,
     },
