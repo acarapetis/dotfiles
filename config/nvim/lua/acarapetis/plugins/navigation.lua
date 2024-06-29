@@ -1,11 +1,21 @@
 return {
     {
-        "tpope/vim-vinegar",
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
         lazy = false,
         keys = {
-            { "_", "<Plug>VinegarVerticalSplitUp" },
-            { "<S-_>", "<Plug>VinegarVerticalSplitUp" },
-        },
+            { "-", vim.cmd.Oil, desc = "Open parent directory" },
+            {
+                "_",
+                function()
+                    vim.cmd.vsplit()
+                    vim.cmd.Oil()
+                end,
+                desc = "Open parent directory"
+            },
+        }
     },
     {
         "ibhagwan/fzf-lua",
