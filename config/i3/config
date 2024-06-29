@@ -42,9 +42,10 @@ exec --no-startup-id dex --autostart --environment i3
 # Hide edge borders when only one window is visible
 hide_edge_borders smart
 
-# Hide titlebars on google-chrome and xterm
+# Hide titlebars on google-chrome and terminal
 for_window [class="Google-chrome"] border pixel 1
 for_window [class="XTerm"] border pixel 1
+for_window [class="st-256color"] border pixel 1
 
 focus_follows_mouse no
 
