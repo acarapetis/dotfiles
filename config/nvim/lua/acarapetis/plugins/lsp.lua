@@ -238,12 +238,12 @@ return {
             },
             {
                 "<leader>xs",
-                "<cmd>Trouble symbols toggle focus=true win.position=right win.size=30<cr>",
+                "<cmd>Trouble symbols toggle focus=true win.position=left win.size=30<cr>",
                 desc = "Symbols (Trouble)",
             },
             {
                 "<leader>xr",
-                "<cmd>Trouble lsp toggle focus=true win.position=right win.size=50<cr>",
+                "<cmd>Trouble lsp toggle focus=true win.position=left win.size=50<cr>",
                 desc = "LSP (Trouble)",
             },
             {
