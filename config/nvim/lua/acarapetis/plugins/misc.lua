@@ -35,4 +35,12 @@ return {
             wk.register(opts.defaults)
         end,
     },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {
+            scope = { enabled = false },
+        },
+    },
+
 }

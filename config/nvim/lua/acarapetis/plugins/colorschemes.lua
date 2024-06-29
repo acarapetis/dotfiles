@@ -15,6 +15,7 @@ return {
                     Delimiter = { link = "GruvboxFg2" },
                     ["@constructor.lua"] = { link = "Delimiter" },
                 },
+                strict_tabs = true,
             })
         end,
     },
