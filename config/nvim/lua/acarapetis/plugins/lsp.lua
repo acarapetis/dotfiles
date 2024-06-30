@@ -56,6 +56,10 @@ local kind_priority_list = {
 return {
     "neovim/nvim-lspconfig",
     {
+        "folke/lazydev.nvim",
+        ft = "lua",
+    },
+    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-buffer",
@@ -117,6 +121,7 @@ return {
                 sources = {
                     { name = "path" },
                     { name = "nvim_lsp" },
+                    { name = "lazydev" },
                     {
                         name = "buffer",
                         keyword_length = 5,
