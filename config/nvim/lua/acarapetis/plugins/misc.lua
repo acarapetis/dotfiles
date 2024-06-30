@@ -23,10 +23,14 @@ return {
         end,
         opts = {
             defaults = {
-                ["<leader>f"] = { name = "+format..." },
+                ["<leader>f"] = { name = "+fzf..." },
+                ["<leader>F"] = { name = "+format..." },
                 ["<leader>r"] = { name = "+refactor..." },
                 ["<leader>v"] = { name = "+lsp..." },
                 ["<leader>x"] = { name = "+trouble..." },
+            },
+            icons = {
+                separator = "->"
             },
         },
         config = function(_, opts)

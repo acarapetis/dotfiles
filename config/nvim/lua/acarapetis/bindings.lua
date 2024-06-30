@@ -2,8 +2,8 @@ vim.keymap.set("x", "<leader>j", ":!json2tf<CR>$=%")
 vim.keymap.set("n", "<leader>t", ":!pytest -x<CR>")
 vim.keymap.set("n", "<leader>T", ":!pytest %<CR>")
 
-vim.keymap.set("n", "<leader>fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
-vim.keymap.set("n", "<leader>fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
+vim.keymap.set("n", "<leader>Fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
+vim.keymap.set("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
 
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste over selection" })
 vim.keymap.set({"n", "v"}, "<leader>D", '"_d', { desc = "Delete without yank" })
