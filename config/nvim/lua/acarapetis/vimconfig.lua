@@ -29,12 +29,8 @@ vim.opt.wildmenu = true
 vim.g.html_indent_style1 = "inc"
 vim.g.html_indent_script1 = "inc"
 
--- Automatically turn on folding in XML
-vim.g.xml_syntax_folding = 1
-
 vim.cmd([[
     filetype plugin indent on
-    au FileType xml setlocal foldmethod=syntax
     au BufNewFile,BufRead *.hcl set ft=terraform
     autocmd FileType rst set ts=3 | set sw=3
     sign define DiagnosticSignError text=  texthl=TextError linehl= numhl= 
