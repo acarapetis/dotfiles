@@ -63,7 +63,7 @@ return {
                 },
                 query = {
                     [""] = "rainbow-delimiters",
-                    lua = "rainbow-blocks",
+                    --lua = "rainbow-blocks",
                 },
             })
         end,
