@@ -1,12 +1,12 @@
 return {
-    "tpope/vim-commentary",
-    "tpope/vim-dadbod",
-    "tpope/vim-speeddating",
-    "tpope/vim-eunuch",
+    "tpope/vim-commentary",  -- gc action to comment
+    "tpope/vim-dadbod",      -- for interactive SQL querying
+    "tpope/vim-speeddating", -- C-A/C-X support for datetimes
+    "tpope/vim-eunuch",      -- file operations (rename, move, delete, chmod)
     "tpope/vim-surround",
-    "tpope/vim-repeat",
-    "tpope/vim-sleuth",
-    "tpope/vim-abolish",
+    "tpope/vim-repeat",      -- makes . behave better with plugins
+    "tpope/vim-sleuth",      -- automatically detect tab/space indent standard
+    "tpope/vim-abolish",     -- actions for snake/camel/etc conversions
 
     {
         "junegunn/vim-easy-align",
