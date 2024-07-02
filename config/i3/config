@@ -42,10 +42,26 @@ exec --no-startup-id dex --autostart --environment i3
 # Hide edge borders when only one window is visible
 hide_edge_borders smart
 
+# Hide all titlebars
+default_border pixel 1
+default_floating_border normal
+
 # Hide titlebars on google-chrome and terminal
-for_window [class="Google-chrome"] border pixel 1
-for_window [class="XTerm"] border pixel 1
-for_window [class="st-256color"] border pixel 1
+# for_window [class="Google-chrome"] border pixel 1
+# for_window [class="XTerm"] border pixel 1
+# for_window [class="st-256color"] border pixel 1
+
+# workspaces
+workspace "2: Web" output VNC-1
+workspace "5: Email" output VNC-1
+workspace "6: Chat" output VNC-1
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+
+assign [class="Google-chrome" title="^Outlook"] 5: Mail
+assign [class="Google-chrome" title="^Microsoft Teams"] 6: Chat
+assign [title="^Google Chrome$"] 2: Web
+assign [class="Google-chrome"] 2: Web
 
 focus_follows_mouse no
 
@@ -70,6 +86,7 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec xterm-tmux
 bindsym $mod+Shift+b exec sensible-browser
+bindsym $mod+Shift+f exec xdg-open ~
 
 # kill focused window
 bindsym $mod+F4 kill
@@ -119,6 +136,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym F11 fullscreen toggle
+bindsym $mod+Shift+p fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -220,3 +238,4 @@ bindsym $mod+r mode "resize"
 bar {
         status_command while true; do date +"%b %d %H:%M:%S"; sleep 1; done
 }
+bindsym $mod+m bar mode toggle
