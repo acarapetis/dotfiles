@@ -47,13 +47,29 @@ return {
             --file_icon_padding = "P",
             oldfiles = {
                 include_current_session = true,
-            }
+            },
         },
+        lazy = false,
+        config = function()
+            -- Open file finder if nvim started with no args
+            vim.api.nvim_create_autocmd({ "VimEnter" }, {
+                pattern = { "*" },
+                callback = function()
+                    local nargs = #vim.v.argv
+                    if vim.v.argv[2] == "--embed" then
+                        nargs = nargs - 1
+                    end
+                    if nargs <= 1 then
+                        require("fzf-lua").files()
+                    end
+                end,
+            })
+        end,
     },
     {
         "mbbill/undotree",
         keys = {
-            { "<leader>u", vim.cmd.UndotreeToggle, desc = "UndoTree" }
+            { "<leader>u", vim.cmd.UndotreeToggle, desc = "UndoTree" },
         },
-    }
+    },
 }
