@@ -83,6 +83,9 @@ floating_modifier Mod4
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+bindsym $mod+Shift+t border toggle
+bindsym $mod+u [urgent=latest] focus
+
 # start a terminal
 bindsym $mod+Return exec xterm-tmux
 bindsym $mod+Shift+b exec sensible-browser
