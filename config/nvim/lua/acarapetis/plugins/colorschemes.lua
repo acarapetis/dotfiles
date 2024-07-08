@@ -14,6 +14,9 @@ return {
                 overrides = {
                     Delimiter = { link = "GruvboxFg2" },
                     ["@constructor.lua"] = { link = "Delimiter" },
+                    TreesitterContext = { link = "Visual" },
+                    TreesitterContextBottom = { underline = true, sp = "#555555" },
+                    TreesitterContextLineNumber = { link = "Visual" },
                 },
                 strict_tabs = true,
             })
