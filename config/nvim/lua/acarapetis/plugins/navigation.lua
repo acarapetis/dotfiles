@@ -43,7 +43,7 @@ return {
             { "<Leader><Backspace>", function() require("fzf-lua").resume() end,                     desc = "references to word under cursor" },
         },
         opts = {
-            fzf_opts = { ["--layout"] = "default" },
+            --fzf_opts = { ["--layout"] = "default" },
             --file_icon_padding = "P",
             oldfiles = {
                 include_current_session = true,
