@@ -17,6 +17,8 @@ return {
                     TreesitterContext = { link = "Visual" },
                     TreesitterContextBottom = { underline = true, sp = "#555555" },
                     TreesitterContextLineNumber = { link = "Visual" },
+                    GitSignsCurrentLineBlame = { fg = "#666666" },
+                    SignColumn = { bg = "#151515" },
                 },
                 strict_tabs = true,
             })

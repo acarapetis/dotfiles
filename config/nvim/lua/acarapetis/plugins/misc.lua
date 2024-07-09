@@ -28,6 +28,7 @@ return {
                 ["<leader>r"] = { name = "+refactor..." },
                 ["<leader>v"] = { name = "+lsp..." },
                 ["<leader>x"] = { name = "+trouble..." },
+                ["<leader>h"] = { name = "+git hunks..." },
             },
             icons = {
                 separator = "->"
