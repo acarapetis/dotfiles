@@ -7,6 +7,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(mode, key, action, opts2)
         end
 
+        local toggle_diagnostics = function()
+            local bn = vim.api.nvim_get_current_buf()
+            local enabled = vim.diagnostic.is_enabled({ bufnr = bn })
+            vim.diagnostic.enable(not enabled, { bufnr = bn })
+        end
+
         remap("n", "<leader>d", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
         remap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
         remap("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
@@ -18,6 +24,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         remap("n", "<leader>vrf", function() vim.lsp.buf.references() end, { desc = "Find references" })
         remap("n", "<leader>vrn", function() vim.lsp.buf.rename() end, { desc = "Rename" })
         remap("i", "<C-]>", function() vim.lsp.buf.signature_help() end)
+        remap("n", "<leader>l", toggle_diagnostics)
     end,
 })
 
