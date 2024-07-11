@@ -1,5 +1,4 @@
 return {
-    "tpope/vim-commentary",  -- gc action to comment
     "tpope/vim-dadbod",      -- for interactive SQL querying
     "tpope/vim-speeddating", -- C-A/C-X support for datetimes
     "tpope/vim-eunuch",      -- file operations (rename, move, delete, chmod)
