@@ -1,6 +1,6 @@
 # vim: ft=sh
 # enable color support of ls and also add handy aliases
-PATH="$HOME/.local/bin:$PATH"
+#PATH="$HOME/.local/bin:$PATH"
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -171,3 +171,5 @@ eval "$(fzf --bash)"
 if [ ! -z "$ACTIVATE_MICROMAMBA_ENV" ]; then
     micromamba activate "$ACTIVATE_MICROMAMBA_ENV"
 fi
+
+alias bat=batcat
