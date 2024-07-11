@@ -2,7 +2,11 @@ return {
     {
         "stevearc/oil.nvim",
         config = function()
-            require("oil").setup()
+            require("oil").setup({
+                win_options = {
+                    winbar = "%{v:lua.require('oil').get_current_dir()}",
+                },
+            })
         end,
         lazy = false,
         keys = {
