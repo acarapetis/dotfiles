@@ -7,16 +7,16 @@ return {
                 palette_overrides = {
                     -- Darker backgrounds
                     dark0_hard = "#151515",
-                    dark1 = "#1c1c1c",
-                    dark2 = "#242424",
-                    dark3 = "#363636",
+                    dark1 = "#222222",
+                    dark2 = "#2a2a2a",
+                    dark3 = "#333333",
                 },
                 overrides = {
                     Delimiter = { link = "GruvboxFg2" },
                     ["@constructor.lua"] = { link = "Delimiter" },
-                    TreesitterContext = { link = "Visual" },
+                    TreesitterContext = { bg = "#222222" },
                     TreesitterContextBottom = { underline = true, sp = "#555555" },
-                    TreesitterContextLineNumber = { link = "Visual" },
+                    TreesitterContextLineNumber = { bg = "#222222" },
                     GitSignsCurrentLineBlame = { fg = "#666666" },
                     SignColumn = { bg = "#151515" },
                 },
