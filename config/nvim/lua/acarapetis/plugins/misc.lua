@@ -14,32 +14,6 @@ return {
         },
     },
     {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {
-            defaults = {
-                ["<leader>f"] = { name = "+fzf..." },
-                ["<leader>F"] = { name = "+format..." },
-                ["<leader>r"] = { name = "+refactor..." },
-                ["<leader>v"] = { name = "+lsp..." },
-                ["<leader>x"] = { name = "+trouble..." },
-                ["<leader>h"] = { name = "+git hunks..." },
-            },
-            icons = {
-                separator = "->"
-            },
-        },
-        config = function(_, opts)
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.register(opts.defaults)
-        end,
-    },
-    {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {

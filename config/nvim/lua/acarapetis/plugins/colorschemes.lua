@@ -45,7 +45,7 @@ return {
     -- },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        dependencies = { "mini.nvim" },
         config = function()
             local theme = require("lualine.themes.gruvbox_dark")
             for mode in pairs(theme) do

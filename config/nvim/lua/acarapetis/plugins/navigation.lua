@@ -24,7 +24,7 @@ return {
     {
         "ibhagwan/fzf-lua",
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            "mini.nvim",
         },
         keys = {
             { "<C-p>",               function() require("fzf-lua").files() end,                      desc = "by filename" },
