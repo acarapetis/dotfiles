@@ -1,5 +1,4 @@
 return {
-    "Vimjas/vim-python-pep8-indent",
     {
         "heavenshell/vim-pydocstring",
         build = "make install",
