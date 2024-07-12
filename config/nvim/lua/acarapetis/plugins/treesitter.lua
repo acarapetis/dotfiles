@@ -81,7 +81,30 @@ return {
             { "[C", function() require("treesitter-context").go_to_context(vim.v.count1) end, desc = "Jump to context" },
         }
     },
+    {
+        "danymat/neogen",
+        -- Uncomment next line if you want to follow only stable versions
+        version = "*",
+        keys = {
+            {
+                "<Leader>vD",
+                function()
+                    require("neogen").generate()
+                end,
+                desc = "Generate docstring"
+            },
+        },
+        config = function()
+            require("neogen").setup({
+                enabled = true,
+                languages = {
+                    python = {
+                        template = {
+                            annotation_convention = "numpydoc"
+                        }
+                    }
+                }
             })
         end
-    }
+    },
 }
