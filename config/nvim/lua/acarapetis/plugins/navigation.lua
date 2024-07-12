@@ -44,7 +44,7 @@ return {
             { "<Leader>fr",          function() require("fzf-lua").lsp_references() end,             desc = "references to word under cursor" },
             { "<Leader>fc",          function() require("fzf-lua").commands() end,                   desc = "nvim commands" },
             { "<Leader><F1>",        function() require("fzf-lua").helptags() end,                   desc = "nvim help" },
-            { "<Leader><Backspace>", function() require("fzf-lua").resume() end,                     desc = "references to word under cursor" },
+            { "<Leader><Backspace>", function() require("fzf-lua").resume() end,                     desc = "resume last fzf" },
         },
         opts = {
             --fzf_opts = { ["--layout"] = "default" },

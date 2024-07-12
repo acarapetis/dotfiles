@@ -1,6 +1,6 @@
 vim.keymap.set("x", "<leader>j", ":!json2tf<CR>$=%")
-vim.keymap.set("n", "<leader>t", ":!pytest -x<CR>")
-vim.keymap.set("n", "<leader>T", ":!pytest %<CR>")
+vim.keymap.set("n", "<leader>t", ":!pytest -x<CR>", {desc="pytest -x"})
+vim.keymap.set("n", "<leader>T", ":!pytest %<CR>", {desc="pytest this file"})
 
 vim.keymap.set("n", "<leader>Fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
 vim.keymap.set("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
