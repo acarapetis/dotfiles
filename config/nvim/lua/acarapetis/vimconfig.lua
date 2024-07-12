@@ -16,6 +16,7 @@ vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.ruler = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 4
 vim.opt.showcmd = true
 vim.opt.smartcase = true

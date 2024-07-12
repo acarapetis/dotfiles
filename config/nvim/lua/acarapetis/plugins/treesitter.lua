@@ -70,9 +70,18 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        lazy = false,
         config = function()
             require "treesitter-context".setup({
                 mode = "topline",
+                max_lines = 6,
+            })
+        end,
+        keys = {
+            { "<Leader>c", vim.cmd.TSContextToggle, desc = "Toggle context" },
+            { "[C", function() require("treesitter-context").go_to_context(vim.v.count1) end, desc = "Jump to context" },
+        }
+    },
             })
         end
     }
