@@ -47,18 +47,16 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "mini.nvim" },
         config = function()
-            local theme = require("lualine.themes.gruvbox_dark")
-            for mode in pairs(theme) do
-                theme[mode].c.bg = "#242424"
-                theme[mode].b.bg = "#363636"
-                theme[mode].a.bg = "#484848"
-                theme[mode].a.fg = "#ebdbb2"
+            -- Hack lualine's gruvbox-dark theme to my liking
+            local gruvbox_dark = require("lualine.themes.gruvbox_dark")
+            for mode in pairs(gruvbox_dark) do
+                gruvbox_dark[mode].c.bg = "#242424"
+                gruvbox_dark[mode].b.bg = "#363636"
+                gruvbox_dark[mode].a.bg = "#484848"
+                gruvbox_dark[mode].a.fg = "#ebdbb2"
             end
-            theme.inactive.c.bg = "#181818"
 
-            require("lualine").setup({
-                options = { theme = theme },
-            })
+            require("lualine").setup()
         end,
     },
 }
