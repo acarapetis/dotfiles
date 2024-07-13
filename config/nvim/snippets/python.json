@@ -1,0 +1,43 @@
+{
+  "try": {
+    "prefix": "try",
+    "description": "try except",
+    "body": [
+      "try:",
+      "\t$1",
+      "except ${2:Exception} as ${3:e}:",
+      "\t$4"
+    ]
+  },
+  "dec": {
+    "prefix": "dec",
+    "description": "decorator with args",
+    "body": [
+      "from functools import wraps # move or delete me",
+      "def $1($2):",
+      "\tdef decorator(f):",
+      "\t\t@wraps(f)",
+      "\t\tdef wrapper(*args, **kwargs):",
+      "\t\t\treturn $3f(*args, **kwargs)",
+      "\t\treturn wrapper",
+      "\treturn decorator"
+    ]
+  },
+  "ifmain": {
+    "prefix": "ifmain",
+    "description": "if __name__ == '__main__'",
+    "body": [
+      "if __name__ == '__main__':",
+      "\t$1"
+    ]
+  },
+  "logger": {
+    "prefix": "logger",
+    "description": "conventional logger",
+    "body": [
+      "import logging",
+      "logger = logging.getLogger(__name__)",
+      ""
+    ]
+  }
+}

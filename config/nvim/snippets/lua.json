@@ -1,0 +1,12 @@
+{
+  "lazy": {
+    "prefix": "lazy",
+    "description": "lazy.nvim plugin",
+    "body": [
+      "{",
+      "\t\"$1\",",
+      "\t$2",
+      "}"
+    ]
+  }
+}

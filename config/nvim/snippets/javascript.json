@@ -1,0 +1,54 @@
+{
+  "litanon": {
+    "prefix": "litanon",
+    "description": "LitElement (anonymous)",
+    "body": [
+      "customElements.define('$1', class extends LitElement {",
+      "\tstatic properties = {",
+      "\t\t$2",
+      "\t}",
+      "",
+      "\tstatic styles = css\\`",
+      "\t\t$3",
+      "\t\\`",
+      "",
+      "\trender() {",
+      "\t\treturn html`",
+      "\t\t\t$4",
+      "\t\t`",
+      "\t}",
+      "})"
+    ]
+  },
+  "lit": {
+    "prefix": "lit",
+    "description": "LitElement (named)",
+    "body": [
+      "export class $1 extends LitElement {",
+      "\tstatic properties = {",
+      "\t\t$2",
+      "\t}",
+      "",
+      "\tstatic styles = css\\`",
+      "\t\t$3",
+      "\t\\`",
+      "",
+      "\trender() {",
+      "\t\treturn html`",
+      "\t\t\t$4",
+      "\t\t`",
+      "\t}",
+      "})",
+      "customElements.define('$5', $1)"
+    ]
+  },
+  "iife": {
+    "prefix": "iife",
+    "description": "IIFE",
+    "body": [
+      "(function() {",
+      "\t$1",
+      "})()"
+    ]
+  }
+}

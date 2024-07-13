@@ -69,19 +69,14 @@ return {
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
+            "nvim-snippets",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            {
-                "L3MON4D3/LuaSnip",
-                version = "v2.*",
-                build = "make install_jsregexp",
-            },
             "onsails/lspkind.nvim",
         },
         config = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
-            local luasnip = require("luasnip")
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local has_words_before = function()
                 unpack = unpack or table.unpack
@@ -126,6 +121,7 @@ return {
                     disallow_fuzzy_matching = true,
                 },
                 sources = {
+                    { name = "snippets" },
                     { name = "path" },
                     { name = "nvim_lsp" },
                     { name = "lazydev" },
@@ -156,12 +152,15 @@ return {
                     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
                     ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
+                        elseif vim.snippet.active({ direction = 1 }) then
+                            vim.schedule(function()
+                                vim.snippet.jump(1)
+                            end)
                         elseif has_words_before() then
                             cmp.complete()
                         else
@@ -171,8 +170,10 @@ return {
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
+                        elseif vim.snippet.active({ direction = -1 }) then
+                            vim.schedule(function()
+                                vim.snippet.jump(-1)
+                            end)
                         else
                             fallback()
                         end

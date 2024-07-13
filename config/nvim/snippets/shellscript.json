@@ -1,0 +1,11 @@
+{
+  "sudotee": {
+    "prefix": "sudotee",
+    "description": "sudo tee heredoc",
+    "body": [
+      "sudo tee -a $1 >/dev/null <<EOF",
+      "$2",
+      "EOF"
+    ]
+  }
+}
