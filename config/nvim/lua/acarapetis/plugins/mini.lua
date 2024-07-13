@@ -60,7 +60,7 @@ return {
                 },
 
                 window = {
-                    delay = 0,
+                    delay = 200,
                     config = {
                         anchor = "SW",
                         row = "auto",
