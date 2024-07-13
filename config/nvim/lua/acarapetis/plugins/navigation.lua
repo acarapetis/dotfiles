@@ -39,6 +39,7 @@ return {
             { "<Leader>fb",          function() require("fzf-lua").buffers() end,                    desc = "buffers" },
             { "<Leader>fh",          function() require("fzf-lua").oldfiles() end,                   desc = "history" },
             { "<Leader>fg",          function() require("fzf-lua").git_status() end,                 desc = "git status" },
+            { "<Leader>fa",          function() require("fzf-lua").lsp_code_actions() end,           desc = "code actions" },
             { "<Leader>fs",          function() require("fzf-lua").lsp_document_symbols() end,       desc = "symbols in document" },
             { "<Leader>fS",          function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "symbols in workspace" },
             { "<Leader>fr",          function() require("fzf-lua").lsp_references() end,             desc = "references to word under cursor" },

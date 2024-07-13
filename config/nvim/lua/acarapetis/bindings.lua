@@ -1,22 +1,36 @@
-vim.keymap.set("x", "<leader>j", ":!json2tf<CR>$=%")
-vim.keymap.set("n", "<leader>t", ":!pytest -x<CR>", {desc="pytest -x"})
-vim.keymap.set("n", "<leader>T", ":!pytest %<CR>", {desc="pytest this file"})
+local map = vim.keymap.set
+map("x", "<leader>j", ":!json2tf<CR>$=%")
+map("n", "<leader>t", ":!pytest -x<CR>", { desc = "pytest -x" })
+map("n", "<leader>T", ":!pytest %<CR>", { desc = "pytest this file" })
 
-vim.keymap.set("n", "<leader>Fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
-vim.keymap.set("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
-vim.keymap.set("n", "<leader>Fr", "<cmd>silent !ruff format %<CR>", { desc = "Format buffer using ruff" })
+map("n", "<leader>Fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
+map("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
+map(
+    "n",
+    "<leader>Fr",
+    "<cmd>silent %!ruff check --select ALL --fix --stdin-filename % 2>/dev/null | "
+        .. "ruff format --stdin-filename % 2>/dev/null<CR>",
+    { desc = "Fix + format buffer using ruff" }
+)
+map("n", "<leader>Fp", "<cmd>silent %!prettier --stdin-filepath %<CR>", { desc = "Format buffer using prettier" })
+map("n", "<leader>Fs", "<cmd>silent %!stylua -<CR>", { desc = "Format buffer using stylua" })
 
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste over selection" })
-vim.keymap.set({"n", "v"}, "<leader>D", '"_d', { desc = "Delete without yank" })
+map("x", "<leader>p", '"_dP', { desc = "Paste over selection" })
+map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without yank" })
 
-vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
-vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
+map("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+map("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Find and edit word under cursor" })
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Find and replace word under cursor" })
+map(
+    "n",
+    "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Find and edit word under cursor" }
+)
+map("n", "<leader>S", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Find and replace word under cursor" })
 
-vim.keymap.set("n", "*", [[/\C\<<C-r><C-w>\><CR>]], { silent = true })
-vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })
+map("n", "*", [[/\C\<<C-r><C-w>\><CR>]], { silent = true })
+map("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })
 
 -- makes * and # work on visual mode too.
 -- pinched from https://old.reddit.com/r/neovim/comments/ng1ea0/comment/gyp87k5/
@@ -31,5 +45,3 @@ vim.cmd([[
   xnoremap * :<C-u>call g:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
   xnoremap # :<C-u>call g:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 ]])
-
-

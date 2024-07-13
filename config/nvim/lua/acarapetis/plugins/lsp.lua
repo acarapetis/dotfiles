@@ -183,13 +183,13 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim", "hrsh7th/cmp-nvim-lsp" },
+        dependencies = { "mason.nvim", "hrsh7th/cmp-nvim-lsp" },
         config = function()
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "tsserver", "lua_ls", "basedpyright" },
+                ensure_installed = { "tsserver", "lua_ls", "basedpyright", "ruff" },
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({
