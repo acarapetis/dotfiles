@@ -35,7 +35,7 @@ return {
             { "<Leader>fp",          function() require("fzf-lua").files() end,                      desc = "by filename" },
             { "<Leader>ff",          function() require("fzf-lua").live_grep_native() end,           desc = "grep" },
             { "<Leader>fw",          function() require("fzf-lua").grep_cword() end,                 desc = "word under cursor" },
-            { "<Leader>fW",          function() require("fzf-lua").grep_cword() end,                 desc = "WORD under cursor" },
+            { "<Leader>fW",          function() require("fzf-lua").grep_cWORD() end,                 desc = "WORD under cursor" },
             { "<Leader>fb",          function() require("fzf-lua").buffers() end,                    desc = "buffers" },
             { "<Leader>fh",          function() require("fzf-lua").oldfiles() end,                   desc = "history" },
             { "<Leader>fg",          function() require("fzf-lua").git_status() end,                 desc = "git status" },
@@ -46,13 +46,6 @@ return {
             { "<Leader>fc",          function() require("fzf-lua").commands() end,                   desc = "nvim commands" },
             { "<Leader><F1>",        function() require("fzf-lua").helptags() end,                   desc = "nvim help" },
             { "<Leader><Backspace>", function() require("fzf-lua").resume() end,                     desc = "resume last fzf" },
-        },
-        opts = {
-            --fzf_opts = { ["--layout"] = "default" },
-            --file_icon_padding = "P",
-            oldfiles = {
-                include_current_session = true,
-            },
         },
         lazy = false,
         config = function()
@@ -68,6 +61,17 @@ return {
                         require("fzf-lua").files()
                     end
                 end,
+            })
+            require("fzf-lua").setup({
+                oldfiles = {
+                    include_current_session = true,
+                },
+                winopts = {
+                    fullscreen = true,
+                    preview = {
+                        flip_columns = 150,
+                    },
+                }
             })
         end,
     },
