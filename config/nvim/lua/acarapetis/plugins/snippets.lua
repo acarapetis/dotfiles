@@ -1,7 +1,7 @@
 return {
     {
         "garymjr/nvim-snippets",
-        config = function() require("snippets").setup() end,
+        config = function() require("snippets").setup({ friendly_snippets = false }) end,
         keys = {
             {
                 "<C-q>",
