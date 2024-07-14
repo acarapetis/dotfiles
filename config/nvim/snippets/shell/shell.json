@@ -1,14 +1,4 @@
 {
-    "echo": {
-        "prefix": "echo",
-        "body": "echo \"${0:message}\"",
-        "description": "Echo a message."
-    },
-    "read": {
-        "prefix": "read",
-        "body": "read -r ${0:VAR}",
-        "description": "Read input of ${VAR}."
-    },
     "if": {
         "prefix": "if",
         "body": "if [[ ${1:condition} ]]; then\n\t${0}\nfi",
