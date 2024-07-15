@@ -92,6 +92,15 @@ return {
                 kind_priority[kind_enum[kind_name]] = i
             end
             local kind_comparator = function(entry1, entry2)
+                -- Sort parameter hints to the top
+                local eq1 = entry1:get_word():sub(-1, -1) == "="
+                local eq2 = entry2:get_word():sub(-1, -1) == "="
+                if eq1 and not eq2 then
+                    return true
+                elseif eq2 and not eq1 then
+                    return false
+                end
+
                 local kind1 = kind_priority[entry1:get_kind()]
                 local kind2 = kind_priority[entry2:get_kind()]
                 if kind1 ~= kind2 then
