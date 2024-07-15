@@ -33,7 +33,7 @@ map("n", "*", [[/\C\<<C-r><C-w>\><CR>]], { silent = true })
 map("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })
 
 vim.keymap.set("n", "H", vim.cmd.bprev)
-vim.keymap.set("n", "L", vim.cmd.bprev)
+vim.keymap.set("n", "L", vim.cmd.bnext)
 
 -- makes * and # work on visual mode too.
 -- pinched from https://old.reddit.com/r/neovim/comments/ng1ea0/comment/gyp87k5/
