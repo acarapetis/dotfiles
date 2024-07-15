@@ -56,7 +56,7 @@
     "forline": {
         "prefix": "forline",
         "body": [
-            "f = io.open(${1:\"${2:filename}\"}, \"${3:r}\")\n",
+            "f = io.open(${1}, \"${2:r}\")\n",
             "while true do",
             "\tline = f:read()",
             "\tif line == nil then break end\n",
