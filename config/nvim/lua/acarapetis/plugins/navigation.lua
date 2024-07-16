@@ -27,11 +27,7 @@ return {
             "mini.nvim",
         },
         keys = {
-            { "<C-p>",               function() require("fzf-lua").files() end,                      desc = "by filename" },
-            { "<C-f>",               function() require("fzf-lua").live_grep_native() end,           desc = "grep" },
-            { "<C-g>",               function() require("fzf-lua").grep_cword() end,                 desc = "word under cursor" },
-            { "<C-b>",               function() require("fzf-lua").buffers() end,                    desc = "buffers" },
-            { "<BS>",                function() require("fzf-lua").oldfiles() end,                   desc = "history" },
+            { "<leader><leader>",    function() require("fzf-lua").buffers() end,                    desc = "buffers" },
             { "<Leader>fp",          function() require("fzf-lua").files() end,                      desc = "by filename" },
             { "<Leader>ff",          function() require("fzf-lua").live_grep_native() end,           desc = "grep" },
             { "<Leader>fw",          function() require("fzf-lua").grep_cword() end,                 desc = "word under cursor" },
