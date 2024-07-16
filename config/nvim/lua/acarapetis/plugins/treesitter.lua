@@ -73,7 +73,8 @@ return {
         config = function()
             require "treesitter-context".setup({
                 mode = "topline",
-                max_lines = 6,
+                max_lines = 5,
+                trim_scope = "inner",
             })
         end,
         keys = {
