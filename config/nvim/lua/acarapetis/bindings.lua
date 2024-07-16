@@ -32,6 +32,8 @@ map("n", "<leader>S", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Fi
 map("n", "*", [[/\C\<<C-r><C-w>\><CR>]], { silent = true })
 map("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })
 
+vim.cmd([[nmap <C-space> ea<C-space>]])
+
 vim.keymap.set("n", "H", vim.cmd.bprev)
 vim.keymap.set("n", "L", vim.cmd.bnext)
 
