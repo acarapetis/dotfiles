@@ -9,6 +9,18 @@ return {
             require("mini.pairs").setup({
                 modes = { insert = true, command = true, terminal = false },
             })
+            require("mini.surround").setup({
+                mappings = {
+                    add = "sa",
+                    delete = "sd",
+                    find = "",
+                    find_left = "",
+                    highlight = "",
+                    replace = "sc",
+                    update_n_lines = "",
+                },
+                search_method = "cover_or_next",
+            })
             local miniclue = require("mini.clue")
             miniclue.setup({
                 triggers = {
