@@ -1,6 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -43,6 +44,59 @@ return {
                         node_decremental = "<S-TAB>",
                     },
                 },
+                textobjects = {
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                            -- You can also use captures from other query groups like `locals.scm`
+                            ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+                        },
+                        selection_modes = {
+                            ['@parameter.outer'] = 'v',
+                            ['@function.outer'] = 'V',
+                            ['@class.outer'] = 'V', -- blockwise
+                        },
+                        include_surrounding_whitespace = true,
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ["<leader>a"] = "@parameter.inner",
+                        },
+                        swap_previous = {
+                            ["<leader>A"] = "@parameter.inner",
+                        },
+                    },
+                    move = {
+                        enable = true,
+                        set_jumps = true, -- whether to set jumps in the jumplist
+                        goto_next_start = {
+                            ["]f"] = "@function.outer",
+                            ["]c"] = "@class.outer",
+                        },
+                        goto_next_end = {
+                            ["]F"] = "@function.outer",
+                            ["]C"] = "@class.outer",
+                        },
+                        goto_previous_start = {
+                            ["[f"] = "@function.outer",
+                            ["[c"] = "@class.outer",
+                        },
+                        goto_previous_end = {
+                            ["[F"] = "@function.outer",
+                            ["[C"] = "@class.outer",
+                        },
+                    },
+                },
             })
 
             vim.cmd([[
@@ -72,7 +126,7 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         lazy = false,
         config = function()
-            require "treesitter-context".setup({
+            require("treesitter-context").setup({
                 mode = "topline",
                 max_lines = 5,
                 trim_scope = "inner",

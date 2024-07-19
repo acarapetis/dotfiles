@@ -39,7 +39,7 @@ return {
                     end
 
                     -- Navigation
-                    map('n', ']c', function()
+                    map('n', ']h', function()
                         if vim.wo.diff then
                             vim.cmd.normal({ ']c', bang = true })
                         else
@@ -47,7 +47,7 @@ return {
                         end
                     end)
 
-                    map('n', '[c', function()
+                    map('n', '[h', function()
                         if vim.wo.diff then
                             vim.cmd.normal({ '[c', bang = true })
                         else
