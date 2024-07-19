@@ -49,6 +49,7 @@ return {
                 set foldmethod=expr
                 set foldexpr=nvim_treesitter#foldexpr()
                 set nofoldenable " Disable folding at startup.
+                set foldlevelstart=99 " When folding is enabled, start with all folds open.
             ]])
         end,
     },
