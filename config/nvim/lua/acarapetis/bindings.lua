@@ -8,7 +8,7 @@ map("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using
 map(
     "n",
     "<leader>Fr",
-    "<cmd>silent %!ruff check --select ALL --fix --stdin-filename % 2>/dev/null | "
+    "<cmd>silent %!ruff check --select I,F --fix --stdin-filename % 2>/dev/null | "
         .. "ruff format --stdin-filename % 2>/dev/null<CR>",
     { desc = "Fix + format buffer using ruff" }
 )
