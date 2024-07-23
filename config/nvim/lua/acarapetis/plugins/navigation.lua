@@ -1,3 +1,7 @@
+local fzf = function(command)
+    return function() require("fzf-lua")[command]() end
+end
+
 return {
     {
         "stevearc/oil.nvim",
@@ -27,21 +31,22 @@ return {
             "mini.nvim",
         },
         keys = {
-            { "<leader><leader>",    function() require("fzf-lua").buffers() end,                    desc = "buffers" },
-            { "<Leader>fp",          function() require("fzf-lua").files() end,                      desc = "by filename" },
-            { "<Leader>ff",          function() require("fzf-lua").live_grep_native() end,           desc = "grep" },
-            { "<Leader>fw",          function() require("fzf-lua").grep_cword() end,                 desc = "word under cursor" },
-            { "<Leader>fW",          function() require("fzf-lua").grep_cWORD() end,                 desc = "WORD under cursor" },
-            { "<Leader>fb",          function() require("fzf-lua").buffers() end,                    desc = "buffers" },
-            { "<Leader>fh",          function() require("fzf-lua").oldfiles() end,                   desc = "history" },
-            { "<Leader>fg",          function() require("fzf-lua").git_status() end,                 desc = "git status" },
-            { "<Leader>fa",          function() require("fzf-lua").lsp_code_actions() end,           desc = "code actions" },
-            { "<Leader>fs",          function() require("fzf-lua").lsp_document_symbols() end,       desc = "symbols in document" },
-            { "<Leader>fS",          function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "symbols in workspace" },
-            { "<Leader>fr",          function() require("fzf-lua").lsp_references() end,             desc = "references to word under cursor" },
-            { "<Leader>fc",          function() require("fzf-lua").commands() end,                   desc = "nvim commands" },
-            { "<Leader><F1>",        function() require("fzf-lua").helptags() end,                   desc = "nvim help" },
-            { "<Leader><Backspace>", function() require("fzf-lua").resume() end,                     desc = "resume last fzf" },
+            { "<space>p",           fzf("files"),                      desc = "by filename" },
+            { "<space>f",           fzf("live_grep_native"),           desc = "grep" },
+            { "<space>w",           fzf("grep_cword"),                 desc = "word under cursor" },
+            { "<space>W",           fzf("grep_cWORD"),                 desc = "WORD under cursor" },
+            { "<space>b",           fzf("buffers"),                    desc = "buffers" },
+            { "<space>h",           fzf("oldfiles"),                   desc = "history" },
+            { "<space>g",           fzf("git_status"),                 desc = "git status" },
+            { "<space>a",           fzf("lsp_code_actions"),           desc = "code actions" },
+            { "<space>s",           fzf("lsp_document_symbols"),       desc = "symbols in document" },
+            { "<space>S",           fzf("lsp_live_workspace_symbols"), desc = "symbols in workspace" },
+            { "<space>r",           fzf("lsp_references"),             desc = "references to word under cursor" },
+            { "<space>c",           fzf("commands"),                   desc = "nvim commands" },
+            { "<space><F1>",        fzf("helptags"),                   desc = "nvim help" },
+            { "<space><Backspace>", fzf("resume"),                     desc = "resume last fzf" },
+            { "<leader><leader>",   fzf("buffers"),                    desc = "buffers" },
+            { "<leader>b",          fzf("buffers"),                    desc = "buffers" },
         },
         lazy = false,
         config = function()
