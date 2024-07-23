@@ -6,9 +6,6 @@ return {
             require("mini.notify").setup()
             require("mini.icons").setup()
             require("mini.icons").mock_nvim_web_devicons()
-            require("mini.pairs").setup({
-                modes = { insert = true, command = true, terminal = false },
-            })
             require("mini.surround").setup({
                 mappings = {
                     add = "sa",
