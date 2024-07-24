@@ -3,6 +3,7 @@ return {
         "echasnovski/mini.nvim",
         config = function()
             require("mini.ai").setup()
+            require("mini.comment").setup()
             require("mini.notify").setup()
             require("mini.icons").setup()
             require("mini.icons").mock_nvim_web_devicons()
