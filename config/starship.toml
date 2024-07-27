@@ -1,0 +1,20 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[character]
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+
+[git_commit]
+only_detached = false
+tag_disabled = false
+
+[git_metrics]
+disabled = false
+
+[directory]
+truncation_length = 6
+fish_style_pwd_dir_length = 1
+
+[hostname]
+ssh_only=false

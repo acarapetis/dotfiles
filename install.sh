@@ -6,6 +6,7 @@ RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
 FZF_LINK="https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz"
+STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.20.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
@@ -65,6 +66,19 @@ if ! which up; then
             chmod +x ~/.local/bin/up
         )
         echo "up installed to ~/.local/bin/up"
+    fi
+fi
+
+if ! which starship; then
+    if confirm "starship not found in path. Install binary from github?"; then
+        (
+            d=$(mktemp -d)
+            cd "$d"
+            curl -fLo starship.tar.gz "$STARSHIP_LINK"
+            tar xfz starship.tar.gz
+            cp starship ~/.local/bin/
+        )
+        echo "starship installed to ~/.local/bin/up"
     fi
 fi
 
