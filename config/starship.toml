@@ -15,6 +15,3 @@ disabled = false
 [directory]
 truncation_length = 6
 fish_style_pwd_dir_length = 1
-
-[hostname]
-ssh_only=false
