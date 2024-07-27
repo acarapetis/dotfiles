@@ -12,6 +12,11 @@ tag_disabled = false
 [git_metrics]
 disabled = false
 
+[git_status]
+ahead = "⇡ "
+behind = "⇣ "
+diverged = "⇕ "
+
 [directory]
 truncation_length = 6
 fish_style_pwd_dir_length = 1
