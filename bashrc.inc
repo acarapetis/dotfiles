@@ -110,6 +110,9 @@ g() {
 function privateip {
     ip a show dev "${1:-eth0}" | perl -ne '/^\s*inet ([\d\.]+)\// and print $1'
 }
+function publicip {
+    curl https://checkip.amazonaws.com
+}
 
 
 function tmux {
