@@ -58,7 +58,7 @@ truncation_length = 6
 fish_style_pwd_dir_length = 1
 
 [aws]
-format = 'on [$symbol ($profile )(\[$duration\] )]($style)'
+format = '[$symbol ($profile )(\[$duration\] )]($style)'
 symbol = ' '
 
 [jobs]
@@ -73,6 +73,9 @@ format ='\(+[$duration]($style)\) '
 [time]
 disabled = false
 format = "[$time]($style) "
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_commit]
 only_detached = false
@@ -90,6 +93,12 @@ diverged = "⇕ "
 command = "echo $NEAC_ENV"
 when = 'test -n "$NEAC_ENV"'
 format = 'neac=[$output]($style) '
+
+[python]
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+
+[conda]
+format ="[$symbol$environment]($style) "
 
 [nodejs]
 disabled = true
