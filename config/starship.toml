@@ -5,6 +5,14 @@
 success_symbol = '[\$](bold green)'
 error_symbol = '[\$](bold red)'
 
+[directory]
+truncation_length = 6
+fish_style_pwd_dir_length = 1
+
+[aws]
+format = 'on [$symbol ($profile )(\[$duration\] )]($style)'
+symbol = ' '
+
 [git_commit]
 only_detached = false
 tag_disabled = false
@@ -17,6 +25,10 @@ ahead = "⇡ "
 behind = "⇣ "
 diverged = "⇕ "
 
-[directory]
-truncation_length = 6
-fish_style_pwd_dir_length = 1
+[custom.neac]
+command = "echo $NEAC_ENV"
+when = 'test -n "$NEAC_ENV"'
+format = 'neac=[$output]($style) '
+
+[nodejs]
+disabled = true
