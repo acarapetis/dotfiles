@@ -96,6 +96,7 @@ format = '[($all_status$ahead_behind )]($style)'
 ahead = "⇡ "
 behind = "⇣ "
 diverged = "⇕ "
+stashed = " "
 
 [git_metrics]
 disabled = false
