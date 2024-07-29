@@ -1,11 +1,16 @@
+local fugitive_cmd_menu = function()
+    local keys = vim.api.nvim_replace_termcodes(":G<Tab>", false, false, true)
+    vim.api.nvim_feedkeys(keys, "t", true)
+end
 return {
     {
         "tpope/vim-fugitive",
         lazy = false,
         keys = {
-            { "<leader>G", ":G",            desc = "Git command" },
-            { "<leader>g", vim.cmd.G,       desc = "Git status" },
-            { "gb",        vim.cmd.GBrowse, desc = "View on GitHub/Bitbucket" },
+            { "<leader>g", fugitive_cmd_menu,  desc = "Git command" },
+            { "gb",        vim.cmd.GBrowse,    desc = "View on GitHub/Bitbucket" },
+            { "gs",        vim.cmd.G,          desc = "Git status" },
+            { "gB",        "<cmd>G blame<CR>", desc = "Git blame" },
         },
         config = function()
             vim.api.nvim_create_user_command(
