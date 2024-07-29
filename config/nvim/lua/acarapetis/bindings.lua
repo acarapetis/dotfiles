@@ -3,18 +3,6 @@ map("x", "<leader>j", ":!json2tf<CR>$=%")
 map("n", "<leader>t", ":!pytest -x<CR>", { desc = "pytest -x" })
 map("n", "<leader>T", ":!pytest %<CR>", { desc = "pytest this file" })
 
-map("n", "<leader>Fl", vim.lsp.buf.format, { desc = "Format buffer using LSP" })
-map("n", "<leader>Fb", "<cmd>silent !black %<CR>", { desc = "Format buffer using black" })
-map(
-    "n",
-    "<leader>Fr",
-    "<cmd>silent %!ruff check --select I,F --fix --stdin-filename % 2>/dev/null | "
-        .. "ruff format --stdin-filename % 2>/dev/null<CR>",
-    { desc = "Fix + format buffer using ruff" }
-)
-map("n", "<leader>Fp", "<cmd>silent %!prettier --stdin-filepath %<CR>", { desc = "Format buffer using prettier" })
-map("n", "<leader>Fs", "<cmd>silent %!stylua -<CR>", { desc = "Format buffer using stylua" })
-
 map("x", "<leader>p", '"_dP', { desc = "Paste over selection" })
 map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without yank" })
 
