@@ -5,7 +5,6 @@
 format = """
 $username\
 $directory\
-[»](bg:background fg:separator)\
 $aws\
 $custom\
 [ ]()\
@@ -45,7 +44,7 @@ separator  = '#444444'
 disabled = false
 
 [aws]
-format = '[ $symbol ($profile)(\[$duration\] )]($style)'
+format = ' [»](bg:background fg:separator)[ $symbol ($profile)(\[$duration\] )]($style)'
 symbol = ' '
 
 [custom.neac]
@@ -65,7 +64,7 @@ format = '[$user ]($style)'
 
 [directory]
 style = "blue bold bg:background"
-format = "[$path ]($style)"
+format = "[$path]($style)"
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 
