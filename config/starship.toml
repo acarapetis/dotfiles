@@ -3,19 +3,18 @@
 
 
 format = """
-┌\
 $username\
+$directory\
+[»](bg:background fg:separator)\
 $aws\
 $custom\
-[/](bg:background fg:separator)\
-$directory\
-[/](bg:background fg:separator)\
+[ ]()\
+[»](bg:background fg:separator)\
 $git_branch\
 $git_commit\
 $git_metrics\
 $git_state\
 $git_status\
-[/](bg:background fg:separator)\
 $c\
 $rust\
 $golang\
@@ -25,17 +24,15 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[/](bg:background fg:separator)\
 $docker_context\
 $conda\
-[/](bg:background fg:separator)\
-$time\
-$cmd_duration\
-[ ](fg:background)\
-$line_break\
-└\
+$fill\
+$status\
 $jobs\
-$character"""
+$cmd_duration\
+$time\
+$line_break\
+\\$ """
 
 palette = 'native'
 
@@ -44,42 +41,43 @@ foreground = 'bright-white'
 background = 'black'
 separator  = '#444444'
 
+[status]
+disabled = false
+
 [aws]
-style = "bold bg:background fg:foreground"
-format = '[ $symbol ($profile )(\[$duration\] )]($style)'
+format = '[ $symbol ($profile)(\[$duration\] )]($style)'
 symbol = ' '
 
 [custom.neac]
 style = "bold bg:background fg:foreground"
 command = "echo $NEAC_ENV"
 when = 'test -n "$NEAC_ENV"'
-format = '[  $output ]($style)'
+format = '/[$output]($style)'
 
 [jobs]
-symbol = "✦ " 
+symbol = " " 
+number_threshold = 1
 
 [username]
 style_user = "bg:background fg:foreground"
 style_root = "bg:background fg:foreground"
-format = '[ $user ]($style)'
+format = '[$user ]($style)'
 
 [directory]
 style = "blue bold bg:background"
-format = "[ $path ]($style)"
+format = "[$path ]($style)"
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 
 [git_branch]
 symbol = ""
-style = "bg:background"
 format = '[[ $symbol $branch ](fg:foreground bg:background)]($style)'
 
 [git_status]
-style = "bg:background fg:foreground bold"
 format = '[($all_status$ahead_behind )]($style)'
-ahead = "⇡ "
-behind = "⇣ "
-diverged = "⇕ "
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
 stashed = " "
 
 [git_metrics]
@@ -94,11 +92,9 @@ disabled = false
 only_detached = false
 tag_disabled = false
 format="[\\($hash$tag\\) ]($style)"
-style = "foreground bg:background"
 
 [git_state]
 format = '[\($state($progress_current/$progress_total)\) ]($style)'
-style = "foreground bg:background bold"
 
 
 [nodejs]
@@ -109,56 +105,55 @@ format = '[ $symbol( $version) ]($style)'
 [c]
 symbol = " "
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [rust]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [golang]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [php]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [java]
 symbol = " "
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [kotlin]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [haskell]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[ $symbol( $version) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $version) ]($style)'
 
 [python]
 symbol = ""
 style = "fg:foreground bg:background"
-format = "[ ${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+format = "[»](bg:background fg:separator)[ ${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
 
 [docker_context]
 symbol = ""
 style = "fg:foreground bg:background"
-format = '[[ $symbol( $context) ]($style)'
+format = '[»](bg:background fg:separator)[[ $symbol( $context) ]($style)'
 
 [conda]
 style = "fg:foreground bg:background"
-format = '[ $symbol( $environment) ]($style)'
+format = '[»](bg:background fg:separator)[ $symbol( $environment) ]($style)'
 
 [time]
 disabled = false
-style = "fg:foreground bg:background"
-format = '[   $time ]($style)'
+format = '[   $time]($style)'
 
 [cmd_duration]
 style = "fg:foreground bg:background bold"
@@ -166,8 +161,3 @@ format ='[\(+$duration\) ]($style)'
 
 [line_break]
 disabled = false
-
-[character]
-disabled = false
-success_symbol = '[\$](green)'
-error_symbol = '[\$](bold red)'
