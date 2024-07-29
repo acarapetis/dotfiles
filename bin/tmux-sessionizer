@@ -4,7 +4,14 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find -L ~/github ~/bitbucket ~ -mindepth 1 -maxdepth 1 -type d | grep -vE '/\.' | fzf)
+    dirs="$(find -L ~/github ~/bitbucket ~ -mindepth 1 -maxdepth 1 -type d | grep -vE '/\.')"
+    if which zoxide; then
+        # Add most commonly used directories to start of list:
+        dirs=$(zoxide query --list)$'\n'"$dirs"
+        # Remove duplicates without changing order:
+        dirs=$(awk '!a[$0]++' <<< "$dirs")
+    fi
+    selected=$(fzf <<< "$dirs")
 fi
 
 if [[ -z $selected ]]; then
