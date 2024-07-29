@@ -3,7 +3,6 @@
 
 
 format = """
-[](rainbow1)\
 $username\
 $aws\
 $custom\
@@ -31,7 +30,7 @@ $conda\
 [](fg:rainbow6 bg:rainbow7)\
 $time\
 $cmd_duration\
-[ ](fg:rainbow7)\
+[ ](fg:rainbow7)\
 $line_break\
 $jobs\
 $character"""
@@ -62,7 +61,7 @@ rainbow7 = '#3c3836'
 
 [aws]
 style = "bold bg:rainbow1 fg:dark"
-format = '[$symbol ($profile )(\[$duration\] )]($style)'
+format = '[ $symbol ($profile )(\[$duration\] )]($style)'
 symbol = ' '
 
 [custom.neac]
@@ -111,6 +110,11 @@ only_detached = false
 tag_disabled = false
 format="[\\($hash$tag\\) ]($style)"
 style = "dark bg:rainbow4"
+
+[git_state]
+format = '[\($state($progress_current/$progress_total)\) ]($style)'
+style = "dark bg:rainbow4 bold"
+
 
 [nodejs]
 symbol = ""
