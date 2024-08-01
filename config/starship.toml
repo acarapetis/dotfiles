@@ -36,7 +36,7 @@ palette = 'native'
 [palettes.native]
 foreground = 'bright-white'
 background = 'black'
-separator  = '#444444'
+separator  = '#666666'
 
 [status]
 disabled = false
