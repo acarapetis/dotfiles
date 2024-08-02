@@ -69,4 +69,13 @@ return {
             { "<leader>u", vim.cmd.UndotreeToggle, desc = "UndoTree" },
         },
     },
+    {
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").setup()
+        end,
+        keys = {
+            { ",", "<Plug>(leap)", mode={"n","x"}, desc="leap" },
+        }
+    }
 }
