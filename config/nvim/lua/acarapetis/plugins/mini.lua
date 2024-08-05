@@ -9,16 +9,22 @@ return {
             require("mini.icons").mock_nvim_web_devicons()
             require("mini.surround").setup({
                 mappings = {
-                    add = "sa",
-                    delete = "sd",
+                    add = "ys",
+                    delete = "ds",
                     find = "",
                     find_left = "",
                     highlight = "",
-                    replace = "sc",
+                    replace = "cs",
                     update_n_lines = "",
                 },
                 search_method = "cover_or_next",
             })
+            vim.keymap.set(
+                "x",
+                "s",
+                [[:<C-u>lua MiniSurround.add('visual')<CR>]],
+                { desc = "Add surrounding to selection", silent = true }
+            )
             local miniclue = require("mini.clue")
             miniclue.setup({
                 triggers = {

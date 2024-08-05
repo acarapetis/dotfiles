@@ -75,7 +75,10 @@ return {
             require("leap").setup()
         end,
         keys = {
-            { ",", "<Plug>(leap)", mode={"n","x"}, desc="leap" },
+            { "s", "<Plug>(leap)", mode="n", desc="leap" },
+            { "S", "<Plug>(leap-from-window)", mode="n", desc="leap from window " },
+            { "s", "<Plug>(leap-forward)", mode={"x","o"}, desc="leap forward" },
+            { "S", "<Plug>(leap-backward)", mode={"x","o"}, desc="leap backward" },
         }
     }
 }
