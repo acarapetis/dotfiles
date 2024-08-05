@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.diagnostic.enable(not enabled, { bufnr = bn })
         end
 
+        -- make gq work:
+        vim.bo[event.buf].formatexpr = nil
+
         remap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
         remap("n", "gt", function() vim.lsp.buf.declaration() end, { desc = "Go to definition" })
         remap("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
