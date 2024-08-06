@@ -22,6 +22,7 @@ vim.opt.showcmd = true
 vim.opt.smartcase = true
 vim.opt.suffixes = ".bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc"
 vim.opt.tabstop = 4
+vim.opt.textwidth = 88
 vim.opt.ttimeoutlen = 10
 vim.opt.updatetime = 300
 vim.opt.wildmenu = true
