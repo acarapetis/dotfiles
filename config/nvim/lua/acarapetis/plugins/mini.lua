@@ -9,7 +9,7 @@ return {
             require("mini.icons").mock_nvim_web_devicons()
             require("mini.surround").setup({
                 mappings = {
-                    add = "ys",
+                    add = "(",
                     delete = "ds",
                     find = "",
                     find_left = "",
