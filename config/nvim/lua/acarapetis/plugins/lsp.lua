@@ -58,9 +58,9 @@ local pydantic_comparator = function(entry1, entry2)
 end
 
 local kind_priority_list = {
-    'Snippet', 'Field', 'Variable', 'Method', 'Function', 'Constructor', 'Class', 'Interface',
+    'Field', 'Variable', 'Method', 'Function', 'Constructor', 'Class', 'Interface',
     'Module', 'Property', 'Unit', 'Value', 'Enum', 'Keyword', 'Color', 'File', 'Reference',
-    'Folder', 'EnumMember', 'Constant', 'Struct', 'Event', 'Operator', 'TypeParameter', 'Text',
+    'Folder', 'EnumMember', 'Constant', 'Struct', 'Event', 'Operator', 'TypeParameter', 'Snippet', 'Text',
 }
 
 return {
