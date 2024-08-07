@@ -20,7 +20,7 @@ return {
                 },
                 formatters = {
                     ruff_fix = {
-                        prepend_args = { "--select", "I,F" },
+                        append_args = { "--select", "I,F" },
                     },
                 },
             })
