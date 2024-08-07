@@ -62,13 +62,13 @@ format = '[$user ]($style)'
 
 [directory]
 style = "blue bold bg:background"
-format = "[$path]($style)"
+format = "[$path ]($style)"
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 
 [git_branch]
 symbol = ""
-format = ' [»](bg:background fg:separator)[[ $symbol $branch ](fg:foreground bg:background)]($style)'
+format = '[»](bg:background fg:separator)[[ $symbol $branch ](fg:foreground bg:background)]($style)'
 
 [git_status]
 format = '[($all_status$ahead_behind )]($style)'
