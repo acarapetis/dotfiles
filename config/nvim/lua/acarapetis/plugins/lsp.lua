@@ -180,18 +180,18 @@ return {
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "tsserver", "lua_ls", "basedpyright", "ruff" },
+                ensure_installed = { "tsserver", "lua_ls", "pyright", "ruff" },
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({
                             capabilities = lsp_capabilities,
                         })
                     end,
-                    basedpyright = function()
-                        require("lspconfig").basedpyright.setup({
+                    pyright = function()
+                        require("lspconfig").pyright.setup({
                             capabilities = lsp_capabilities,
                             settings = {
-                                basedpyright = {
+                                pyright = {
                                     analysis = {
                                         typeCheckingMode = "standard",
                                     },
