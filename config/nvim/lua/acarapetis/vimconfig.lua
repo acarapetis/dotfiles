@@ -4,6 +4,7 @@ vim.opt.backspace = "eol,start,indent"
 vim.opt.cindent = false
 vim.opt.expandtab = true
 vim.opt.fileencodings = "ucs-bom,utf-8,default,latin1"
+vim.opt.formatoptions = "cqjn"
 vim.opt.grepprg = "grep -H $*"
 vim.opt.helplang = "en"
 vim.opt.hidden = true
