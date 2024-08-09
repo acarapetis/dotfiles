@@ -137,6 +137,7 @@ return {
                     { name = "path" },
                     { name = "nvim_lsp" },
                     { name = "lazydev" },
+                    { name = "mkdnflow" },
                     {
                         name = "buffer",
                         keyword_length = 5,
