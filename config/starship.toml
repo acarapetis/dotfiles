@@ -49,7 +49,7 @@ symbol = ' '
 style = "bold bg:background fg:foreground"
 command = "echo $NEAC_ENV"
 when = 'test -n "$NEAC_ENV"'
-format = '/[$output]($style)'
+format = "\b/[$output]($style) "
 
 [jobs]
 symbol = " " 
