@@ -42,7 +42,7 @@ separator  = '#666666'
 disabled = false
 
 [aws]
-format = ' [»](bg:background fg:separator)[ $symbol ($profile)(\[$duration\] )]($style)'
+format = '[»](bg:background fg:separator)[ $symbol ($profile)(\[$duration\] )]($style) '
 symbol = ' '
 
 [custom.neac]
