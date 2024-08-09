@@ -221,6 +221,11 @@ return {
                     end,
                 },
             })
+            vim.diagnostic.config({
+                -- For hints (e.g. "unused parameter"), don't show virtual text or sign
+                virtual_text = { severity = { min = "INFO" } },
+                signs = { severity = { min = "INFO" } },
+            })
         end,
     },
     {
