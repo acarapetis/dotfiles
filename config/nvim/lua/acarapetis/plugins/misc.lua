@@ -38,14 +38,38 @@ return {
             highlight = {
                 pattern = [[.*<(KEYWORDS)\s*]],
                 keyword = "wide_bg",
-            }
+            },
         },
     },
     {
         "norcalli/nvim-colorizer.lua",
         config = function()
             vim.o.termguicolors = true
-            require("colorizer").setup({}, { names=false })
-        end
-    }
+            require("colorizer").setup({}, { names = false })
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        config = function()
+            require("noice").setup({
+                cmdline = {
+                    view = "cmdline",
+                    format = { cmdline = { pattern = "^:", conceal = false, icon = "", lang = "vim" } },
+                },
+                lsp = {
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+                    },
+                },
+                messages = { view_search = false },
+                popupmenu = { enabled = false }, -- was messing with cmp's .-completion
+                presets = {
+                    bottom_search = true, -- use a classic bottom cmdline for search
+                    long_message_to_split = true, -- long messages will be sent to a split
+                },
+            })
+        end,
+    },
 }
