@@ -1,6 +1,10 @@
 local fugitive_cmd_menu = function()
-    local keys = vim.api.nvim_replace_termcodes(":G<Tab>", false, false, true)
+    local keys = vim.api.nvim_replace_termcodes(":G", false, false, true)
     vim.api.nvim_feedkeys(keys, "t", true)
+    vim.defer_fn(function()
+        local tab = vim.api.nvim_replace_termcodes("<Tab>", false, false, true)
+        vim.api.nvim_feedkeys(tab, "t", true)
+    end, 0)
 end
 return {
     {
