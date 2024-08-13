@@ -49,7 +49,7 @@
     pushnew = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     pushf = "push --force-with-lease"
     rewrite = "rebase --interactive"
-    gethash = "rev-parse HEAD"
+    gethash = "!git rev-parse HEAD | tr -d '\n'"
     pullother = "!f() { git fetch origin $1:$1; }; f"
 
     branch-cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -p -n 1 -r git branch -d"
