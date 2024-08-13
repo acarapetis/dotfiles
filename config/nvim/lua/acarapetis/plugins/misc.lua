@@ -1,10 +1,10 @@
 return {
-    "tpope/vim-dadbod",      -- for interactive SQL querying
+    "tpope/vim-dadbod", -- for interactive SQL querying
     "tpope/vim-speeddating", -- C-A/C-X support for datetimes
-    "tpope/vim-eunuch",      -- file operations (rename, move, delete, chmod)
-    "tpope/vim-repeat",      -- makes . behave better with plugins
-    "tpope/vim-sleuth",      -- automatically detect tab/space indent standard
-    "tpope/vim-abolish",     -- actions for snake/camel/etc conversions
+    "tpope/vim-eunuch", -- file operations (rename, move, delete, chmod)
+    "tpope/vim-repeat", -- makes . behave better with plugins
+    "tpope/vim-sleuth", -- automatically detect tab/space indent standard
+    "tpope/vim-abolish", -- actions for snake/camel/etc conversions
 
     {
         "junegunn/vim-easy-align",
@@ -40,6 +40,21 @@ return {
                 keyword = "wide_bg",
             },
         },
+        event = "VimEnter",
+        config = function(_, opts)
+            require("todo-comments").setup(opts)
+            local configure_for_filetype = function(ev)
+                local config = require("todo-comments.config")
+                local is_doc = vim.tbl_contains({ "markdown", "text", "rst" }, vim.bo.filetype)
+                config.options.highlight.comments_only = not is_doc
+            end
+            vim.api.nvim_create_autocmd("BufEnter", {
+                desc = "Enable todo-comments for text documents",
+                group = vim.api.nvim_create_augroup("user.todo.text", { clear = true }),
+                callback = configure_for_filetype,
+            })
+            configure_for_filetype()
+        end,
     },
     {
         "norcalli/nvim-colorizer.lua",
@@ -50,7 +65,7 @@ return {
     },
     {
         "folke/noice.nvim",
-        dependencies = {"MunifTanjim/nui.nvim" },
+        dependencies = { "MunifTanjim/nui.nvim" },
         config = function()
             require("noice").setup({
                 cmdline = {
