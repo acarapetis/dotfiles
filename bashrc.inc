@@ -131,3 +131,13 @@ fi
 
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
+
+function a {
+    for d in .venv venv env .env; do
+        if [ -e $d/bin/activate ]; then
+            . $d/bin/activate
+            return
+        fi
+    done
+    >&2 echo "Could not find a virtualenv in ./[.][v]env."
+}
