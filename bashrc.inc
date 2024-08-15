@@ -34,6 +34,7 @@ alias ll='ls -alh --file-type'
 alias la='ls -a'
 alias l='ls -CF'
 alias ltr='ls -Alhrt --file-type'
+alias jat='bat -l json'
 
 function lsd {
     if [ -z "$1" ]; then
