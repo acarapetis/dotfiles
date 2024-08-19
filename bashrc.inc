@@ -34,7 +34,14 @@ alias ll='ls -alh --file-type'
 alias la='ls -a'
 alias l='ls -CF'
 alias ltr='ls -Alhrt --file-type'
-alias jat='bat -l json'
+alias s3=s5cmd
+alias gl='git log'
+alias gg='git graph'
+alias reset='tput reset' # removes unnecessary delay
+
+function jat {
+    jq . | bat -l json
+}
 
 function lsd {
     if [ -z "$1" ]; then
