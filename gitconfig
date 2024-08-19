@@ -56,3 +56,4 @@
 
     co = "checkout"
     sw = "switch"
+    wc = "whatchanged"
