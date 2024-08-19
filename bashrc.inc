@@ -38,6 +38,7 @@ alias s3=s5cmd
 alias gl='git log'
 alias gg='git graph'
 alias reset='tput reset' # removes unnecessary delay
+alias fd=fdfind
 
 function jat {
     jq . | bat -l json
@@ -106,6 +107,9 @@ gcd() {
     cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"/"$1"
 }
 
+# smart git alias:
+# - just g gives git status
+# - with args, passes through to git
 g() {
     if [ -z "$1" ]; then
         git status
@@ -113,6 +117,11 @@ g() {
         git "$@"
     fi
 }
+# enable completion for g:
+if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+    ___git_complete g __git_main
+fi
 
 
 function privateip {
