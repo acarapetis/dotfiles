@@ -39,6 +39,7 @@ alias gl='git log'
 alias gg='git graph'
 alias reset='tput reset' # removes unnecessary delay
 alias fd=fdfind
+alias mm=micromamba
 
 function jat {
     jq . | bat -l json
