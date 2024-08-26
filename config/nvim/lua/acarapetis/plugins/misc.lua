@@ -80,7 +80,7 @@ return {
                         ["cmp.entry.get_documentation"] = true,
                     },
                 },
-                messages = { view_search = false },
+                messages = { enabled = false },
                 presets = {
                     bottom_search = true,
                     long_message_to_split = true,
