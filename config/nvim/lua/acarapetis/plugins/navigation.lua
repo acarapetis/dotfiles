@@ -54,6 +54,12 @@ return {
                 oldfiles = {
                     include_current_session = true,
                 },
+                lsp = {
+                    symbols = {
+                        symbol_style = 2,
+                        symbol_fmt = function(s, opts) return s end,
+                    }
+                },
                 winopts = {
                     fullscreen = true,
                     preview = {
