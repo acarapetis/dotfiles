@@ -28,7 +28,7 @@ disk "/" {
 }
 
 load {
-        format = "load: %1min"
+        format = "load: %1min, %5min, %15min"
 }
 
 memory {
