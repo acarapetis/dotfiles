@@ -142,6 +142,10 @@ function tmux {
     fi
 }
 
+function docker-rmi {
+    docker image ls --format '{{.Repository}}:{{.Tag}}' "$@" | xargs docker rmi
+}
+
 # Hook to allow activating micromamba envs automatically
 # See bin/tmux-sessionizer for the other half
 if [ ! -z "$ACTIVATE_MICROMAMBA_ENV" ]; then
