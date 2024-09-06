@@ -146,6 +146,18 @@ function docker-rmi {
     docker image ls --format '{{.Repository}}:{{.Tag}}' "$@" | xargs docker rmi
 }
 
+function ecr-delete-untagged {
+    local repo=$1
+    local region=${2-ap-southeast-2}
+    local images
+    images=$(aws ecr list-images --region "$region" --repository-name "$repo" --filter "tagStatus=UNTAGGED" --query 'imageIds[*]' --max-items 100 --output json)
+    if [ "$images" == "[]" ]; then
+        >&2 echo "No untagged images in ECR repo $repo"
+    else
+        aws ecr batch-delete-image --region "$region" --repository-name "$repo" --image-ids "$images"
+    fi
+}
+
 # Hook to allow activating micromamba envs automatically
 # See bin/tmux-sessionizer for the other half
 if [ ! -z "$ACTIVATE_MICROMAMBA_ENV" ]; then
