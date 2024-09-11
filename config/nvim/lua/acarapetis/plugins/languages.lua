@@ -31,6 +31,9 @@ return {
             }
         end,
     },
+    {
+        "mattn/emmet-vim",
+    },
     "Glench/Vim-Jinja2-Syntax",
     "tpope/vim-jdaddy",
     -- Trialing treesitter + LSP only for the following:
