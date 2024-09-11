@@ -41,6 +41,9 @@ alias reset='tput reset' # removes unnecessary delay
 alias fd=fdfind
 alias mm=micromamba
 alias v=nvim
+alias black='uvx black'
+alias ruff='uvx ruff'
+alias d=deactivate
 
 function jat {
     jq . | bat -l json
