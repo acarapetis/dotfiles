@@ -31,9 +31,15 @@ return {
             }
         end,
     },
-    {
-        "mattn/emmet-vim",
-    },
+    -- {
+    --     "mattn/emmet-vim",
+    --     config = function()
+    --         vim.cmd([[
+    --             let g:user_emmet_install_global = 0
+    --             autocmd FileType html,css EmmetInstall
+    --         ]])
+    --     end
+    -- },
     "Glench/Vim-Jinja2-Syntax",
     "tpope/vim-jdaddy",
     -- Trialing treesitter + LSP only for the following:
