@@ -8,6 +8,7 @@ return {
                     lua = { "stylua" },
                     python = { "ruff_fix", "ruff_format" },
                     rust = { "rustfmt", lsp_format = "fallback" },
+                    terraform = { "terraform_fmt" },
                     javascript = prettier,
                     javascriptreact = prettier,
                     typescript = prettier,
