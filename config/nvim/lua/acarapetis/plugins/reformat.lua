@@ -23,6 +23,9 @@ return {
                     ruff_fix = {
                         append_args = { "--select", "I,F" },
                     },
+                    ruff_format = {
+                        append_args = { "--config", "preview=true" },
+                    }
                 },
             })
         end,
