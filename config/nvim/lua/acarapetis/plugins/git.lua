@@ -11,10 +11,11 @@ return {
         "tpope/vim-fugitive",
         lazy = false,
         keys = {
-            { "<leader>g", fugitive_cmd_menu,  desc = "Git command" },
-            { "gb",        vim.cmd.GBrowse,    desc = "View on GitHub/Bitbucket" },
-            { "gs",        vim.cmd.G,          desc = "Git status" },
-            { "gB",        "<cmd>G blame<CR>", desc = "Git blame" },
+            { "<leader>g", fugitive_cmd_menu,              desc = "Git command" },
+            { "gb",        vim.cmd.GBrowse,                desc = "View on GitHub/Bitbucket" },
+            { "gs",        "<cmd>vertical G<CR>",          desc = "Git status" },
+            { "gl",        "<cmd>vertical G log -500<CR>", desc = "Git log -500" },
+            { "gB",        "<cmd>G blame<CR>",             desc = "Git blame" },
         },
         config = function()
             vim.api.nvim_create_user_command(
