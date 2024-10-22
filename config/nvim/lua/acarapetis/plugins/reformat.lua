@@ -19,14 +19,6 @@ return {
                     css = prettier,
                     markdown = prettier,
                 },
-                formatters = {
-                    ruff_fix = {
-                        append_args = { "--select", "I,F" },
-                    },
-                    ruff_format = {
-                        append_args = { "--config", "preview=true" },
-                    }
-                },
             })
         end,
         keys = {
