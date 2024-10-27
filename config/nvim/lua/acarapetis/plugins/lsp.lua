@@ -165,7 +165,6 @@ return {
                     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
                     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-j>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -181,7 +180,7 @@ return {
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "tsserver", "lua_ls", "pyright", "ruff" },
+                ensure_installed = { "tsserver", "lua_ls", "pyright", "ruff", "emmet_ls" },
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({
