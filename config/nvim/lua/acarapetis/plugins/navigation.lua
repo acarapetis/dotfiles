@@ -56,7 +56,7 @@ return {
                 },
                 lsp = {
                     symbols = {
-                        symbol_style = 2,
+                        symbol_style = 1,
                         symbol_fmt = function(s, opts) return s end,
                     }
                 },
