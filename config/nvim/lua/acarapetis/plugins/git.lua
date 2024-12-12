@@ -15,6 +15,7 @@ return {
             { "gb",        vim.cmd.GBrowse,                desc = "View on GitHub/Bitbucket" },
             { "gs",        "<cmd>vertical G<CR>",          desc = "Git status" },
             { "gl",        "<cmd>vertical G log --graph -500<CR>", desc = "Git log -500" },
+            { "gL",        "<cmd>vertical G whatchanged --graph -500<CR>", desc = "Git wc -500" },
             { "gB",        "<cmd>G blame<CR>",             desc = "Git blame" },
         },
         config = function()
