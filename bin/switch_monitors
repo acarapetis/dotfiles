@@ -1,0 +1,53 @@
+#!/bin/bash
+
+input_src="60"
+dp1="0x0f"
+dp2="0x13"
+hdmi="0x11"
+aw="AW3423DWF"
+dell="DELL G2724D"
+
+sw() {
+    monitor="$1"
+    src="$2"
+
+    current="0$(ddcutil getvcp -t -l "$monitor" $input_src | sed 's/.*\s//')"
+    if [ "$current" = "$src" ]; then
+        >&2 echo "$monitor already set to $src, nothing to do."
+    else
+        >&2 echo "setting $monitor to $src."
+        ddcutil setvcp -l "$monitor" $input_src $src &
+    fi
+}
+move_workspace() {
+    i3-msg '[workspace="'"$1"'"]' move workspace to output "$2"
+}
+move_all_workspaces() {
+    i3-msg -t get_workspaces | jq '.[]|.num' | while read workspace; do
+        move_workspace "$workspace" "$1"
+    done
+}
+
+if [ "$1" = "desktop" ]; then
+    sw "$aw" $dp1 &
+    sw "$dell" $dp1 &
+    move_workspace 1 DP-2
+elif [ "$1" = "laptop" ]; then
+    sw "$aw" $dp2 &
+    sw "$dell" $hdmi &
+elif [ "$1" = "desktop_auto" ]; then
+    sw "$aw" $dp1 &
+    move_workspace 1 DP-2
+elif [ "$1" = "laptop_auto" ]; then
+    sw "$aw" $dp2 &
+    move_all_workspaces DP-0
+elif [ "$1" = "both" ]; then
+    sw "$aw" $dp2 &
+    sw "$dell" $dp1 &
+    move_all_workspaces DP-0
+else
+    >&2 echo "Usage: switch_monitors [desktop|laptop|both]"
+fi
+
+
+wait < <(jobs -p)
