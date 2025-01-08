@@ -1,4 +1,3 @@
--- LSP + Completion
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
     callback = function(event)
@@ -31,38 +30,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- Sort items starting with underscores last
-local underscore_comparator = function(entry1, entry2)
-    local _, entry1_under = entry1.completion_item.label:find "^_+"
-    local _, entry2_under = entry2.completion_item.label:find "^_+"
-    entry1_under = entry1_under or 0
-    entry2_under = entry2_under or 0
-    if entry1_under > entry2_under then
-        return false
-    elseif entry1_under < entry2_under then
-        return true
-    end
-end
-
--- Sort items starting with model_ last (pydantic meta fields/methods)
-local pydantic_comparator = function(entry1, entry2)
-    local _, entry1_model = entry1.completion_item.label:find "^model_"
-    local _, entry2_model = entry2.completion_item.label:find "^model_"
-    entry1_model = entry1_model or 0
-    entry2_model = entry2_model or 0
-    if entry1_model > entry2_model then
-        return false
-    elseif entry1_model < entry2_model then
-        return true
-    end
-end
-
-local kind_priority_list = {
-    'Field', 'Variable', 'Method', 'Function', 'Constructor', 'Class', 'Interface',
-    'Module', 'Property', 'Unit', 'Value', 'Enum', 'Keyword', 'Color', 'File', 'Reference',
-    'Folder', 'EnumMember', 'Constant', 'Struct', 'Event', 'Operator', 'TypeParameter', 'Snippet', 'Text',
-}
-
 return {
     "neovim/nvim-lspconfig",
     {
@@ -70,113 +37,10 @@ return {
         ft = "lua",
     },
     {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "nvim-snippets",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "onsails/lspkind.nvim",
-        },
-        config = function()
-            local cmp = require("cmp")
-            local lspkind = require("lspkind")
-            local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local has_words_before = function()
-                unpack = unpack or table.unpack
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0
-                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
-
-            -- Comparator to sort by kind with custom order
-            local kind_enum = require("cmp.types.lsp").CompletionItemKind
-            local kind_priority = {}
-            for i, kind_name in ipairs(kind_priority_list) do
-                kind_priority[kind_enum[kind_name]] = i
-            end
-            local kind_comparator = function(entry1, entry2)
-                -- Sort parameter hints to the top
-                local eq1 = entry1:get_word():sub(-1, -1) == "="
-                local eq2 = entry2:get_word():sub(-1, -1) == "="
-                if eq1 and not eq2 then
-                    return true
-                elseif eq2 and not eq1 then
-                    return false
-                end
-
-                local kind1 = kind_priority[entry1:get_kind()]
-                local kind2 = kind_priority[entry2:get_kind()]
-                if kind1 ~= kind2 then
-                    local diff = kind1 - kind2
-                    if diff < 0 then
-                        return true
-                    elseif diff > 0 then
-                        return false
-                    end
-                end
-            end
-
-            cmp.setup({
-                formatting = {
-                    format = lspkind.cmp_format {
-                        mode = "symbol_text",
-                        with_text = true,
-                        menu = {
-                            buffer = "[text]",
-                            nvim_lsp = "[LSP]",
-                            path = "[path]",
-                        },
-                    },
-
-                },
-                matching = {
-                    disallow_fuzzy_matching = true,
-                },
-                sources = {
-                    { name = "snippets" },
-                    { name = "path" },
-                    { name = "nvim_lsp" },
-                    { name = "lazydev" },
-                    { name = "mkdnflow" },
-                    {
-                        name = "buffer",
-                        keyword_length = 5,
-                        option = {
-                            get_bufnrs = function() return vim.api.nvim_list_bufs() end,
-                        },
-                    },
-                },
-                sorting = {
-                    comparators = {
-                        -- If I've started typing, prioritize best match:
-                        cmp.config.compare.exact,
-                        cmp.config.compare.score,
-
-                        -- Otherwise, try to put e.g. struct members first:
-                        underscore_comparator,
-                        kind_comparator,
-                        pydantic_comparator,
-
-                        -- Finally, alphabetical order
-                        cmp.config.compare.sort_text,
-                    },
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-                    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-                }),
-            })
-        end,
-    },
-    {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "mason.nvim", "hrsh7th/cmp-nvim-lsp" },
+        dependencies = { "mason.nvim", "saghen/blink.cmp" },
         config = function()
-            local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
