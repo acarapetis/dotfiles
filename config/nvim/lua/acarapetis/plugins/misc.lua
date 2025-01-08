@@ -62,30 +62,5 @@ return {
             vim.o.termguicolors = true
             require("colorizer").setup({}, { names = false })
         end,
-    },
-    {
-        "folke/noice.nvim",
-        dependencies = { "MunifTanjim/nui.nvim" },
-        config = function()
-            require("noice").setup({
-                cmdline = {
-                    view = "cmdline",
-                    format = { cmdline = { pattern = "^:", conceal = false, icon = "", lang = "vim" } },
-                },
-                lsp = {
-                    override = {
-                        -- Human-readable markdown rendering in pyright popups :)
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
-                    },
-                },
-                messages = { enabled = false },
-                presets = {
-                    bottom_search = true,
-                    long_message_to_split = true,
-                },
-            })
-        end,
-    },
+    }
 }
