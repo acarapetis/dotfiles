@@ -14,6 +14,9 @@ return {
             nerd_font_variant = "mono",
         },
         completion = {
+            trigger = {
+                show_on_keyword = false,
+            },
             documentation = {
                 auto_show = true,
             },
