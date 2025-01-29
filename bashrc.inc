@@ -42,6 +42,7 @@ alias fd=fdfind
 alias mm=micromamba
 alias v=nvim
 alias d=deactivate
+alias comp='docker compose'
 
 function jat {
     jq . | bat -l json
