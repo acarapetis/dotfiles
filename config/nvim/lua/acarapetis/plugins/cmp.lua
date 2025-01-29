@@ -20,6 +20,11 @@ return {
             documentation = {
                 auto_show = true,
             },
+            accept = {
+                auto_brackets = {
+                    enabled = false,
+                },
+            },
         },
         signature = {
             enabled = true,
