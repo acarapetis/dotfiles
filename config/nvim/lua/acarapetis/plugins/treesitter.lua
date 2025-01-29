@@ -64,7 +64,7 @@ return {
                         selection_modes = {
                             ['@parameter.outer'] = 'v',
                             ['@function.outer'] = 'V',
-                            ['@class.outer'] = 'V', -- blockwise
+                            ['@class.outer'] = 'V',
                         },
                         include_surrounding_whitespace = true,
                     },
