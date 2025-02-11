@@ -1,7 +1,8 @@
 local map = vim.keymap.set
 map("x", "<leader>j", ":!json2tf<CR>$=%")
-map("n", "<leader>t", ":!pytest -x<CR>", { desc = "pytest -x" })
-map("n", "<leader>T", ":!pytest %<CR>", { desc = "pytest this file" })
+map("n", "<leader>tx", ":!pytest -x<CR>", { desc = "pytest -x" })
+map("n", "<leader>t.", ":!pytest %<CR>", { desc = "pytest this file" })
+map("n", "<leader>T", ":e ~/notes/TODO.md<CR>", { desc = "TODOs" })
 
 map("x", "<leader>p", '"_dP', { desc = "Paste over selection" })
 map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without yank" })
