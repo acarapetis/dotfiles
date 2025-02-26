@@ -43,6 +43,8 @@ alias mm=micromamba
 alias v=nvim
 alias d=deactivate
 alias comp='docker compose'
+alias rgg='rg --no-ignore'
+
 
 function jat {
     jq . | bat -l json
