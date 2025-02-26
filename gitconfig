@@ -7,7 +7,7 @@
 	fsmonitor = true
 
 [diff]
-    algorithm = patience
+    algorithm = histogram
     renameLimit = 10000
 
 [fetch]
@@ -27,7 +27,7 @@
     recurse = true
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [rebase]
     autoStash = true
