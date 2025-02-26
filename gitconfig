@@ -2,6 +2,10 @@
 # Include this file in .gitconfig:
 # [include]
 #     path = /path/to/gitconfig
+[core]
+	untrackedCache = true
+	fsmonitor = true
+
 [diff]
     algorithm = patience
     renameLimit = 10000
