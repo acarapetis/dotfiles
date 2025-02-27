@@ -44,7 +44,7 @@ return {
             { "<space>r",           fzf("lsp_references"),             desc = "references to word under cursor" },
             { "<space>c",           fzf("commands"),                   desc = "nvim commands" },
             { "<space><F1>",        fzf("helptags"),                   desc = "nvim help" },
-            { "<space><Backspace>", fzf("resume"),                     desc = "resume last fzf" },
+            { "<space><space>",     fzf("resume"),                     desc = "resume last fzf" },
             { "<leader><leader>",   fzf("buffers"),                    desc = "buffers" },
             { "<leader>b",          fzf("buffers"),                    desc = "buffers" },
         },
