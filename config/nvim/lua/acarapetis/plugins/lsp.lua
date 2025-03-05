@@ -16,7 +16,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.bo[event.buf].formatexpr = nil
 
         remap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
-        remap("n", "gt", function() vim.lsp.buf.declaration() end, { desc = "Go to definition" })
+        remap("n", "gt", function() vim.lsp.buf.declaration() end, { desc = "Go to declaration" })
+        remap("n", "gC", function() vim.lsp.buf.implementation() end, { desc = "Go to implementation" })
         remap("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
         remap("n", "<leader>vf", function() vim.lsp.buf.workspace_symbol() end, { desc = "Find symbol" })
         remap("n", "<leader>vd", function() vim.diagnostic.open_float() end, { desc = "Show floating diagnostics" })

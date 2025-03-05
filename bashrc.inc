@@ -42,6 +42,9 @@ alias fd=fdfind
 alias mm=micromamba
 alias v=nvim
 alias d=deactivate
+alias comp='docker compose'
+alias rgg='rg --no-ignore'
+
 
 function jat {
     jq . | bat -l json
@@ -158,12 +161,6 @@ function ecr-delete-untagged {
         aws ecr batch-delete-image --region "$region" --repository-name "$repo" --image-ids "$images"
     fi
 }
-
-# Hook to allow activating micromamba envs automatically
-# See bin/tmux-sessionizer for the other half
-if [ ! -z "$ACTIVATE_MICROMAMBA_ENV" ]; then
-    micromamba activate "$ACTIVATE_MICROMAMBA_ENV"
-fi
 
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
