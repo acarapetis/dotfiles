@@ -62,4 +62,4 @@
 
     co = "checkout"
     sw = "switch"
-    wc = "whatchanged"
+    wc = "log --compact-summary"
