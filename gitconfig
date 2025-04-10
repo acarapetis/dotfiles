@@ -45,8 +45,8 @@
     #ignoreRevsFile = .git-blame-ignore-revs
 
 [alias]
-    graph2 = "log --oneline --graph"
-    graph = "!f() { git log --graph --pretty='tformat:%C(always,yellow)%h%C(always,reset) %C(always,green)%ar%C(always,reset){%C(always,bold blue)%an%C(always,reset){%C(always,bold red)%d%C(always,reset) %s' \"$@\" | column -t -s '{' | less -XRS --quit-if-one-screen; }; f"
+    graph = "log --oneline --graph"
+    graph2 = "!f() { git log --graph --pretty='tformat:%C(always,yellow)%h%C(always,reset) %C(always,green)%ar%C(always,reset){%C(always,bold blue)%an%C(always,reset){%C(always,bold red)%d%C(always,reset) %s' \"$@\" | column -t -s '{' | less -XRS --quit-if-one-screen; }; f"
     search = "!git rev-list --all | xargs git grep"
 
     pullr = "pull --rebase"
