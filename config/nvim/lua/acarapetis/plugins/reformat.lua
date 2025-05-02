@@ -10,6 +10,8 @@ return {
                     terraform = { "terraform_fmt" },
                     lua = { "stylua" },
                     rust = { "rustfmt", lsp_format = "fallback" },
+                    c = { "clang_format" },
+                    cpp = { "clang_format" },
                     javascript = prettier,
                     javascriptreact = prettier,
                     typescript = prettier,
