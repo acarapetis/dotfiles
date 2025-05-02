@@ -47,7 +47,7 @@ alias rgg='rg --no-ignore'
 
 
 function jat {
-    jq . | bat -l json
+    jq . "$@" | bat -l json
 }
 
 function lsd {
