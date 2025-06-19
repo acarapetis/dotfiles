@@ -44,6 +44,7 @@ alias v=nvim
 alias d=deactivate
 alias comp='docker compose'
 alias rgg='rg --no-ignore'
+alias xo=xdg-open
 
 
 function jat {
