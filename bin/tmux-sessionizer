@@ -11,7 +11,7 @@ else
         # Remove duplicates without changing order:
         dirs=$(awk '!a[$0]++' <<< "$dirs")
     fi
-    selected=$(fzf <<< "$dirs")
+    selected=$(fzf --scheme=history <<< "$dirs")
 fi
 
 if [[ -z $selected ]]; then
