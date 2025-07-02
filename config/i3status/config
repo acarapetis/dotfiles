@@ -26,15 +26,20 @@ battery all {
 }
 
 disk "/mnt/windows" {
-        format = "/mnt/windows: %avail/%total free"
+        prefix_type = "decimal"
+        format = "windows: %avail/%total"
 }
 
 disk "/mnt/data" {
-        format = "/mnt/data: %avail/%total free"
+        prefix_type = "decimal"
+        format = "data: %avail/%total"
 }
 
 disk "/" {
+        prefix_type = "decimal"
         format = "/: %avail/%total free"
+        low_threshold = 5
+        threshold_type = "gbytes_avail"
 }
 
 load {
@@ -42,7 +47,7 @@ load {
 }
 
 memory {
-        format = "memavail: %available/%total"
+        format = "RAM: %available/%total"
         threshold_degraded = "2G"
         format_degraded = "!!!!!! MEMAVAIL: %available/%total !!!!!!"
 }
@@ -52,7 +57,7 @@ tztime local {
 }
 
 volume master {
-        format = "♪: %volume"
+        format = "♪ %volume"
         format_muted = "♪: muted (%volume)"
         device = "pulse"
         mixer = "Master"
