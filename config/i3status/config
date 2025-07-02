@@ -13,7 +13,8 @@ general {
         separator = "  |  "
 }
 
-order += "battery all"
+order += "disk /mnt/windows"
+order += "disk /mnt/data"
 order += "disk /"
 order += "load"
 order += "memory"
@@ -24,8 +25,16 @@ battery all {
         format = "%status %percentage (%remaining)"
 }
 
+disk "/mnt/windows" {
+        format = "/mnt/windows: %avail/%total free"
+}
+
+disk "/mnt/data" {
+        format = "/mnt/data: %avail/%total free"
+}
+
 disk "/" {
-        format = "/: %avail free"
+        format = "/: %avail/%total free"
 }
 
 load {
