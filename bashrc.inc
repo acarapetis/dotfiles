@@ -46,6 +46,13 @@ alias comp='docker compose'
 alias rgg='rg --no-ignore'
 alias xo=xdg-open
 
+brightness() {
+    sudo `which set_brightness.sh` "$@"
+}
+contrast() {
+    sudo `which set_contrast.sh` "$@"
+}
+
 
 function jat {
     jq . "$@" | bat -l json
