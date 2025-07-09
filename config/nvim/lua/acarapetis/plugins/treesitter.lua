@@ -66,7 +66,7 @@ return {
                             ['@function.outer'] = 'V',
                             ['@class.outer'] = 'V',
                         },
-                        include_surrounding_whitespace = true,
+                        include_surrounding_whitespace = false,
                     },
                     swap = {
                         enable = true,
