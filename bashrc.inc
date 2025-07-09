@@ -45,6 +45,7 @@ alias d=deactivate
 alias comp='docker compose'
 alias rgg='rg --no-ignore'
 alias xo=xdg-open
+alias ur='uv run'
 
 
 function jat {
