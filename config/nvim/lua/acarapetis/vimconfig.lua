@@ -36,11 +36,28 @@ vim.cmd([[
     filetype plugin indent on
     au BufNewFile,BufRead *.hcl set ft=terraform
     autocmd FileType rst set ts=3 | set sw=3
-    sign define DiagnosticSignError text=  texthl=TextError linehl= numhl= 
-    sign define DiagnosticSignWarn text=  texthl=TextWarn linehl= numhl= 
-    sign define DiagnosticSignInfo text=  texthl=TextInfo linehl= numhl= 
-    sign define DiagnosticSignHint text=  texthl=TextHint linehl= numhl=
 ]])
+
+vim.fn.sign_define("DiagnosticSignError", { text="", texthl="TextError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text="", texthl="TextWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text="", texthl="TextInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text="", texthl="TextHint" })
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+        texthl = {
+            [vim.diagnostic.severity.ERROR] = "TextError",
+            [vim.diagnostic.severity.WARN] = "TextWarn",
+            [vim.diagnostic.severity.INFO] = "TextInfo",
+            [vim.diagnostic.severity.HINT] = "TextHint",
+        }
+    }
+})
 
 vim.opt.bg = "dark"
 vim.cmd.colorscheme("gruvbox")
