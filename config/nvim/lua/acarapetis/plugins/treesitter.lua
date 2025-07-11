@@ -31,10 +31,10 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = { "tmux", "dockerfile" },
+                    disable = { "tmux", "dockerfile", "json", "xml", "csv" },
                 },
                 indent = {
-                    enable = true,
+                    disable = { "json", "xml", "csv" },    enable = true,
                 },
                 incremental_selection = {
                     enable = true,
@@ -106,21 +106,6 @@ return {
                 set nofoldenable " Disable folding at startup.
                 set foldlevelstart=99 " When folding is enabled, start with all folds open.
             ]])
-        end,
-    },
-    {
-        "hiphish/rainbow-delimiters.nvim",
-        config = function()
-            local rainbow_delimiters = require("rainbow-delimiters")
-            require("rainbow-delimiters.setup").setup({
-                strategy = {
-                    [""] = rainbow_delimiters.strategy["local"],
-                },
-                query = {
-                    [""] = "rainbow-delimiters",
-                    --lua = "rainbow-blocks",
-                },
-            })
         end,
     },
     {

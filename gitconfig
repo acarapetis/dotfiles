@@ -56,7 +56,7 @@
     gethash = "!git rev-parse HEAD | tr -d '\n'"
     pullother = "!f() { git fetch origin $1:$1; }; f"
 
-    branch-cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -p -n 1 -r git branch -d"
+    branch-cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop\\|main' | xargs -n 1 -r git branch -d"
     ltr = "!f() { cd -- \"${GIT_PREFIX:-.}\"; git ls-files -z \"$@\" | xargs -0 -I{} -- git log -1 --format=\"%ai {}\" {} | sort; }; f"
     b = "branch --format='%(color:#cccc00)%(objectname:short) %(color:red)%(committerdate:short) %(color:bold white)%(refname:short)'"
 
