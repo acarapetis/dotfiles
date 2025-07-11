@@ -31,10 +31,10 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = { "tmux", "dockerfile" },
+                    disable = { "tmux", "dockerfile", "json", "xml", "csv" },
                 },
                 indent = {
-                    enable = true,
+                    disable = { "json", "xml", "csv" },    enable = true,
                 },
                 incremental_selection = {
                     enable = true,
