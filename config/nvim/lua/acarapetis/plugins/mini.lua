@@ -7,6 +7,11 @@ return {
             require("mini.notify").setup()
             require("mini.icons").setup()
             require("mini.icons").mock_nvim_web_devicons()
+            require("mini.snippets").setup({
+                snippets = {
+                    require("mini.snippets").gen_loader.from_lang()
+                }
+            })
             require("mini.surround").setup({
                 mappings = {
                     add = "(",
