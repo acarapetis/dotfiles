@@ -7,7 +7,17 @@ return {
     version = "*",
     opts = {
         keymap = {
-            preset = "default" -- <C-n>, <C-p>, <C-y>
+            preset = "default", -- <C-space>, <C-n>, <C-p>, <C-y>
+            ["<C-n>"] = {
+                -- Use C-n for plain keyword completion
+                "select_next",
+                function(cmp) cmp.show({ providers = { "buffer" } }) end,
+            },
+            ["<C-p>"] = {
+                -- Use C-p as a C-space synonym
+                "select_prev",
+                "show",
+            },
         },
         appearance = {
             use_nvim_cmp_as_default = true,
