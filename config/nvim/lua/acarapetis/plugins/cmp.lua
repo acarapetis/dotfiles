@@ -13,6 +13,11 @@ return {
                 "select_next",
                 function(cmp) cmp.show({ providers = { "buffer" } }) end,
             },
+            ["<C-p>"] = {
+                -- Use C-p as a C-space synonym
+                "select_prev",
+                "show",
+            },
         },
         appearance = {
             use_nvim_cmp_as_default = true,
