@@ -36,6 +36,7 @@ vim.cmd([[
     filetype plugin indent on
     au BufNewFile,BufRead *.hcl set ft=terraform
     autocmd FileType rst set ts=3 | set sw=3
+    autocmd QuickFixCmdPost [^l]* cwindow
 ]])
 
 vim.fn.sign_define("DiagnosticSignError", { text="", texthl="TextError" })
