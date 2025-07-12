@@ -6,7 +6,7 @@
 # Lock screen displaying this image.
 # i3lock -i /tmp/screen_locked.png
 
-i3lock -c 000000
+i3lock -c 330000
 
 # Turn the screen off after a delay.
 sleep 15; pgrep i3lock && xset dpms force off
