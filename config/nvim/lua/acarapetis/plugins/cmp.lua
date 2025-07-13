@@ -1,7 +1,19 @@
 -- Completion: blink.cmp
 return {
     "saghen/blink.cmp",
-    dependencies = { "echasnovski/mini.nvim" },
+    dependencies = {
+        "echasnovski/mini.nvim",
+        {
+            "folke/lazydev.nvim",
+            ft = "lua",
+            opts = {
+                library = {
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                },
+            },
+        },
+    },
     version = "*",
     opts = {
         keymap = {
@@ -49,7 +61,15 @@ return {
         },
         snippets = { preset = "mini_snippets" },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            providers = {
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    -- make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
+                },
+            },
         },
     },
     opts_extend = { "sources.default" },
