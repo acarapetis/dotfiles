@@ -32,10 +32,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
     "neovim/nvim-lspconfig",
     {
-        "folke/lazydev.nvim",
-        ft = "lua",
-    },
-    {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim", "saghen/blink.cmp" },
         config = function()
