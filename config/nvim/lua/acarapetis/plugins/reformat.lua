@@ -28,7 +28,7 @@ return {
                 pattern = "*",
                 callback = function(args)
                     local ft = vim.bo[args.buf].filetype
-                    if ft == "python" or ft == "terraform" then
+                    if ft == "python" or ft == "terraform" or ft == "sh" then
                         require("conform").format({ bufnr = args.buf })
                     end
                 end,
