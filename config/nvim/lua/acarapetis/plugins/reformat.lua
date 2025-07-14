@@ -12,6 +12,7 @@ return {
                     rust = { "rustfmt", lsp_format = "fallback" },
                     c = { "clang_format" },
                     cpp = { "clang_format" },
+                    sh = { "shfmt" },
                     javascript = prettier,
                     javascriptreact = prettier,
                     typescript = prettier,

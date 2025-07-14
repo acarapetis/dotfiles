@@ -39,7 +39,7 @@ return {
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "lua_ls", "pyright", "ruff", "emmet_ls" },
+                ensure_installed = { "ts_ls", "lua_ls", "pyright", "ruff", "emmet_ls", "bashls" },
                 handlers = {
                     function(server_name)
                         require("lspconfig")[server_name].setup({

@@ -2,7 +2,7 @@ return {
     "williamboman/mason.nvim", dependencies = {"mini.nvim"},
     lazy = false,
     config = function()
-        local packages = { "ruff", "stylua", "prettier", "clang-format" }
+        local packages = { "ruff", "stylua", "prettier", "clang-format", "shfmt", "shellcheck" }
 
         require("mason").setup()
         local mr = require("mason-registry")
