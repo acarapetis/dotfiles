@@ -10,6 +10,12 @@ return {
                 win_options = {
                     winbar = "%{v:lua.require('oil').get_current_dir()}",
                 },
+                lsp_file_methods = {
+                    enabled = true,
+                    timeout_ms = 10000,
+                    autosave_changes = true,
+                },
+                skip_confirm_for_simple_edits = true,
             })
         end,
         lazy = false,
