@@ -5,11 +5,20 @@ end
 -- Small fzf picker near the cursor
 local sfzf = function(command)
     return function()
+        ---@type integer
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        local col = vim.fn.screencol()
+        -- fzf-lua will interpret 1 as 100%, so send 2 instead
+        if col <= 1 then col = 2 end
+
+        local row = vim.fn.screenrow()
+        if row <= 1 then row = 2 end
+
         require("fzf-lua")[command]({
             winopts = {
                 fullscreen = false,
-                col = vim.fn.screencol() - 20,
-                row = vim.fn.screenrow(),
+                col = col,
+                row = row,
                 width = 100,
                 height = 0.5,
             },
