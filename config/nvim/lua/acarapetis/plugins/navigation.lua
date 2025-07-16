@@ -1,5 +1,20 @@
-local fzf = function(command)
-    return function() require("fzf-lua")[command]() end
+local fzf = function(command, opts)
+    return function() require("fzf-lua")[command](opts) end
+end
+
+-- Small fzf picker near the cursor
+local sfzf = function(command)
+    return function()
+        require("fzf-lua")[command]({
+            winopts = {
+                fullscreen = false,
+                col = vim.fn.screencol() - 20,
+                row = vim.fn.screenrow(),
+                width = 100,
+                height = 0.5,
+            },
+        })
+    end
 end
 
 return {
@@ -45,7 +60,7 @@ return {
             { "<space>b",           fzf("buffers"),                    desc = "buffers" },
             { "<space>h",           fzf("oldfiles"),                   desc = "history" },
             { "<space>g",           fzf("git_status"),                 desc = "git status" },
-            { "<space>a",           fzf("lsp_code_actions"),           desc = "code actions" },
+            { "<space>a",           sfzf("lsp_code_actions"),          desc = "code actions" },
             { "<space>s",           fzf("lsp_document_symbols"),       desc = "symbols in document" },
             { "<space>S",           fzf("lsp_live_workspace_symbols"), desc = "symbols in workspace" },
             { "<space>r",           fzf("lsp_references"),             desc = "references to word under cursor" },
