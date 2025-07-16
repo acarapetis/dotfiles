@@ -27,15 +27,16 @@ return {
                     vim.cmd.vsplit()
                     vim.cmd.Oil()
                 end,
-                desc = "Open parent directory"
+                desc = "Open parent directory",
             },
-        }
+        },
     },
     {
         "ibhagwan/fzf-lua",
         dependencies = {
             "mini.nvim",
         },
+        -- stylua: ignore
         keys = {
             { "<space>p",           fzf("files"),                      desc = "by filename" },
             { "<space>f",           fzf("live_grep_native"),           desc = "grep" },
@@ -64,14 +65,14 @@ return {
                     symbols = {
                         symbol_style = 1,
                         symbol_fmt = function(s, opts) return s end,
-                    }
+                    },
                 },
                 winopts = {
                     fullscreen = true,
                     preview = {
                         flip_columns = 150,
                     },
-                }
+                },
             })
             require("fzf-lua").register_ui_select()
         end,
@@ -84,14 +85,13 @@ return {
     },
     {
         "ggandor/leap.nvim",
-        config = function()
-            require("leap").setup()
-        end,
+        config = function() require("leap").setup() end,
+        -- stylua: ignore
         keys = {
-            { "s", "<Plug>(leap)", mode="n", desc="leap" },
-            { "S", "<Plug>(leap-from-window)", mode="n", desc="leap from window " },
-            { "s", "<Plug>(leap-forward)", mode={"x","o"}, desc="leap forward" },
-            { "S", "<Plug>(leap-backward)", mode={"x","o"}, desc="leap backward" },
-        }
-    }
+            { "s", "<Plug>(leap)",             mode = "n",          desc = "leap" },
+            { "S", "<Plug>(leap-from-window)", mode = "n",          desc = "leap from window " },
+            { "s", "<Plug>(leap-forward)",     mode = { "x", "o" }, desc = "leap forward" },
+            { "S", "<Plug>(leap-backward)",    mode = { "x", "o" }, desc = "leap backward" },
+        },
+    },
 }
