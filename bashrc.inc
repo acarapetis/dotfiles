@@ -47,6 +47,9 @@ alias rgg='rg --no-ignore'
 alias xo=xdg-open
 alias ur='uv run'
 
+function scd {
+    cd "$(tmux display-message -p '#{session_path}')"
+}
 
 function jat {
     jq . "$@" | bat -l json
@@ -131,14 +134,12 @@ if [ -f /usr/share/bash-completion/completions/git ]; then
     ___git_complete g __git_main
 fi
 
-
 function privateip {
     ip a show dev "${1:-eth0}" | perl -ne '/^\s*inet ([\d\.]+)\// and print $1'
 }
 function publicip {
     curl https://checkip.amazonaws.com
 }
-
 
 function tmux {
     if [ "$1" == "" ]; then
