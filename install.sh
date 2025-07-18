@@ -2,10 +2,10 @@
 
 SCRIPT_ARG="$1"
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage"
-RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz"
+RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz"
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
-FZF_LINK="https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz"
+FZF_LINK="https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz"
 STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.20.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
 cd "$(dirname "$0")"
@@ -113,7 +113,7 @@ if match=$(grep -F "$bashrcinc" ~/.bashrc) && [ "$match" = "$bashrcinc" ]; then
     >&2 echo "bashrc.inc already included in ~/.bashrc."
 else
     >&2 echo "Including bashrc.inc in ~/.bashrc."
-    echo "$bashrcinc" >> ~/.bashrc
+    echo "$bashrcinc" >>~/.bashrc
 fi
 
 # Git config + aliases:
