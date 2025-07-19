@@ -31,7 +31,7 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = { "tmux", "dockerfile", "json", "xml", "csv" },
+                    disable = { "tmux", "dockerfile", "json", "xml", "csv", "jinja" },
                 },
                 indent = {
                     disable = { "json", "xml", "csv" },    enable = true,
