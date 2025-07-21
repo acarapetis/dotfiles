@@ -35,7 +35,8 @@ return {
                     disable = { "tmux", "dockerfile", "json", "xml", "csv", "jinja" },
                 },
                 indent = {
-                    disable = { "json", "xml", "csv" },    enable = true,
+                    enable = true,
+                    disable = { "json", "xml", "csv", "python" },
                 },
                 incremental_selection = {
                     enable = true,
