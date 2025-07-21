@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -62,9 +63,9 @@ return {
                             ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
                         },
                         selection_modes = {
-                            ['@parameter.outer'] = 'v',
-                            ['@function.outer'] = 'V',
-                            ['@class.outer'] = 'V',
+                            ["@parameter.outer"] = "v",
+                            ["@function.outer"] = "V",
+                            ["@class.outer"] = "V",
                         },
                         include_surrounding_whitespace = false,
                     },
@@ -118,6 +119,7 @@ return {
                 trim_scope = "inner",
             })
         end,
+        -- stylua: ignore
         keys = {
             { "<Leader>c", vim.cmd.TSContextToggle, desc = "Toggle context" },
             { "[C", function() require("treesitter-context").go_to_context(vim.v.count1) end, desc = "Jump to context" },
@@ -130,10 +132,8 @@ return {
         keys = {
             {
                 "<Leader>vD",
-                function()
-                    require("neogen").generate()
-                end,
-                desc = "Generate docstring"
+                function() require("neogen").generate() end,
+                desc = "Generate docstring",
             },
         },
         config = function()
@@ -142,11 +142,11 @@ return {
                 languages = {
                     python = {
                         template = {
-                            annotation_convention = "numpydoc"
-                        }
-                    }
-                }
+                            annotation_convention = "numpydoc",
+                        },
+                    },
+                },
             })
-        end
+        end,
     },
 }
