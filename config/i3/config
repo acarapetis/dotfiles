@@ -11,7 +11,8 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Iosevka Custom Semibold 11
+font pango:Iosevka Compact Semibold 11
+for_window [all] title_window_icon on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,7 +27,13 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lockscreen
+exec --no-startup-id xset s 1800
+exec --no-startup-id xset dpms 1800 1800 1800
+bindsym Mod4+Escape exec --no-startup-id loginctl lock-session
+bindsym Mod4+shift+ctrl+s exec --no-startup-id systemctl suspend, mode "default"
+bindsym Mod4+shift+d exec --no-startup-id switch_monitors desktop
+bindsym Mod4+shift+e exec --no-startup-id switch_monitors both
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -34,17 +41,17 @@ exec --no-startup-id dex --autostart --environment i3
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Hide edge borders when only one window is visible
 hide_edge_borders smart
 
 # Hide all titlebars
-default_border pixel 1
-default_floating_border normal
+# default_border pixel 1
+# default_floating_border normal
 
 # Hide titlebars on google-chrome and terminal
 # for_window [class="Google-chrome"] border pixel 1
@@ -66,6 +73,7 @@ assign [class="Google-chrome"] 2: Web
 
 focus_follows_mouse no
 
+
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -73,9 +81,8 @@ set $down j
 set $left h
 set $right l
 
-# Use alt as modifier key (I'm typically using this via VNC from windows so
-# many super+ shortcuts are not viable)
-set $mod Mod1
+# Use win as modifier key
+set $mod Mod4
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -94,8 +101,8 @@ bindsym $mod+Shift+f exec xdg-open ~
 
 # kill focused window
 bindsym $mod+F4 kill
-bindsym $mod+Shift+q kill
 bindsym Mod4+q kill
+bindsym Mod1+F4 kill
 
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
@@ -209,7 +216,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,3 +254,6 @@ bar {
         separator_symbol "     "
 }
 bindsym $mod+m bar mode toggle
+
+# set up monitors
+exec --no-startup-id xrandr --output DP-2 --primary -r 164.9 --mode 3440x1440 --output DP-0 --mode 2560x1440 --rotate left -r 165.08 --right-of DP-2
