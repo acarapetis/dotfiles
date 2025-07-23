@@ -19,7 +19,13 @@ for x in bin/*; do
 done
 
 for x in config/*; do
-    ln -fs "$DOTFILES/$x" ~/.config/
+    if [ "$x" != config/jj ]; then
+        ln -fs "$DOTFILES/$x" ~/.config/
+    else
+        # preserve machine-specific ~/.config/jj/config.toml
+        mkdir -p ~/.config/jj/conf.d
+        ln -fs "$DOTFILES/config/jj/conf.d/"* ~/.config/jj/conf.d/
+    fi
 done
 
 pushd home_dotfiles

@@ -1,0 +1,13 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[template-aliases]
+"format_timestamp(timestamp)" = "timestamp.ago()"
+
+[ui]
+default-command = "st"
+
+[aliases]
+l = ["log"]
+bl = ["bookmark", "list"]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+bm = ["bookmark"]
