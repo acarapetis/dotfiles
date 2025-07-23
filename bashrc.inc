@@ -175,6 +175,7 @@ function ecr-delete-untagged {
 
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
+source <(COMPLETE=bash jj)
 
 function a {
     for d in .venv venv env .env; do
