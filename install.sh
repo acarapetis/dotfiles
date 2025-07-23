@@ -74,7 +74,7 @@ fi
 
 if ! which starship; then
     if confirm "starship not found in path. Install binary from github?"; then
-        curl -fL "$STARSHIP_LINK" | tar -C ~/.local/bin -xzf - ./starship
+        curl -fL "$STARSHIP_LINK" | tar -C ~/.local/bin -xzf - starship
         echo "starship installed to ~/.local/bin/starship"
     fi
 fi
@@ -94,7 +94,7 @@ fi
 
 if ! which fzf; then
     if confirm "fzf not found in path. Install binary from github?"; then
-        curl -fL "$FZF_LINK" | tar -C ~/.local/bin -xzf - ./fzf
+        curl -fL "$FZF_LINK" | tar -C ~/.local/bin -xzf - fzf
         echo "fzf installed to ~/.local/bin/fzf"
     fi
 fi
