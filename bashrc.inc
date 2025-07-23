@@ -37,6 +37,7 @@ alias ltr='ls -Alhrt --file-type'
 alias s3=s5cmd
 alias gl='git log'
 alias gg='git graph'
+alias jl='jj log'
 alias reset='tput reset' # removes unnecessary delay
 alias fd=fdfind
 alias mm=micromamba
