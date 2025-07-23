@@ -66,12 +66,10 @@ truncation_length = 3
 fish_style_pwd_dir_length = 1
 
 [git_branch]
-disabled = true
 symbol = ""
 format = '[»](fg:separator)[[ $symbol $branch ](fg:foreground)]($style)'
 
 [git_status]
-disabled = true
 format = '[($all_status$ahead_behind )]($style)'
 ahead = "⇡"
 behind = "⇣"
@@ -79,20 +77,17 @@ diverged = "⇕"
 stashed = " "
 
 [git_metrics]
-disabled = true
 added_style = "green"
 deleted_style = "red"
 format ="([+$added ]($added_style))([-$deleted ]($deleted_style))"
 
 [git_commit]
-disabled = true
 tag_symbol = "  "
 only_detached = false
 tag_disabled = false
 format="[\\($hash$tag\\) ]($style)"
 
 [git_state]
-disabled = true
 format = '[\($state($progress_current/$progress_total)\) ]($style)'
 
 [custom.jj_change]
@@ -100,9 +95,9 @@ description = "The current jj change"
 detect_folders = [".jj"]
 symbol = "🥋"
 format = "[»](fg:separator)[ $symbol $output]($style)"
-style = "bold fg:foreground"
+style = "bold fg:purple"
 command = '''
-jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
+jj log --revisions @ --no-graph --limit 1 --template '
   separate(" ",
     change_id.shortest(4),
     bookmarks.map(|b| "🔖 " ++ b)
@@ -114,6 +109,7 @@ jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
 description = "description of the current jj status"
 detect_folders = [".jj"]
 format = "[:](fg:separator)[ $output ]($style)"
+unsafe_no_escape = false
 style = "fg:foreground"
 command = '''
 jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
@@ -133,11 +129,12 @@ jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
 '
 '''
 
-# re-enable git modules long as we're not in a jj repo
-[custom.git_stuff]
-when = true
-command = "if ! jj root >/dev/null 2>&1; then for mod in branch commit metrics state status; do starship module git_$mod; done; fi"
-description = "Only show git_branch if we're not in a jj repo"
+[custom.jj_op]
+when = "jj workspace root --ignore-working-copy"
+command = 'jj op log -n 1 -T "id.short()" --no-graph --ignore-working-copy'
+symbol = 'op:'
+style = "blue"
+
 
 [nodejs]
 symbol = ""
