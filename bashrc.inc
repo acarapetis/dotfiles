@@ -51,6 +51,13 @@ function scd {
     cd "$(tmux display-message -p '#{session_path}')"
 }
 
+brightness() {
+    sudo $(which set_brightness.sh) "$@"
+}
+contrast() {
+    sudo $(which set_contrast.sh) "$@"
+}
+
 function jat {
     jq . "$@" | bat -l json
 }
