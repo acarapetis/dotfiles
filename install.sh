@@ -5,6 +5,7 @@ NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-
 RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz"
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
+JJ_LINK="https://github.com/jj-vcs/jj/releases/download/v0.31.0/jj-v0.31.0-x86_64-unknown-linux-musl.tar.gz"
 FZF_LINK="https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz"
 STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.20.1/starship-x86_64-unknown-linux-musl.tar.gz"
 
@@ -95,6 +96,13 @@ if ! which fzf; then
     if confirm "fzf not found in path. Install binary from github?"; then
         curl -fL "$FZF_LINK" | tar -C ~/.local/bin -xzf - ./fzf
         echo "fzf installed to ~/.local/bin/fzf"
+    fi
+fi
+
+if ! which jj; then
+    if confirm "jj not found in path. Install binary from github?"; then
+        curl -fL "$JJ_LINK" | tar -C ~/.local/bin -xzf - ./jj
+        echo "jj installed to ~/.local/bin/jj"
     fi
 fi
 
