@@ -11,4 +11,3 @@ diff-editor = ":builtin"
 l = ["log"]
 bl = ["bookmark", "list"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
-bm = ["bookmark"]
