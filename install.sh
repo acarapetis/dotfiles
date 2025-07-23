@@ -7,7 +7,7 @@ UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
 JJ_LINK="https://github.com/jj-vcs/jj/releases/download/v0.31.0/jj-v0.31.0-x86_64-unknown-linux-musl.tar.gz"
 FZF_LINK="https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz"
-STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.20.1/starship-x86_64-unknown-linux-musl.tar.gz"
+STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.23.0/starship-x86_64-unknown-linux-gnu.tar.gz"
 
 cd "$(dirname "$0")"
 DOTFILES="$PWD"
