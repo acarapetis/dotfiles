@@ -13,18 +13,33 @@ general {
         separator = "  |  "
 }
 
-order += "battery all"
+order += "disk /mnt/windows"
+order += "disk /mnt/data"
 order += "disk /"
 order += "load"
 order += "memory"
+order += "volume master"
 order += "tztime local"
 
 battery all {
         format = "%status %percentage (%remaining)"
 }
 
+disk "/mnt/windows" {
+        prefix_type = "decimal"
+        format = "windows: %avail/%total"
+}
+
+disk "/mnt/data" {
+        prefix_type = "decimal"
+        format = "data: %avail/%total"
+}
+
 disk "/" {
-        format = "/: %avail free"
+        prefix_type = "decimal"
+        format = "/: %avail/%total free"
+        low_threshold = 5
+        threshold_type = "gbytes_avail"
 }
 
 load {
@@ -32,11 +47,19 @@ load {
 }
 
 memory {
-        format = "memavail: %available/%total"
+        format = "RAM: %available/%total"
         threshold_degraded = "2G"
         format_degraded = "!!!!!! MEMAVAIL: %available/%total !!!!!!"
 }
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+volume master {
+        format = "♪ %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse"
+        mixer = "Master"
+        mixer_idx = 0
 }
