@@ -105,7 +105,7 @@ command = '''
 jj log --revisions @ --no-graph --ignore-working-copy --limit 1 --template '
   separate(" ",
     change_id.shortest(4),
-    bookmarks,
+    bookmarks.map(|b| "🔖 " ++ b)
   )
 '
 '''
