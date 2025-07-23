@@ -5,6 +5,7 @@
 
 [ui]
 default-command = "st"
+diff-editor = ":builtin"
 
 [aliases]
 l = ["log"]
