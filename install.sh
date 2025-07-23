@@ -65,26 +65,16 @@ fi
 
 if ! which up; then
     if confirm "Ultimate Plumber not found in path. Install binary from github?"; then
-        (
-            d=$(mktemp -d)
-            cd "$d"
-            curl -fLo ~/.local/bin/up "$UP_LINK"
-            chmod +x ~/.local/bin/up
-        )
+        curl -fLo ~/.local/bin/up "$UP_LINK"
+        chmod +x ~/.local/bin/up
         echo "up installed to ~/.local/bin/up"
     fi
 fi
 
 if ! which starship; then
     if confirm "starship not found in path. Install binary from github?"; then
-        (
-            d=$(mktemp -d)
-            cd "$d"
-            curl -fLo starship.tar.gz "$STARSHIP_LINK"
-            tar xfz starship.tar.gz
-            cp starship ~/.local/bin/
-        )
-        echo "starship installed to ~/.local/bin/up"
+        curl -fL "$STARSHIP_LINK" | tar -C ~/.local/bin -xzf - ./starship
+        echo "starship installed to ~/.local/bin/starship"
     fi
 fi
 
@@ -103,13 +93,7 @@ fi
 
 if ! which fzf; then
     if confirm "fzf not found in path. Install binary from github?"; then
-        (
-            d=$(mktemp -d)
-            cd "$d"
-            curl -fLo fzf.tar.gz "$FZF_LINK"
-            tar xfz fzf.tar.gz
-            cp fzf ~/.local/bin/
-        )
+        curl -fL "$FZF_LINK" | tar -C ~/.local/bin -xzf - ./fzf
         echo "fzf installed to ~/.local/bin/fzf"
     fi
 fi
