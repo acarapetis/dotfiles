@@ -19,3 +19,4 @@ push = ["util", "exec", "--", "bash", "-c", """
     fi
     jj git push "$@"
 """, ""]
+wc = ["log", "--stat"]
