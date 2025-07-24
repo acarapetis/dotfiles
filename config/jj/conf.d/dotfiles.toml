@@ -14,7 +14,7 @@ tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 fetch = ["git", "fetch"]
 push = ["util", "exec", "--", "bash", "-c", """
     set -e
-    if [ -f .pre-commit-config.yaml ]; then
+    if [ -f "$(jj workspace root)"/.pre-commit-config.yaml ]; then
         pre-commit run -a
     fi
     jj git push "$@"
