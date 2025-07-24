@@ -92,7 +92,7 @@ format = '[\($state($progress_current/$progress_total)\) ]($style)'
 
 [custom.jj_change]
 description = "The current jj change"
-detect_folders = [".jj"]
+when = "jj workspace root --ignore-working-copy"
 symbol = "🥋"
 format = "[»](fg:separator)[ $symbol $output]($style)"
 style = "bold fg:purple"
@@ -107,7 +107,7 @@ jj log --revisions @ --no-graph --limit 1 --template '
 
 [custom.jj_description]
 description = "description of the current jj status"
-detect_folders = [".jj"]
+when = "jj workspace root --ignore-working-copy"
 format = "[:](fg:separator)[ $output ]($style)"
 unsafe_no_escape = false
 style = "fg:foreground"
