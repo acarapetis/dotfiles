@@ -37,7 +37,7 @@ return {
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-            ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+            ["<C-i>"] = { "show_signature", "hide_signature", "fallback" },
         },
         appearance = {
             use_nvim_cmp_as_default = true,
