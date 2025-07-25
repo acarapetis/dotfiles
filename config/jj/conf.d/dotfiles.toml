@@ -12,13 +12,21 @@ l = ["log"]
 bl = ["bookmark", "list"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 fetch = ["git", "fetch"]
-push = ["util", "exec", "--", "bash", "-c", """
-    set -e
-    if [ -f "$(jj workspace root)"/.pre-commit-config.yaml ]; then
-        pre-commit run -a
-    fi
-    jj git push "$@"
-""", ""]
+push = ["util", "exec", "--", "uvx", "jj-pre-push", "push"]
+# push = ["util", "exec", "--", "bash", "-xc", '''
+#     if [ "$1" == "--help" ]; then
+#         jj git push "$@"
+#     else
+#         jj-pre-push -v check "$@" && jj git push "$@"
+#     fi
+# ''', ""]
+# push = ["util", "exec", "--", "bash", "-c", """
+#     set -e
+#     if [ -f "$(jj workspace root)"/.pre-commit-config.yaml ]; then
+#         pre-commit run -a
+#     fi
+#     jj git push "$@"
+# """, ""]
 wc = ["log", "--stat"]
 
 [fix.tools.1-ruff-lint]
