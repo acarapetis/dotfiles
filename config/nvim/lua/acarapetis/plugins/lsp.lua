@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         remap("n", "<leader>va", function() vim.lsp.buf.code_action() end, { desc = "Code action" })
         remap("n", "<leader>vrf", function() vim.lsp.buf.references() end, { desc = "Find references" })
         remap("n", "<leader>vrn", function() vim.lsp.buf.rename() end, { desc = "Rename" })
-        remap("i", "<C-]>", function() vim.lsp.buf.signature_help() end)
         remap("n", "<leader>l", toggle_diagnostics, { desc = "Toggle LSP diagnostics" })
     end,
 })

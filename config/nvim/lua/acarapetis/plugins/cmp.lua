@@ -1,4 +1,5 @@
 -- Completion: blink.cmp
+---@module 'blink-cmp'
 return {
     "saghen/blink.cmp",
     dependencies = {
@@ -21,6 +22,7 @@ return {
             ["<C-n>"] = {
                 -- When no completion active, use C-n for plain keyword completion
                 "select_next",
+                ---@param cmp blink.cmp.API
                 function(cmp) cmp.show({ providers = { "buffer" } }) end,
             },
             ["<C-p>"] = {
@@ -37,7 +39,8 @@ return {
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-            ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+            ["<C-]>"] = { "show_signature", "hide_signature", "fallback" },
+            ["<C-k>"] = { "show_documentation", "hide_documentation", "fallback" },
         },
         appearance = {
             use_nvim_cmp_as_default = true,
