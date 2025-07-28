@@ -27,7 +27,7 @@ push = ["util", "exec", "--", "uvx", "jj-pre-push", "push"]
 #     fi
 #     jj git push "$@"
 # """, ""]
-wc = ["log", "--stat"]
+wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 [fix.tools.1-ruff-lint]
 command = ["uvx", "ruff", "check", "--fix", "--quiet", "--stdin-filename=$path", "-"]
