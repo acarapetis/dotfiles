@@ -11,22 +11,9 @@ diff-editor = ":builtin"
 l = ["log"]
 bl = ["bookmark", "list"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
-fetch = ["git", "fetch"]
+pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "push"]
-# push = ["util", "exec", "--", "bash", "-xc", '''
-#     if [ "$1" == "--help" ]; then
-#         jj git push "$@"
-#     else
-#         jj-pre-push -v check "$@" && jj git push "$@"
-#     fi
-# ''', ""]
-# push = ["util", "exec", "--", "bash", "-c", """
-#     set -e
-#     if [ -f "$(jj workspace root)"/.pre-commit-config.yaml ]; then
-#         pre-commit run -a
-#     fi
-#     jj git push "$@"
-# """, ""]
+pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"=${2-@-}', ""]
 wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 [fix.tools.1-ruff-lint]
