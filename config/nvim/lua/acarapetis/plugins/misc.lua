@@ -1,10 +1,7 @@
 return {
-    "tpope/vim-dadbod", -- for interactive SQL querying
     "tpope/vim-speeddating", -- C-A/C-X support for datetimes
     "tpope/vim-repeat", -- makes . behave better with plugins
     "tpope/vim-sleuth", -- automatically detect tab/space indent standard
-    "tpope/vim-abolish", -- actions for snake/camel/etc conversions
-
     {
         "junegunn/vim-easy-align",
         keys = {

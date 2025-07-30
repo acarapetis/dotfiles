@@ -113,42 +113,4 @@ return {
             })
         end,
     },
-    {
-        "folke/trouble.nvim",
-        cmd = "Trouble",
-        opts = {},
-        dependencies = { "mini.nvim" },
-        keys = {
-            {
-                "<leader>xx",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Diagnostics (Trouble)",
-            },
-            {
-                "<leader>xX",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                desc = "Buffer Diagnostics (Trouble)",
-            },
-            {
-                "<leader>xs",
-                "<cmd>Trouble symbols toggle focus=true win.position=left win.size=30<cr>",
-                desc = "Symbols (Trouble)",
-            },
-            {
-                "<leader>xr",
-                "<cmd>Trouble lsp toggle focus=true win.position=left win.size=50<cr>",
-                desc = "LSP (Trouble)",
-            },
-            {
-                "<leader>xL",
-                "<cmd>Trouble loclist toggle<cr>",
-                desc = "Location List (Trouble)",
-            },
-            {
-                "<leader>xQ",
-                "<cmd>Trouble qflist toggle<cr>",
-                desc = "Quickfix List (Trouble)",
-            },
-        },
-    },
 }
