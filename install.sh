@@ -47,9 +47,10 @@ tryinstall() {
     sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall python3-pip perl curl python3-pynvim moreutils rofi
+tryinstall perl curl python3-pynvim moreutils rofi fdfind
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
+which uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
 which jq || (curl -L "$JQ_LINK" -o ~/.local/bin/jq && chmod +x ~/.local/bin/jq)
 
 if ! which nvim; then

@@ -20,9 +20,6 @@ export TF_CLI_ARGS_plan='-parallelism 24'
 export TF_CLI_ARGS_destroy='-parallelism 24'
 export PSQL_PAGER="pspg -s 6"
 
-# Ubuntu 24.04 gets uppity about pip installing in the system python env;
-# but it's really not that dangerous if you keep it to ~/.local/lib.
-alias pipinstall="pip3 install --break-system-packages --user"
 alias xml=xmlstarlet
 alias csvalign="column -t -s,"
 alias pcsv="pspg -s 6 --csv -f"
