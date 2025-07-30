@@ -12,7 +12,7 @@ l = ["log"]
 bl = ["bookmark", "list"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 pull = ["git", "fetch"]
-push = ["util", "exec", "--", "uvx", "jj-pre-push", "push"]
+push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
 pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"=${2-@-}', ""]
 wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
