@@ -1,16 +1,5 @@
 return {
     {
-        "heavenshell/vim-pydocstring",
-        build = "make install",
-        config = function()
-            vim.g.pydocstring_enable_mapping = 0
-            vim.g.pydocstring_formatter = "numpy"
-        end,
-        keys = {
-            { "<leader>D", "<Plug>(pydocstring)" },
-        },
-    },
-    {
         "acarapetis/vim-html-template-literals",
         config = function()
             vim.g.htl_css_templates = 1
