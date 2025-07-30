@@ -2,3 +2,20 @@
 "selected" = { bg = "236" }
 "revisions details selected" = { bg = "236" }
 "revset completion selected" = { fg = "cyan", bg = "236" }
+
+[custom_commands]
+"jj push" = { key = ["p"], args = ["push"] }
+"jj push selected bookmark(s)" = { key = ["P"], args = ["push", "-r", "$change_id"] }
+"tug" = { key = ["T"], args = ["tug"] }
+
+[leader.p]
+help = "push"
+send = ["x", "p"]
+
+[leader.P]
+help = "push selected bookmark(s)"
+send = ["x", "P"]
+
+[leader.t]
+help = "tug"
+send = ["x", "T"]
