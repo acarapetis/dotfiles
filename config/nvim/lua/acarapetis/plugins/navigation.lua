@@ -31,6 +31,7 @@ return {
         "stevearc/oil.nvim",
         config = function()
             require("oil").setup({
+                columns = { "icon", "permissions" },
                 win_options = {
                     winbar = "%{v:lua.require('oil').get_current_dir()}",
                 },
@@ -40,6 +41,10 @@ return {
                     autosave_changes = true,
                 },
                 skip_confirm_for_simple_edits = true,
+                keymaps = {
+                    ["cx"] = "^llrxlllrxlllrx<ESC>", -- set executable
+                    ["cX"] = "^llr-lllr-lllr-<ESC>", -- unset executable
+                }
             })
         end,
         lazy = false,
