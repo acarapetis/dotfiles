@@ -7,3 +7,8 @@
 "jj push" = { key = ["p"], args = ["push"] }
 "jj push selected bookmark(s)" = { key = ["P"], args = ["push", "-r", "$change_id"] }
 "tug" = { key = ["T"], args = ["tug"] }
+
+[custom_commands.edit]
+key = ["E"]
+args = ["util", "exec", "--", "bash", "-c", 'nvim "$(jj file list "$1")"', "", "$file"]
+show="interactive"
