@@ -1,0 +1,4 @@
+[ui.colors]
+"selected" = { bg = "236" }
+"revisions details selected" = { bg = "236" }
+"revset completion selected" = { fg = "cyan", bg = "236" }
