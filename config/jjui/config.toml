@@ -7,15 +7,3 @@
 "jj push" = { key = ["p"], args = ["push"] }
 "jj push selected bookmark(s)" = { key = ["P"], args = ["push", "-r", "$change_id"] }
 "tug" = { key = ["T"], args = ["tug"] }
-
-[leader.p]
-help = "push"
-send = ["x", "p"]
-
-[leader.P]
-help = "push selected bookmark(s)"
-send = ["x", "P"]
-
-[leader.t]
-help = "tug"
-send = ["x", "T"]
