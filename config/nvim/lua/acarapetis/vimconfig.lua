@@ -62,3 +62,11 @@ vim.diagnostic.config({
 
 vim.opt.bg = "dark"
 vim.cmd.colorscheme("gruvbox")
+
+vim.filetype.add({
+    filename = {
+        ["docker-compose.yml"] = "yaml.docker-compose",
+        ["docker-compose.yaml"] = "yaml.docker-compose",
+    },
+})
+
