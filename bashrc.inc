@@ -44,6 +44,8 @@ alias comp='docker compose'
 alias rgg='rg --no-ignore'
 alias xo=xdg-open
 alias ur='uv run'
+alias j=jj
+alias jb='jj b'
 
 function scd {
     cd "$(tmux display-message -p '#{session_path}')"
