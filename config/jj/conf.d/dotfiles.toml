@@ -4,20 +4,33 @@
 "format_timestamp(timestamp)" = "timestamp.ago()"
 
 [ui]
-default-command = "log"
+default-command = "forest"
 diff-editor = ":builtin"
 
 [templates]
 log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
 
+[revset-aliases]
+# mutable heads, and parents of mutable heads that look like WIP
+"tips()" = 'heads(mutable()) | (heads(mutable()) & description(exact:""))-'
+
+# Show local work as a forest with linear commit chains elided:
+# Mutable heads, local bookmarks, and the immutable heads they're derived from
+"forest()" = "tips() |  bookmarks() | immutable_heads()+-"
+
+# default log revset: "present(@) | ancestors(immutable_heads().., 2) | present(trunk())"
+
 [aliases]
 l = ["log"]
-bl = ["bookmark", "list"]
+forest = ["log", "-r", "forest()"]
+bl = ["b", "l"]
+wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
+
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
 pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"=${2-@-}', ""]
-wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 [fix.tools.1-ruff-lint]
 command = ["uvx", "ruff", "check", "--fix", "--quiet", "--stdin-filename=$path", "-"]
