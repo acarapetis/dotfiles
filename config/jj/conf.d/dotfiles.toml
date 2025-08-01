@@ -4,8 +4,11 @@
 "format_timestamp(timestamp)" = "timestamp.ago()"
 
 [ui]
-default-command = "st"
+default-command = "log"
 diff-editor = ":builtin"
+
+[templates]
+log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
 
 [aliases]
 l = ["log"]
