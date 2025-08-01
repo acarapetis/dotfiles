@@ -32,6 +32,7 @@ return {
                 NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
             },
             highlight = {
+                exclude = { "csv", "json", "xml" },
                 pattern = [[.*<(KEYWORDS)\s*]],
                 keyword = "wide_bg",
             },
