@@ -95,6 +95,7 @@ bindsym $mod+Shift+f exec xdg-open ~
 # kill focused window
 bindsym $mod+F4 kill
 bindsym $mod+Shift+q kill
+bindsym Mod4+q kill
 
 bindsym Print       exec flameshot full
 bindsym Shift+Print exec flameshot gui
