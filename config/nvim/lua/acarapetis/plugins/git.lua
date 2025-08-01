@@ -67,7 +67,10 @@ return {
 
                 local stage_selected = function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
                 local reset_selected = function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
-                local toggle_hl = function() gitsigns.toggle_linehl() gitsigns.toggle_deleted() end
+                local toggle_hl = function()
+                    gitsigns.toggle_linehl()
+                    gitsigns.toggle_deleted()
+                end
                 -- stylua: ignore start
                 map("n", "<leader>-", gitsigns.stage_hunk, { desc = "Stage hunk" })
                 map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
@@ -90,5 +93,11 @@ return {
             end,
         },
         lazy = false,
+    },
+    {
+        "julienvincent/hunk.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = { "DiffEditor" },
+        opts = {},
     },
 }

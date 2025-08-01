@@ -2,7 +2,7 @@
 
 [ui]
 default-command = "forest"
-diff-editor = ":builtin"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 diff-formatter = ":git"
 pager = "delta"
 
