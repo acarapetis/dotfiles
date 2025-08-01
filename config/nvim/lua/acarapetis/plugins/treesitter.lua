@@ -26,6 +26,7 @@ return {
                     "vim",
                     "vimdoc",
                     "regex",
+                    "styled",
                 },
                 sync_install = false,
                 auto_install = true,
