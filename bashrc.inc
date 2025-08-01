@@ -40,12 +40,19 @@ alias fd=fdfind
 alias mm=micromamba
 alias v=nvim
 alias d=deactivate
-alias comp='docker compose'
 alias rgg='rg --no-ignore'
 alias xo=xdg-open
 alias ur='uv run'
 alias j=jj
 alias jb='jj b'
+
+comp() {
+    if [ "$1" != "" ]; then
+        docker compose "$@"
+    else
+        docker compose ps --format 'table {{.Service}}\t{{.Status}}\t{{.Name}}\t{{.Ports}}'
+    fi
+}
 
 function scd {
     cd "$(tmux display-message -p '#{session_path}')"
