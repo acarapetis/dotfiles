@@ -7,18 +7,21 @@
 default-command = "forest"
 diff-editor = ":builtin"
 
-[templates]
-log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
-
 [revset-aliases]
-# mutable heads, and parents of mutable heads that look like WIP
+# direct children of x that are not in x
+"offshoots(x)" = "x+ ~ x"
+
+# mutable heads, and their parents when they look like WIP
 "tips()" = 'heads(mutable()) | (heads(mutable()) & description(exact:""))-'
 
 # Show local work as a forest with linear commit chains elided:
-# Mutable heads, local bookmarks, and the immutable heads they're derived from
-"forest()" = "tips() |  bookmarks() | immutable_heads()+-"
+# Mutable heads, local bookmarks, and the immutable commits they're derived from
+"forest()" = "tips() | bookmarks() | offshoots(immutable())-"
 
 # default log revset: "present(@) | ancestors(immutable_heads().., 2) | present(trunk())"
+
+[templates]
+log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
 
 [aliases]
 l = ["log"]
