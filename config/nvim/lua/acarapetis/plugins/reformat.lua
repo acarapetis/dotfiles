@@ -28,6 +28,7 @@ return {
                 yaml = prettier,
                 css = prettier,
                 markdown = prettier,
+                toml = { lsp_format = "prefer" }, -- taplo does it
             },
         },
         keys = {
