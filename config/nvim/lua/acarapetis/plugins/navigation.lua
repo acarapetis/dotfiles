@@ -29,35 +29,27 @@ end
 return {
     {
         "stevearc/oil.nvim",
-        config = function()
-            require("oil").setup({
-                columns = { "icon", "permissions" },
-                win_options = {
-                    winbar = "%{v:lua.require('oil').get_current_dir()}",
-                },
-                lsp_file_methods = {
-                    enabled = true,
-                    timeout_ms = 10000,
-                    autosave_changes = true,
-                },
-                skip_confirm_for_simple_edits = true,
-                keymaps = {
-                    ["cx"] = "^llrxlllrxlllrx<ESC>", -- set executable
-                    ["cX"] = "^llr-lllr-lllr-<ESC>", -- unset executable
-                }
-            })
-        end,
+        opts = {
+            columns = { "icon", "permissions" },
+            win_options = {
+                winbar = "%{v:lua.require('oil').get_current_dir()}",
+            },
+            lsp_file_methods = {
+                enabled = true,
+                timeout_ms = 10000,
+                autosave_changes = true,
+            },
+            skip_confirm_for_simple_edits = true,
+            keymaps = {
+                ["cx"] = "^llrxlllrxlllrx<ESC>", -- set executable
+                ["cX"] = "^llr-lllr-lllr-<ESC>", -- unset executable
+            },
+        },
         lazy = false,
+        -- stylua: ignore
         keys = {
             { "-", vim.cmd.Oil, desc = "Open parent directory" },
-            {
-                "_",
-                function()
-                    vim.cmd.vsplit()
-                    vim.cmd.Oil()
-                end,
-                desc = "Open parent directory",
-            },
+            { "_", function() vim.cmd.vsplit(); vim.cmd.Oil() end, desc = "Open parent directory", },
         },
     },
     {
@@ -85,24 +77,25 @@ return {
             { "<leader>b",          fzf("buffers"),                    desc = "buffers" },
         },
         lazy = false,
-        config = function()
-            require("fzf-lua").setup({
-                oldfiles = {
-                    include_current_session = true,
+        opts = {
+            oldfiles = {
+                include_current_session = true,
+            },
+            lsp = {
+                symbols = {
+                    symbol_style = 1,
+                    symbol_fmt = function(s, opts) return s end,
                 },
-                lsp = {
-                    symbols = {
-                        symbol_style = 1,
-                        symbol_fmt = function(s, opts) return s end,
-                    },
+            },
+            winopts = {
+                fullscreen = true,
+                preview = {
+                    flip_columns = 150,
                 },
-                winopts = {
-                    fullscreen = true,
-                    preview = {
-                        flip_columns = 150,
-                    },
-                },
-            })
+            },
+        },
+        config = function(_, opts)
+            require("fzf-lua").setup(opts)
             require("fzf-lua").register_ui_select()
         end,
     },
@@ -114,7 +107,7 @@ return {
     },
     {
         "ggandor/leap.nvim",
-        config = function() require("leap").setup() end,
+        opts = {},
         -- stylua: ignore
         keys = {
             { "s", "<Plug>(leap)",             mode = "n",          desc = "leap" },

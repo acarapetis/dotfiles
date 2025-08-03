@@ -113,18 +113,17 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         lazy = false,
-        config = function()
-            require("treesitter-context").setup({
-                mode = "topline",
-                max_lines = 5,
-                trim_scope = "inner",
-            })
-        end,
+        opts = {
+            mode = "topline",
+            max_lines = 5,
+            trim_scope = "inner",
+        },
         -- stylua: ignore
         keys = {
             { "<Leader>c", vim.cmd.TSContextToggle, desc = "Toggle context" },
             { "[C", function() require("treesitter-context").go_to_context(vim.v.count1) end, desc = "Jump to context" },
         }
+,
     },
     {
         "danymat/neogen",
@@ -133,21 +132,19 @@ return {
         keys = {
             {
                 "<Leader>vD",
-                function() require("neogen").generate() end,
+                function() require("neogen").generate({}) end,
                 desc = "Generate docstring",
             },
         },
-        config = function()
-            require("neogen").setup({
-                enabled = true,
-                languages = {
-                    python = {
-                        template = {
-                            annotation_convention = "numpydoc",
-                        },
+        opts = {
+            enabled = true,
+            languages = {
+                python = {
+                    template = {
+                        annotation_convention = "numpydoc",
                     },
                 },
-            })
-        end,
+            },
+        },
     },
 }

@@ -1,13 +1,13 @@
 return {
     {
         "acarapetis/vim-html-template-literals",
-        config = function()
+        init = function()
             vim.g.htl_css_templates = 1
         end,
     },
     {
         "AndrewRadev/tagalong.vim",
-        config = function()
+        init = function()
             vim.g.tagalong_filetypes = {
                 "html",
                 "xml",

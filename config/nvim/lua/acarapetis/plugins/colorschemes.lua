@@ -1,28 +1,26 @@
 return {
     {
         "ellisonleao/gruvbox.nvim",
-        config = function()
-            require("gruvbox").setup({
-                contrast = "hard",
-                palette_overrides = {
-                    -- Darker backgrounds
-                    dark0_hard = "#151515",
-                    dark1 = "#222222",
-                    dark2 = "#2a2a2a",
-                    dark3 = "#333333",
-                },
-                overrides = {
-                    Delimiter = { link = "GruvboxFg2" },
-                    ["@constructor.lua"] = { link = "Delimiter" },
-                    TreesitterContext = { bg = "#222222" },
-                    TreesitterContextBottom = { underline = true, sp = "#555555" },
-                    TreesitterContextLineNumber = { bg = "#222222" },
-                    GitSignsCurrentLineBlame = { fg = "#666666" },
-                    SignColumn = { bg = "#151515" },
-                },
-                strict_tabs = true,
-            })
-        end,
+        opts = {
+            contrast = "hard",
+            palette_overrides = {
+                -- Darker backgrounds
+                dark0_hard = "#151515",
+                dark1 = "#222222",
+                dark2 = "#2a2a2a",
+                dark3 = "#333333",
+            },
+            overrides = {
+                Delimiter = { link = "GruvboxFg2" },
+                ["@constructor.lua"] = { link = "Delimiter" },
+                TreesitterContext = { bg = "#222222" },
+                TreesitterContextBottom = { underline = true, sp = "#555555" },
+                TreesitterContextLineNumber = { bg = "#222222" },
+                GitSignsCurrentLineBlame = { fg = "#666666" },
+                SignColumn = { bg = "#151515" },
+            },
+            strict_tabs = true,
+        },
     },
     -- { "https://github.com/rebelot/kanagawa.nvim", lazy = true },
     -- { "diegoulloao/neofusion.nvim", lazy = true },
