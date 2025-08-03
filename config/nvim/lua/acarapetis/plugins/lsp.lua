@@ -90,13 +90,9 @@ return {
     "neovim/nvim-lspconfig",
     {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "mason.nvim", "saghen/blink.cmp" },
-        config = function()
-            vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
-            require("mason").setup({})
-            require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "lua_ls", "basedpyright", "ruff", "emmet_ls", "bashls" },
-            })
-        end,
+        dependencies = { "mason.nvim" },
+        opts = {
+            ensure_installed = { "ts_ls", "lua_ls", "basedpyright", "ruff", "emmet_ls", "bashls" },
+        },
     },
 }

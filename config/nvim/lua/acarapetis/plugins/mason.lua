@@ -1,5 +1,6 @@
 return {
-    "williamboman/mason.nvim", dependencies = {"mini.nvim"},
+    "williamboman/mason.nvim",
+    dependencies = { "mini.nvim" },
     lazy = false,
     config = function()
         local packages = { "ruff", "stylua", "prettier", "clang-format", "shfmt", "shellcheck" }
@@ -22,5 +23,5 @@ return {
                 notify(package_name .. " not found in mason registry")
             end
         end
-    end
+    end,
 }
