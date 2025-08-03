@@ -28,88 +28,74 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+vim.diagnostic.config({
+    -- For hints (e.g. "unused parameter"), don't show virtual text or sign
+    virtual_text = { severity = { min = "INFO" } },
+    signs = { severity = { min = "INFO" } },
+})
+vim.lsp.config("basedpyright", {
+    settings = {
+        basedpyright = {
+            analysis = {
+                typeCheckingMode = "standard",
+            },
+        },
+    },
+})
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = {
+                    vim.env.VIMRUNTIME,
+                },
+            },
+        },
+    },
+})
+vim.lsp.config("ansiblels", {
+    cmd = { "ansible-language-server", "--stdio" },
+    settings = {
+        ansible = {
+            python = {
+                interpreterPath = "python",
+            },
+            ansible = {
+                path = "ansible",
+            },
+            executionEnvironment = {
+                enabled = false,
+            },
+            validation = {
+                enabled = true,
+                lint = {
+                    enabled = true,
+                    path = "ansible-lint",
+                },
+            },
+        },
+    },
+    filetypes = { "yaml.ansible" },
+    single_file_support = true,
+})
+
+
 return {
     "neovim/nvim-lspconfig",
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim", "saghen/blink.cmp" },
         config = function()
-            local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
-
+            vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
             require("mason").setup({})
             require("mason-lspconfig").setup({
                 ensure_installed = { "ts_ls", "lua_ls", "basedpyright", "ruff", "emmet_ls", "bashls" },
-                handlers = {
-                    function(server_name)
-                        require("lspconfig")[server_name].setup({
-                            capabilities = lsp_capabilities,
-                        })
-                    end,
-                    basedpyright = function()
-                        require("lspconfig").basedpyright.setup({
-                            capabilities = lsp_capabilities,
-                            settings = {
-                                basedpyright = {
-                                    analysis = {
-                                        typeCheckingMode = "standard",
-                                    },
-                                },
-                            },
-                        })
-                    end,
-                    lua_ls = function()
-                        require("lspconfig").lua_ls.setup({
-                            capabilities = lsp_capabilities,
-                            settings = {
-                                Lua = {
-                                    runtime = {
-                                        version = "LuaJIT",
-                                    },
-                                    diagnostics = {
-                                        globals = { "vim" },
-                                    },
-                                    workspace = {
-                                        library = {
-                                            vim.env.VIMRUNTIME,
-                                        },
-                                    },
-                                },
-                            },
-                        })
-                    end,
-                    ansiblels = function()
-                        require("lspconfig").ansiblels.setup({
-                            cmd = { "ansible-language-server", "--stdio" },
-                            settings = {
-                                ansible = {
-                                    python = {
-                                        interpreterPath = "python",
-                                    },
-                                    ansible = {
-                                        path = "ansible",
-                                    },
-                                    executionEnvironment = {
-                                        enabled = false,
-                                    },
-                                    validation = {
-                                        enabled = true,
-                                        lint = {
-                                            enabled = true,
-                                            path = "ansible-lint",
-                                        },
-                                    },
-                                },
-                            },
-                            filetypes = { "yaml.ansible" },
-                            single_file_support = true,
-                        })
-                    end,
-                },
-            })
-            vim.diagnostic.config({
-                -- For hints (e.g. "unused parameter"), don't show virtual text or sign
-                virtual_text = { severity = { min = "INFO" } },
-                signs = { severity = { min = "INFO" } },
             })
         end,
     },
