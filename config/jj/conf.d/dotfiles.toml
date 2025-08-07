@@ -30,6 +30,7 @@ bl = ["b", "l"]
 wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+aside = ["split", "-r", "@", "-B", "@"]
 
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
