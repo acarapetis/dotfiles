@@ -112,6 +112,12 @@ return {
         end,
     },
     {
+        "acarapetis/nvim-treesitter-jjconfig",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        lazy = false,
+        opts = { ensure_installed = true },
+    },
+    {
         "nvim-treesitter/nvim-treesitter-context",
         lazy = false,
         opts = {
