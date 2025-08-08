@@ -3,8 +3,9 @@
 # [include]
 #     path = /path/to/gitconfig
 [core]
-	untrackedCache = true
-	fsmonitor = true
+    untrackedCache = true
+    fsmonitor = true
+    pager = delta
 
 [diff]
     algorithm = histogram
@@ -64,3 +65,15 @@
     co = "checkout"
     sw = "switch"
     wc = "log --compact-summary"
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    #side-by-side = true
+    minus-style = syntax "#220000"
+    minus-emph-style = syntax "#5a0000"
+    plus-style = syntax "#001a00"
+    plus-emph-style = syntax "#005500"
+    plus-non-emph-style = syntax "#001a00"

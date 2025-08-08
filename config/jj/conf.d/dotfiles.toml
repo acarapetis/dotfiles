@@ -6,6 +6,8 @@
 [ui]
 default-command = "forest"
 diff-editor = ":builtin"
+diff-formatter = ":git"
+pager = "delta"
 
 [revset-aliases]
 # direct children of x that are not in x
@@ -35,6 +37,10 @@ aside = ["split", "-r", "@", "-B", "@"]
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
 pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"=${2-@-}', ""]
+
+diff2 = ["util", "exec", "--", "env", "DELTA_FEATURES=+side-by-side", "jj", "diff"]
+log2 = ["util", "exec", "--", "env", "DELTA_FEATURES=+side-by-side", "jj", "log", "--no-graph", "-p"]
+show2 = ["util", "exec", "--", "env", "DELTA_FEATURES=+side-by-side", "jj", "show"]
 
 [fix.tools.1-ruff-lint]
 command = ["uvx", "ruff", "check", "--fix", "--quiet", "--stdin-filename=$path", "-"]
