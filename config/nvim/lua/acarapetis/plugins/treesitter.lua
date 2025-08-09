@@ -109,26 +109,6 @@ return {
                 set nofoldenable " Disable folding at startup.
                 set foldlevelstart=99 " When folding is enabled, start with all folds open.
             ]])
-
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.jjtemplate = {
-                install_info = {
-                    url = "https://github.com/bryceberger/tree-sitter-jjtemplate",
-                    files = { "src/parser.c" },
-                    branch = "main",
-                    generate_requires_npm = false,
-                    requires_generate_from_grammar = false,
-                },
-            }
-            parser_config.jjrevset = {
-                install_info = {
-                    url = "https://github.com/bryceberger/tree-sitter-jjrevset",
-                    files = { "src/parser.c" },
-                    branch = "main",
-                    generate_requires_npm = false,
-                    requires_generate_from_grammar = false,
-                },
-            }
         end,
     },
     {
