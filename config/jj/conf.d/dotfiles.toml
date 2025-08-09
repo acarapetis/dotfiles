@@ -1,13 +1,16 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
-[template-aliases]
-"format_timestamp(timestamp)" = "timestamp.ago()"
-
 [ui]
 default-command = "forest"
 diff-editor = ":builtin"
 diff-formatter = ":git"
 pager = "delta"
+
+[templates]
+log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
+
+[template-aliases]
+"format_timestamp(timestamp)" = "timestamp.ago()"
 
 [revset-aliases]
 # direct children of x that are not in x
@@ -19,11 +22,6 @@ pager = "delta"
 # Show local work as a forest with linear commit chains elided:
 # Mutable heads, local bookmarks, and the immutable commits they're derived from
 "forest()" = "tips() | bookmarks() | offshoots(immutable())-"
-
-# default log revset: "present(@) | ancestors(immutable_heads().., 2) | present(trunk())"
-
-[templates]
-log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
 
 [aliases]
 l = ["log"]
