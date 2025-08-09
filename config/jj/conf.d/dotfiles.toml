@@ -67,6 +67,8 @@ if(commit.root(),
 # Mutable heads, local bookmarks, and the immutable commits they're derived from
 "forest()" = "tips() | bookmarks() | offshoots(immutable())-"
 
+"megamerge()" = 'latest(subject("megamerge") & mine() & reachable(@, mutable()))'
+
 [aliases]
 l = ["log"]
 forest = ["log", "-r", "forest()"]
@@ -76,6 +78,7 @@ wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 aside = ["split", "-r", "@", "--insert-before", "@"]
 reball = ["util", "exec", "--", "bash", "-c", 'jj pull && jj rebase -r "mutable()" -d "trunk()"', ""]
+newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
 
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
