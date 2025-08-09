@@ -47,7 +47,8 @@ tryinstall() {
     sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall perl curl python3-pynvim moreutils rofi fdfind tmux git-delta
+tryinstall perl curl python3-pynvim moreutils rofi tmux git-delta
+tryinstall fd-find || tryinstall fdfind
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
 which uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
