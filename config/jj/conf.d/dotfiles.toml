@@ -7,9 +7,53 @@ diff-formatter = ":git"
 pager = "delta"
 
 [templates]
-log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
+log = "logline ++ if(!description && !empty, diff.summary())"
 
 [template-aliases]
+"change_or_commit_id(commit)" = '''
+if(
+    commit.divergent(), 
+    format_short_change_id_with_hidden_and_divergent_info(commit)
+        ++ " " ++ format_short_commit_id(commit.commit_id()),
+    if(
+        commit.immutable(),
+        format_short_commit_id(commit.commit_id()),
+        format_short_change_id_with_hidden_and_divergent_info(commit)
+    )
+)
+'''
+
+logline = 'logline(self)'
+"logline(commit)" = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    concat(
+      separate(" ",
+        change_or_commit_id(commit),
+        format_short_signature_oneline(commit.author()),
+        format_timestamp(commit_timestamp(commit)),
+        commit.bookmarks(),
+        commit.tags(),
+        commit.working_copies(),
+        if(commit.conflict(), label("conflict", "conflict")),
+        if(config("ui.show-cryptographic-signatures").as_boolean(),
+          format_short_cryptographic_signature(commit.signature())),
+        if(commit.empty(), label("empty", "(empty)")),
+        if(commit.description(),
+          commit.description().first_line(),
+          label(if(commit.empty(), "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+    ),
+  )
+)
+'''
 "format_timestamp(timestamp)" = 'timestamp.format("%Y-%m-%d %H:%M:%S %Z")'
 
 [revset-aliases]

@@ -1,5 +1,5 @@
 [revisions]
-template = 'builtin_log_oneline'
+template = 'logline'
 
 [ui.colors]
 "selected" = { bg = "236" }
