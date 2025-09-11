@@ -34,7 +34,8 @@ aside = ["split", "-r", "@", "-B", "@"]
 
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
-pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"=${2-@-}', ""]
+pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"="${2-@-}"', ""]
+pushc = ["util", "exec", "--", "bash", "-c", 'jj push -c "${1-@-}"', ""]
 
 diff2 = ["util", "exec", "--", "env", "DELTA_FEATURES=+side-by-side", "jj", "diff"]
 log2 = ["util", "exec", "--", "env", "DELTA_FEATURES=+side-by-side", "jj", "log", "--no-graph", "-p"]
