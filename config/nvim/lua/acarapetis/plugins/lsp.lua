@@ -92,7 +92,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
         opts = {
-            ensure_installed = { "ts_ls", "lua_ls", "basedpyright", "ruff", "emmet_ls", "bashls", "docker_language_server", "taplo" },
+            ensure_installed = { "ts_ls", "lua_ls", "basedpyright", "ruff", "emmet_ls", "bashls", "docker_language_server", "taplo", "marksman" },
         },
     },
 }
