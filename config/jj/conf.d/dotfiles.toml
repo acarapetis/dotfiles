@@ -10,7 +10,7 @@ pager = "delta"
 log = "builtin_log_compact ++ if(!description && !empty, diff.summary())"
 
 [template-aliases]
-"format_timestamp(timestamp)" = "timestamp.ago()"
+"format_timestamp(timestamp)" = 'timestamp.format("%Y-%m-%d %H:%M:%S %Z")'
 
 [revset-aliases]
 # direct children of x that are not in x
