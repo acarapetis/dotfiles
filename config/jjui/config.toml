@@ -1,6 +1,9 @@
 [revisions]
 template = 'logline'
 
+[keys]
+cancel = ["q", "esc"]
+
 [ui.colors]
 "selected" = { bg = "236" }
 "revisions details selected" = { bg = "236" }
