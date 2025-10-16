@@ -43,7 +43,7 @@ separator  = '#666666'
 disabled = false
 
 [aws]
-format = '[»](fg:separator)[ $symbol ($profile)(\[$duration\] )]($style) '
+format = '[»](fg:separator)[ $symbol ($profile)]($style) '
 symbol = ' '
 
 [custom.neac]
@@ -95,7 +95,7 @@ format = '[\($state($progress_current/$progress_total)\) ]($style)'
 [custom.jj]
 description = "jj repo state"
 when = "jj workspace root --ignore-working-copy"
-format = "[»](fg:separator) $symbol $output "
+format = "[»](fg:separator) $output "
 command = '''
 jj log --revisions @ --color always --no-graph --limit 1 --template '
   separate(" ",
