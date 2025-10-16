@@ -6,7 +6,8 @@ format = """
 $username\
 $directory\
 $aws\
-$custom\
+${custom.neac}\
+${custom.jj}\
 $git_branch\
 $git_commit\
 $git_metrics\
@@ -27,6 +28,7 @@ $fill\
 $status\
 $jobs\
 $cmd_duration\
+${custom.jj_op}\
 $time\
 $line_break\
 \\$ """
