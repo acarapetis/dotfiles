@@ -95,7 +95,6 @@ format = '[\($state($progress_current/$progress_total)\) ]($style)'
 [custom.jj]
 description = "jj repo state"
 when = "jj workspace root --ignore-working-copy"
-symbol = "🥋"
 format = "[»](fg:separator) $symbol $output "
 command = '''
 jj log --revisions @ --color always --no-graph --limit 1 --template '
