@@ -105,3 +105,6 @@ patterns = ["glob:'**/*.tf'"]
 [fix.tools.4-shfmt]
 command = ["shfmt"]
 patterns = ["glob:'**/*.sh'"]
+
+[git]
+private-commits = '''description(glob:'private:*')'''
