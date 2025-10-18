@@ -57,6 +57,9 @@ if(commit.root(),
 '''
 "format_timestamp(timestamp)" = 'timestamp.format("%Y-%m-%d %H:%M:%S %Z")'
 
+[revsets]
+log-graph-prioritize = "coalesce(megamerge(), @)"
+
 [revset-aliases]
 # direct children of x that are not in x
 "offshoots(x)" = "x+ ~ x"
@@ -68,7 +71,8 @@ if(commit.root(),
 # Mutable heads, local bookmarks, and the immutable commits they're derived from
 "forest()" = "tips() | bookmarks() | offshoots(immutable())-"
 
-"megamerge()" = 'latest(subject("megamerge") & mine() & reachable(@, mutable()))'
+"megamerge()" = 'latest(subject("megamerge") & mine())'
+"mm()" = "megamerge()"
 
 [aliases]
 l = ["log"]
