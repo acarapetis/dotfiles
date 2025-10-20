@@ -2,7 +2,7 @@
 template = 'logline'
 
 [keys]
-cancel = ["q", "esc"]
+quit = ["q", "esc"]
 
 [ui.colors]
 "selected" = { bg = "236" }
