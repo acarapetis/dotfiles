@@ -82,7 +82,13 @@ wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 aside = ["split", "-r", "@", "--insert-before", "@"]
-reball = ["util", "exec", "--", "bash", "-c", 'jj pull && jj rebase -r "mutable()" -d "trunk()" && jj simplify-parents', ""]
+reball = ["util", "exec", "--", "bash", "-c", '''
+set -eu
+sources=$(jj log --no-graph -r 'trunk()+ & mutable()' -T 'commit_id ++ "|"')
+jj git fetch
+jj rebase -s "${sources:0:-1}" -d "trunk()"
+jj simplify-parents
+''', ""]
 newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
 
 pull = ["git", "fetch"]
