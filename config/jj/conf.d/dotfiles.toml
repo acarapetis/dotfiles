@@ -86,7 +86,7 @@ reball = ["util", "exec", "--", "bash", "-c", '''
 set -eu
 sources=$(jj log --no-graph -r 'trunk()+ & mutable()' -T 'commit_id ++ "|"')
 jj git fetch
-jj rebase -s "${sources:0:-1}" -d "trunk()"
+jj rebase -s "(${sources:0:-1}) & mutable()" -d "trunk()"
 jj simplify-parents
 ''', ""]
 newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
