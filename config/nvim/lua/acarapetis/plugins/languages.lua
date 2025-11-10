@@ -15,6 +15,18 @@ return {
         end,
     },
     "Glench/Vim-Jinja2-Syntax",
+    {
+        'Julian/lean.nvim',
+        event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+
+        opts = {
+            mappings = true,
+        }
+    }
     -- Trialing treesitter + LSP only for the following:
     -- "tpope/vim-jdaddy",
     --"pangloss/vim-javascript",
