@@ -64,8 +64,10 @@ log-graph-prioritize = "coalesce(megamerge(), @)"
 # direct children of x that are not in x
 "offshoots(x)" = "x+ ~ x"
 
-# mutable heads, and their parents when they look like WIP
-"tips()" = 'heads(mutable()) | (heads(mutable()) & description(exact:""))-'
+"my_mutable_heads()" = 'heads(mutable()) & mine()'
+
+# my mutable heads, and their parents when they look like WIP
+"tips()" = 'my_mutable_heads() | (my_mutable_heads() & description(exact:""))-'
 
 # Show local work as a forest with linear commit chains elided:
 # Mutable heads, local bookmarks, and the immutable commits they're derived from
