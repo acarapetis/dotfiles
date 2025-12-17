@@ -73,7 +73,7 @@ log-graph-prioritize = "coalesce(megamerge(), @)"
 # Mutable heads, local bookmarks, and the immutable commits they're derived from
 "forest()" = "tips() | bookmarks() | offshoots(immutable())-"
 
-"megamerge()" = 'latest(subject("megamerge") & mine())'
+"megamerge()" = 'latest(subject(exact:"megamerge") & mine())'
 "mm()" = "megamerge()"
 
 [aliases]
