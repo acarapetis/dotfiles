@@ -1,3 +1,8 @@
+local is_dunder = function(entry)
+    local t = entry.label
+    return t and t:sub(1, 2) == "__" and t:sub(-2) == "__"
+end
+
 -- Completion: blink.cmp
 ---@module 'blink-cmp'
 return {
@@ -65,6 +70,21 @@ return {
                 },
             },
         },
+        fuzzy = {
+            sorts = {
+                'exact',
+                'score',
+                function(a, b)
+                    if not is_dunder(a) and is_dunder(b) then
+                        return true
+                    elseif is_dunder(a) and not is_dunder(b) then
+                        return false
+                    end
+                end,
+                'kind',
+                'sort_text',
+            },
+        },
         signature = {
             enabled = true,
         },
@@ -90,6 +110,11 @@ return {
                     -- make lazydev completions top priority (see `:h blink.cmp`)
                     score_offset = 100,
                 },
+                snippets = {
+                    should_show_items = function(ctx)
+                      return ctx.trigger.initial_kind ~= 'trigger_character'
+                    end
+                }
             },
         },
     },
