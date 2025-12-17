@@ -85,14 +85,13 @@ vim.lsp.config("ansiblels", {
     single_file_support = true,
 })
 
-
 return {
     "neovim/nvim-lspconfig",
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
         opts = {
-            ensure_installed = { "ts_ls", "lua_ls", "pyrefly", "ruff", "emmet_ls", "bashls", "docker_language_server", "taplo", "marksman" },
+            ensure_installed = { "ts_ls", "lua_ls", "ty", "ruff", "emmet_ls", "bashls", "docker_language_server", "taplo", "marksman" },
         },
     },
 }
