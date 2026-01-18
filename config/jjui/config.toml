@@ -47,6 +47,23 @@ scope = "revisions"
 desc = "tug"
 
 [[actions]]
+name = "push-tag"
+lua = '''
+local tag = input({ prompt = "new tag TO PUSH: " })
+if tag then
+  jj("tag", "set", tag, "-r", context.commit_id())
+  exec_shell("git push origin " .. tag)
+end
+revisions.refresh()
+'''
+
+[[bindings]]
+action = "push-tag"
+seq = ["x", "t"]
+scope = "revisions"
+desc = "create AND PUSH tag"
+
+[[actions]]
 name = "newlane"
 lua = '''
 local ids = revisions.checked()
