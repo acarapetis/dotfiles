@@ -1,66 +1,152 @@
 [revisions]
 template = 'logline'
 
-[keys]
-quit = ["q", "esc"]
-
 [ui.colors]
 "selected" = { bg = "236" }
 "revisions details selected" = { bg = "236" }
 "revset completion selected" = { fg = "cyan", bg = "236" }
 "picker selected" = { fg = "cyan", bg = "236" }
 
-[custom_commands]
-"jj push" = { key_sequence = ["x", "p"], args = ["push"] }
-"jj push selected bookmark(s)" = { key_sequence = ["x", "P"], args = ["push", "-r", "$change_id", "--allow-new"] }
-"tug" = { key = ["T"], args = ["tug"] }
-"newlane" = { key_sequence = ["x", "l"], args = ["newlane", "-r", "$checked_commit_ids"] }
-"unlane" = { key_sequence = ["x", "L"], args = ["unlane", "$checked_commit_ids"] }
+[[bindings]]
+action = "ui.quit"
+key = ["q", "esc"]
+scope = "ui"
+desc = "quit"
 
-[custom_commands.edit]
-key = ["E"]
-args = ["util", "exec", "--", "bash", "-c", 'nvim "$(jj file list "$1")"', "", "$file"]
-show="interactive"
+[[actions]]
+name = "jj-push"
+lua = 'exec_shell("jj push"); revisions.refresh()'
 
-[custom_commands.copy_commit_hash]
-key  = ["Y"]
-desc = "Copy selected commit hash to clipboard"
+[[bindings]]
+action = "jj-push"
+seq = ["x", "p"]
+scope = "revisions"
+desc = "jj push"
+
+[[actions]]
+name = "jj-push-selected"
 lua = '''
-  -- Get the currently selected change (revision) in the main revisions list
-  local change_id = revisions.current()
-  if not change_id then
-    flash("No revision selected")
-    return
-  end
-
-  -- Ask jj for the commit id corresponding to that selected change/revision
-  -- jj{...} returns (output, err)
-  local out, err = jj{ "log", "-r", change_id, "-T", "commit_id", "--no-graph" }
-  if err and err ~= "" then
-    flash("jj error: " .. err)
-    return
-  end
-
-  -- Trim whitespace/newlines and take the first line just in case
-  local commit_id = (out or ""):gsub("^%s+", ""):gsub("%s+$", "")
-  commit_id = commit_id:match("([^\n]+)") or commit_id
-
-  if commit_id == "" then
-    flash("Could not resolve commit id")
-    return
-  end
-
-  -- Copy to clipboard using jjui built-in helper
-  local ok, err = copy_to_clipboard(commit_id)
-  if ok then
-    flash("Copied commit id: " .. commit_id)
-  else
-    flash("Error copying commit id: " .. err)
-  end
-
-  -- Copy to tmux buffer
-  local out, err = jj{ "util", "exec", "--", "bash", "-c", "echo $@ | tmux load-buffer -", "", commit_id }
-  if err and err ~= "" then
-    flash("tmux load-buffer error: " .. err)
-  end
+exec_shell("jj push -r " .. context.commit_id())
+revisions.refresh()
 '''
+
+[[bindings]]
+action = "jj-push-selected"
+seq = ["x", "P"]
+scope = "revisions"
+desc = "jj push selected bookmark(s)"
+
+[[actions]]
+name = "tug"
+lua = 'jj("tug"); revisions.refresh()'
+
+[[bindings]]
+action = "tug"
+key = "T"
+scope = "revisions"
+desc = "tug"
+
+[[actions]]
+name = "newlane"
+lua = '''
+local ids = revisions.checked()
+if not ids or #ids == 0 then
+  flash("No commits checked")
+  return
+end
+jj("newlane", "-r", table.concat(ids, "|"))
+revisions.refresh()
+'''
+
+[[bindings]]
+action = "newlane"
+seq = ["x", "l"]
+scope = "revisions"
+desc = "newlane"
+
+[[actions]]
+name = "unlane"
+lua = '''
+local ids = revisions.checked()
+if not ids or #ids == 0 then
+  flash("No commits checked")
+  return
+end
+jj("unlane", table.concat(ids, "|"))
+revisions.refresh()
+'''
+
+[[bindings]]
+action = "unlane"
+seq = ["x", "L"]
+scope = "revisions"
+desc = "unlane"
+
+[[actions]]
+name = "edit-file"
+lua = '''
+local file = context.file()
+if not file or file == "" then
+  flash("No file selected")
+  return
+end
+local listing, err = jj("file", "list", file)
+if err and err ~= "" then
+  flash("jj error: " .. err)
+  return
+end
+local first_file = (listing or ""):match("([^\n]+)")
+if not first_file or first_file == "" then
+  flash("No file found")
+  return
+end
+jj_interactive("util", "exec", "--", "bash", "-c", 'nvim "$1"', "", first_file)
+'''
+
+[[bindings]]
+action = "edit-file"
+key = "E"
+scope = "revisions"
+desc = "edit file with nvim"
+
+[[actions]]
+name = "copy-commit-hash"
+lua = '''
+local change_id = context.change_id()
+if not change_id then
+  flash("No revision selected")
+  return
+end
+
+local out, err = jj("log", "-r", change_id, "-T", "commit_id", "--no-graph")
+if err and err ~= "" then
+  flash("jj error: " .. err)
+  return
+end
+
+local commit_id = (out or ""):gsub("^%s+", ""):gsub("%s+$", "")
+commit_id = commit_id:match("([^\n]+)") or commit_id
+
+if commit_id == "" then
+  flash("Could not resolve commit id")
+  return
+end
+
+local ok, copy_err = copy_to_clipboard(commit_id)
+if ok then
+  flash("Copied commit id: " .. commit_id)
+else
+  flash("Error copying commit id: " .. copy_err)
+end
+
+local _, tmux_err = jj("util", "exec", "--", "bash", "-c", "echo $@ | tmux load-buffer -", "", commit_id)
+if tmux_err and tmux_err ~= "" then
+  flash("tmux load-buffer error: " .. tmux_err)
+end
+'''
+
+[[bindings]]
+action = "copy-commit-hash"
+key = "Y"
+scope = "revisions"
+desc = "Copy selected commit hash to clipboard"
