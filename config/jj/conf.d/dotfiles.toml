@@ -87,7 +87,7 @@ wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 aside = ["split", "-r", "@", "--insert-before", "@"]
-newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
+newlane = ["rebase", "-A", "trunk()", "-B", "megamerge()"]
 unlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -s "megamerge()" -o "mm_parents_without(($1))"', ""]
 pull = ["util", "exec", "--", "bash", "-c", '''
 set -eu
