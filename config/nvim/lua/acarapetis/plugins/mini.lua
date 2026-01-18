@@ -36,6 +36,8 @@ return {
                     -- Leader triggers
                     { mode = 'n', keys = '<Leader>' },
                     { mode = 'x', keys = '<Leader>' },
+                    { mode = 'n', keys = '<localleader>' },
+                    { mode = 'x', keys = '<localleader>' },
                     { mode = 'n', keys = '<space>' },
 
                     -- Built-in completion

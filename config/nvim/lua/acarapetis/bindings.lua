@@ -1,4 +1,6 @@
 local map = vim.keymap.set
+vim.g.maplocalleader = ","
+
 map("x", "<leader>j", ":!json2tf<CR>$=%")
 map("n", "<leader>T", ":e ~/notes/TODO.md<CR>", { desc = "TODOs" })
 

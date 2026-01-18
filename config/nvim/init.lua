@@ -16,8 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- end lazy.nvim bootstrap
 
-require("lazy").setup("acarapetis.plugins")
 require("acarapetis.bindings")
+require("lazy").setup("acarapetis.plugins")
 require("acarapetis.vimconfig")
 require("acarapetis.fug")
 require("acarapetis.make")
