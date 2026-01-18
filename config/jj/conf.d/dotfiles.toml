@@ -75,7 +75,7 @@ if(commit.root(),
 
 "megamerge()" = 'latest(subject(exact:"megamerge") & mine())'
 "mm()" = "megamerge()"
-"mm_parents_without(rev)" = "(megamerge()-) ~ ((rev):: & parents(megamerge()))"
+"mm_parents_without(rev)" = "megamerge()- ~ (rev:: & megamerge()-)"
 
 "connect(rs)" = 'fork_point(rs)::rs'
 
