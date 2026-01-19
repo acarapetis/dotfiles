@@ -58,7 +58,7 @@ if(commit.root(),
 "format_timestamp(timestamp)" = 'timestamp.format("%Y-%m-%d %H:%M:%S %Z")'
 
 [revsets]
-log-graph-prioritize = "coalesce(megamerge(), @)"
+# log-graph-prioritize = "coalesce(megamerge(), @)"
 
 [revset-aliases]
 # direct children of x that are not in x
@@ -75,6 +75,8 @@ log-graph-prioritize = "coalesce(megamerge(), @)"
 
 "megamerge()" = 'latest(subject(exact:"megamerge") & mine())'
 "mm()" = "megamerge()"
+
+"connect(rs)" = 'fork_point(rs)::rs'
 
 [aliases]
 l = ["log"]
