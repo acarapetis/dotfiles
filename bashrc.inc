@@ -192,3 +192,13 @@ function a {
     done
     >&2 echo "Could not find a virtualenv in ./[.][v]env."
 }
+
+function s3mount {
+    b="$1"
+    p=/s3/"$b"
+    test -d "$p" || mkdir -p "$p"
+    (
+        eval "$(aws configure export-credentials --format env)"
+        s3fs "$b" "$p"
+    )
+}
