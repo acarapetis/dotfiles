@@ -124,3 +124,7 @@ patterns = ["glob:'**/*.sh'"]
 
 [git]
 private-commits = '''description(glob:'private:*')'''
+
+[remotes.origin]
+# automatically track new bookmarks as @origin
+auto-track-bookmarks = "glob:*"
