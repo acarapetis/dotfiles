@@ -75,6 +75,7 @@ if(commit.root(),
 
 "megamerge()" = 'latest(subject(exact:"megamerge") & mine())'
 "mm()" = "megamerge()"
+"mm_parents_without(rev)" = "(megamerge()-) ~ ((rev):: & parents(megamerge()))"
 
 "connect(rs)" = 'fork_point(rs)::rs'
 
@@ -96,6 +97,8 @@ fi
 jj simplify-parents
 ''', ""]
 newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
+unlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -s "megamerge()" -o "mm_parents_without(($1))"', ""]
+
 
 pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
