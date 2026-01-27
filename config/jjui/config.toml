@@ -10,9 +10,11 @@ quit = ["q", "esc"]
 "revset completion selected" = { fg = "cyan", bg = "236" }
 
 [custom_commands]
-"jj push" = { key = ["p"], args = ["push"] }
-"jj push selected bookmark(s)" = { key = ["P"], args = ["push", "-r", "$change_id", "--allow-new"] }
+"jj push" = { key_sequence = ["x", "p"], args = ["push"] }
+"jj push selected bookmark(s)" = { key_sequence = ["x", "P"], args = ["push", "-r", "$change_id", "--allow-new"] }
 "tug" = { key = ["T"], args = ["tug"] }
+"newlane" = { key_sequence = ["x", "l"], args = ["newlane", "-r", "$checked_commit_ids"] }
+"unlane" = { key_sequence = ["x", "L"], args = ["unlane", "$checked_commit_ids"] }
 
 [custom_commands.edit]
 key = ["E"]
