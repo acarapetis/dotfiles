@@ -8,6 +8,7 @@ quit = ["q", "esc"]
 "selected" = { bg = "236" }
 "revisions details selected" = { bg = "236" }
 "revset completion selected" = { fg = "cyan", bg = "236" }
+"picker selected" = { fg = "cyan", bg = "236" }
 
 [custom_commands]
 "jj push" = { key_sequence = ["x", "p"], args = ["push"] }
@@ -50,6 +51,16 @@ lua = '''
   end
 
   -- Copy to clipboard using jjui built-in helper
-  copy_to_clipboard(commit_id)
-  flash("Copied commit id: " .. commit_id)
+  local ok, err = copy_to_clipboard(commit_id)
+  if ok then
+    flash("Copied commit id: " .. commit_id)
+  else
+    flash("Error copying commit id: " .. err)
+  end
+
+  -- Copy to tmux buffer
+  local out, err = jj{ "util", "exec", "--", "bash", "-c", "echo $@ | tmux load-buffer -", "", commit_id }
+  if err and err ~= "" then
+    flash("tmux load-buffer error: " .. err)
+  end
 '''
