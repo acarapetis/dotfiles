@@ -60,6 +60,13 @@ vim.diagnostic.config({
     }
 })
 
+-- Avoid LSP semantic tokens from overriding injected highlighting in e.g. SQL strings
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "@lsp.type.string.python", { link = "NONE" })
+  end,
+})
+
 vim.opt.bg = "dark"
 vim.cmd.colorscheme("gruvbox")
 
@@ -69,4 +76,5 @@ vim.filetype.add({
         ["docker-compose.yaml"] = "yaml.docker-compose",
     },
 })
+
 
