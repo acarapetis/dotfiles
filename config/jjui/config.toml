@@ -20,3 +20,36 @@ quit = ["q", "esc"]
 key = ["E"]
 args = ["util", "exec", "--", "bash", "-c", 'nvim "$(jj file list "$1")"', "", "$file"]
 show="interactive"
+
+[custom_commands.copy_commit_hash]
+key  = ["Y"]
+desc = "Copy selected commit hash to clipboard"
+lua = '''
+  -- Get the currently selected change (revision) in the main revisions list
+  local change_id = revisions.current()
+  if not change_id then
+    flash("No revision selected")
+    return
+  end
+
+  -- Ask jj for the commit id corresponding to that selected change/revision
+  -- jj{...} returns (output, err)
+  local out, err = jj{ "log", "-r", change_id, "-T", "commit_id", "--no-graph" }
+  if err and err ~= "" then
+    flash("jj error: " .. err)
+    return
+  end
+
+  -- Trim whitespace/newlines and take the first line just in case
+  local commit_id = (out or ""):gsub("^%s+", ""):gsub("%s+$", "")
+  commit_id = commit_id:match("([^\n]+)") or commit_id
+
+  if commit_id == "" then
+    flash("Could not resolve commit id")
+    return
+  end
+
+  -- Copy to clipboard using jjui built-in helper
+  copy_to_clipboard(commit_id)
+  flash("Copied commit id: " .. commit_id)
+'''
