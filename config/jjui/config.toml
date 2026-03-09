@@ -15,7 +15,10 @@ desc = "quit"
 
 [[actions]]
 name = "jj-push"
-lua = 'exec_shell("jj push"); revisions.refresh()'
+lua = '''
+  jj_async("push")
+  revisions.refresh()
+'''
 
 [[bindings]]
 action = "jj-push"
@@ -26,8 +29,8 @@ desc = "jj push"
 [[actions]]
 name = "jj-push-selected"
 lua = '''
-exec_shell("jj push -r " .. context.commit_id())
-revisions.refresh()
+  jj_async("push", "-r", context.commit_id())
+  revisions.refresh()
 '''
 
 [[bindings]]
