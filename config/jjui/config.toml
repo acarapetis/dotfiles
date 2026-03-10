@@ -13,6 +13,16 @@ key = ["q", "esc"]
 scope = "ui"
 desc = "quit"
 
+[[bindings]]
+action = "revset.move_up"
+key = "ctrl+k"
+scope = "revset"
+
+[[bindings]]
+action = "revset.move_down"
+key = "ctrl+j"
+scope = "revset"
+
 [[actions]]
 name = "jj-push"
 lua = '''
