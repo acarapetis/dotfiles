@@ -8,12 +8,6 @@ template = 'logline'
 "picker selected" = { fg = "cyan", bg = "236" }
 
 [[bindings]]
-action = "ui.quit"
-key = ["q", "esc"]
-scope = "ui"
-desc = "quit"
-
-[[bindings]]
 action = "revset.move_up"
 key = "ctrl+k"
 scope = "revset"
