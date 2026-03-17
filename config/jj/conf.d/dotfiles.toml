@@ -87,7 +87,9 @@ wc = ["log", "--stat", "-T", "builtin_log_compact_full_description"]
 
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 aside = ["split", "-r", "@", "--insert-before", "@"]
-reball = ["util", "exec", "--", "bash", "-c", '''
+newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
+unlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -s "megamerge()" -o "mm_parents_without(($1))"', ""]
+pull = ["util", "exec", "--", "bash", "-c", '''
 set -eu
 sources=$(jj log --no-graph -r 'trunk()+ & mutable()' -T 'commit_id ++ "|"')
 jj git fetch
@@ -95,11 +97,7 @@ if [ -n "$sources" ]; then
   jj rebase --simplify-parents -s "(${sources:0:-1}) & mutable()" -d "trunk()"
 fi
 ''', ""]
-newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
-unlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -s "megamerge()" -o "mm_parents_without(($1))"', ""]
 
-
-pull = ["git", "fetch"]
 push = ["util", "exec", "--", "uvx", "jj-pre-push", "--log-level=INFO", "push"]
 pushnew = ["util", "exec", "--", "bash", "-c", 'jj push --named "$1"="${2-@-}"', ""]
 pushc = ["util", "exec", "--", "bash", "-c", 'jj push -c "${1-@-}"', ""]
