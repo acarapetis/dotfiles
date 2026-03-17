@@ -92,9 +92,8 @@ set -eu
 sources=$(jj log --no-graph -r 'trunk()+ & mutable()' -T 'commit_id ++ "|"')
 jj git fetch
 if [ -n "$sources" ]; then
-  jj rebase -s "(${sources:0:-1}) & mutable()" -d "trunk()"
+  jj rebase --simplify-parents -s "(${sources:0:-1}) & mutable()" -d "trunk()"
 fi
-jj simplify-parents
 ''', ""]
 newlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -A "trunk()" -B "megamerge()" "$@" && jj new "megamerge()"', ""]
 unlane = ["util", "exec", "--", "bash", "-c", 'jj rebase -s "megamerge()" -o "mm_parents_without(($1))"', ""]
