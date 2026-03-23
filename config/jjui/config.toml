@@ -174,3 +174,16 @@ action = "copy-commit-hash"
 key = "Y"
 scope = "revisions"
 desc = "Copy selected commit hash to clipboard"
+
+[[actions]]
+name = "simplify-parents"
+lua = '''
+  jj_async("simplify-parents", "-r", context.change_id())
+  revisions.refresh()
+'''
+
+[[bindings]]
+action = "simplify-parents"
+seq = ["x", "s"]
+scope = "revisions"
+desc = "simplify parents of selected revision"
