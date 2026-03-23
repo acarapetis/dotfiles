@@ -1,5 +1,4 @@
 return {
-    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
@@ -52,9 +51,7 @@ return {
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "*",
                 callback = function(ev)
-                    if not highlight_disable[ev.match] then
-                        pcall(vim.treesitter.start, ev.buf)
-                    end
+                    if not highlight_disable[ev.match] then pcall(vim.treesitter.start, ev.buf) end
 
                     if not indent_disable[ev.match] then
                         vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -91,13 +88,6 @@ return {
                 select = {
                     enable = true,
                     lookahead = true,
-                    keymaps = {
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["ac"] = "@class.outer",
-                        ["ic"] = "@class.inner",
-                        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-                    },
                     selection_modes = {
                         ["@parameter.outer"] = "v",
                         ["@function.outer"] = "V",
@@ -105,20 +95,115 @@ return {
                     },
                     include_surrounding_whitespace = false,
                 },
-                swap = {
-                    enable = true,
-                    swap_next = { ["<leader>a"] = "@parameter.inner" },
-                    swap_previous = { ["<leader>A"] = "@parameter.inner" },
-                },
-                move = {
-                    enable = true,
-                    set_jumps = true,
-                    goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
-                    goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
-                    goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
-                    goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
-                },
+                swap = { enable = true },
+                move = { enable = true, set_jumps = true },
             })
+
+            local select = require("nvim-treesitter-textobjects.select")
+            local move = require("nvim-treesitter-textobjects.move")
+            local swap = require("nvim-treesitter-textobjects.swap")
+
+            vim.keymap.set(
+                { "x", "o" },
+                "af",
+                function() select.select_textobject("@function.outer", "textobjects") end,
+                { desc = "Select outer function" }
+            )
+
+            vim.keymap.set(
+                { "x", "o" },
+                "if",
+                function() select.select_textobject("@function.inner", "textobjects") end,
+                { desc = "Select inner function" }
+            )
+
+            vim.keymap.set(
+                { "x", "o" },
+                "ac",
+                function() select.select_textobject("@class.outer", "textobjects") end,
+                { desc = "Select outer class" }
+            )
+
+            vim.keymap.set(
+                { "x", "o" },
+                "ic",
+                function() select.select_textobject("@class.inner", "textobjects") end,
+                { desc = "Select inner class" }
+            )
+
+            vim.keymap.set({ "x", "o" }, "as", function()
+                select.select_textobject("@scope", "locals")
+            end, { desc = "Select language scope" })
+
+            vim.keymap.set(
+                "n",
+                "<leader>a",
+                function() swap.swap_next("@parameter.inner") end,
+                { desc = "Swap next parameter" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "<leader>A",
+                function() swap.swap_previous("@parameter.inner") end,
+                { desc = "Swap previous parameter" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]f",
+                function() move.goto_next_start("@function.outer", "textobjects") end,
+                { desc = "Next function start" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]c",
+                function() move.goto_next_start("@class.outer", "textobjects") end,
+                { desc = "Next class start" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]F",
+                function() move.goto_next_end("@function.outer", "textobjects") end,
+                { desc = "Next function end" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "]C",
+                function() move.goto_next_end("@class.outer", "textobjects") end,
+                { desc = "Next class end" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "[f",
+                function() move.goto_previous_start("@function.outer", "textobjects") end,
+                { desc = "Prev function start" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "[c",
+                function() move.goto_previous_start("@class.outer", "textobjects") end,
+                { desc = "Prev class start" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "[F",
+                function() move.goto_previous_end("@function.outer", "textobjects") end,
+                { desc = "Prev function end" }
+            )
+
+            vim.keymap.set(
+                "n",
+                "[C",
+                function() move.goto_previous_end("@class.outer", "textobjects") end,
+                { desc = "Prev class end" }
+            )
         end,
     },
     {
