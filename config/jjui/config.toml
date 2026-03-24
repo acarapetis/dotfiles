@@ -187,3 +187,16 @@ action = "simplify-parents"
 seq = ["x", "s"]
 scope = "revisions"
 desc = "simplify parents of selected revision"
+
+[[bindings]]
+action = "pull"
+seq = ["x", "r"]
+scope = "revisions"
+desc = "jj pull"
+
+[[actions]]
+name = "pull"
+lua = '''
+  jj_async("pull")
+  revisions.refresh()
+'''
