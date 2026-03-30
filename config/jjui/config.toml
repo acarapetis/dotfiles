@@ -17,6 +17,16 @@ action = "revset.move_down"
 key = "ctrl+j"
 scope = "revset"
 
+[[bindings]]
+action = "bookmarks.move_up"
+key = "ctrl+k"
+scope = "bookmarks"
+
+[[bindings]]
+action = "bookmarks.move_down"
+key = "ctrl+j"
+scope = "bookmarks"
+
 [[actions]]
 name = "jj-push"
 lua = '''
