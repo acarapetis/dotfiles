@@ -199,6 +199,6 @@ function s3mount {
     test -d "$p" || mkdir -p "$p"
     (
         eval "$(aws configure export-credentials --format env)"
-        s3fs "$b" "$p"
+        s3fs -d -o use_path_request_style -o endpoint=ap-southeast-2 -o url=https://s3-ap-southeast-2.amazonaws.com "$b" "$p"
     )
 }
