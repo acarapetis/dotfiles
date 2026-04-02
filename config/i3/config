@@ -30,6 +30,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lockscreen
 exec --no-startup-id xset s 1800
 exec --no-startup-id xset dpms 1800 1800 1800
+exec --no-startup-id xset r rate 200 30
 bindsym Mod4+Escape exec --no-startup-id loginctl lock-session
 bindsym Mod4+shift+ctrl+s exec --no-startup-id systemctl suspend, mode "default"
 bindsym Mod4+shift+d exec --no-startup-id switch_monitors desktop
