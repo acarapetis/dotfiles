@@ -1,0 +1,10 @@
+#!/bin/bash
+# Usage: raise-volume.sh +5% [limit]
+# Default limit is 130%
+
+STEP="${1:-+5%}"
+LIMIT="${2:-130}"
+
+pactl set-sink-volume @DEFAULT_SINK@ "$STEP"
+current=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -1)
+[ "$current" -gt "$LIMIT" ] && pactl set-sink-volume @DEFAULT_SINK@ "${LIMIT}%"
