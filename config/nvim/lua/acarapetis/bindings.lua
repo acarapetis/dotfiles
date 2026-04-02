@@ -64,3 +64,5 @@ vim.keymap.set({ "x", "o" }, "<S-TAB>", function()
         vim.lsp.buf.selection_range(-vim.v.count1)
     end
 end, { desc = "Select child (inner) node" })
+
+vim.keymap.set({"n"}, "<Leader>u", function() vim.cmd.Undotree() end)

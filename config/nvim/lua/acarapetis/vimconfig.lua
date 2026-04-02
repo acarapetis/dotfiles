@@ -77,4 +77,4 @@ vim.filetype.add({
     },
 })
 
-
+vim.cmd.packadd("nvim.undotree")

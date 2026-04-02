@@ -100,12 +100,6 @@ return {
         end,
     },
     {
-        "mbbill/undotree",
-        keys = {
-            { "<leader>u", vim.cmd.UndotreeToggle, desc = "UndoTree" },
-        },
-    },
-    {
         "ggandor/leap.nvim",
         opts = {},
         -- stylua: ignore
