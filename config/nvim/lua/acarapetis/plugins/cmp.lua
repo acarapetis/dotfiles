@@ -83,21 +83,13 @@ return {
                 end,
                 'kind',
                 'sort_text',
+                'label',
             },
         },
         signature = {
             enabled = true,
         },
         snippets = { preset = "mini_snippets" },
-        fuzzy = {
-            sorts = {
-                "exact",
-                "score",
-                "kind",
-                "sort_text",
-                "label",
-            },
-        },
         sources = {
             default = { "lazydev", "lsp", "path", "snippets", "buffer" },
             providers = {
