@@ -44,19 +44,21 @@ vim.cmd([[
 vim.keymap.set({ "n" }, "<CR>", function()
     if vim.bo.buftype ~= "" then
         -- Fall back to default
-        return "<CR>"
+        vim.api.nvim_feedkeys(vim.keycode("<CR>"), "n", false)
+        return
     end
+
     if vim.treesitter.get_parser(nil, nil, { error = false }) then
-        require("vim.treesitter._select").select_parent(vim.v.count1)
+        vim.treesitter.select("parent", vim.v.count1)
     else
         vim.lsp.buf.selection_range(vim.v.count1)
     end
     return ""
-end, { expr = true, desc = "Start incremental selection" })
+end, { desc = "Start incremental selection" })
 
 vim.keymap.set({ "x", "o" }, "<TAB>", function()
     if vim.treesitter.get_parser(nil, nil, { error = false }) then
-        require("vim.treesitter._select").select_parent(vim.v.count1)
+        vim.treesitter.select("parent", vim.v.count1)
     else
         vim.lsp.buf.selection_range(vim.v.count1)
     end
@@ -64,7 +66,7 @@ end, { desc = "Select parent (outer) node" })
 
 vim.keymap.set({ "x", "o" }, "<S-TAB>", function()
     if vim.treesitter.get_parser(nil, nil, { error = false }) then
-        require("vim.treesitter._select").select_child(vim.v.count1)
+        vim.treesitter.select("child", vim.v.count1)
     else
         vim.lsp.buf.selection_range(-vim.v.count1)
     end

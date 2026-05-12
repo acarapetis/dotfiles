@@ -85,6 +85,12 @@ vim.lsp.config("ansiblels", {
     single_file_support = true,
 })
 
+vim.lsp.config('terraformls', {
+  on_init = function(client)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
+
 return {
     "neovim/nvim-lspconfig",
     {
