@@ -39,6 +39,9 @@ palette = 'native'
 foreground = 'bright-white'
 separator  = '#666666'
 
+[fill]
+symbol = ' '
+
 [status]
 disabled = false
 
