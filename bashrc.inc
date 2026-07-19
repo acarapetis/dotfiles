@@ -36,7 +36,6 @@ alias gl='git log'
 alias gg='git graph'
 alias jl='jj log'
 alias reset='tput reset' # removes unnecessary delay
-alias fd=fdfind
 alias mm=micromamba
 alias v=nvim
 alias d=deactivate
@@ -45,6 +44,10 @@ alias xo=xdg-open
 alias ur='uv run'
 alias j=jj
 alias jb='jj b'
+
+if ! which fd &>/dev/null; then
+    alias fd=fdfind
+fi
 
 comp() {
     if [ "$1" != "" ]; then
@@ -157,9 +160,9 @@ function publicip {
 
 function tmux {
     if [ "$1" == "" ]; then
-        "$(which tmux)" new-session -A -s anthony
+        command tmux new-session -A -s anthony
     else
-        "$(which tmux)" "$@"
+        command tmux "$@"
     fi
 }
 

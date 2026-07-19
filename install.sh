@@ -5,7 +5,7 @@ NVIM_LINK="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-
 RG_LINK="https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz"
 UP_LINK="https://github.com/akavel/up/releases/download/v0.4/up"
 JQ_LINK="https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64"
-JJ_LINK="https://github.com/jj-vcs/jj/releases/download/v0.31.0/jj-v0.31.0-x86_64-unknown-linux-musl.tar.gz"
+JJ_LINK="https://github.com/jj-vcs/jj/releases/download/v0.43.0/jj-v0.43.0-x86_64-unknown-linux-musl.tar.gz"
 FZF_LINK="https://github.com/junegunn/fzf/releases/download/v0.64.0/fzf-0.64.0-linux_amd64.tar.gz"
 STARSHIP_LINK="https://github.com/starship/starship/releases/download/v1.24.0/starship-x86_64-unknown-linux-gnu.tar.gz"
 
@@ -44,10 +44,10 @@ confirm() {
 }
 
 tryinstall() {
-    sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
+    sudo dnf install -y "$@" || sudo apt install -y "$@" || sudo yum install -y "$@" || sudo zypper install -y "$@"
 }
 
-tryinstall perl curl python3-pynvim moreutils rofi tmux git-delta
+tryinstall perl curl moreutils rofi tmux git-delta
 tryinstall fd-find || tryinstall fdfind
 tryinstall pspg || >&2 echo "Couldn't install pspg, continuing anyway"
 
