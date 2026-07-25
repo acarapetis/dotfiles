@@ -1,12 +1,8 @@
 # dotfiles
 
 These are my dotfiles, i.e. what I need to turn an arbitrary Linux machine into a
-productive CLI-focused development environment. It's concentrated - just add internet!
-
-By "arbitrary Linux machine", I really mean "An x86\_64 machine running a
-recent version of Debian/Ubuntu/Mint, RHEL/CentOS/Rocky, or SUSE". Note that
-I've been using exclusively Debian-based distros for a few years now, so the
-redhat/SUSE support is untested.
+productive CLI-focused development environment. Clone, run install.sh and start working.
+Should work with most debian/redhat derivatives.
 
 ## Setup
 

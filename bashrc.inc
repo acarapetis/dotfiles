@@ -23,7 +23,6 @@ export PSQL_PAGER="pspg -s 6"
 alias xml=xmlstarlet
 alias csvalign="column -t -s,"
 alias pcsv="pspg -s 6 --csv -f"
-alias bat=batcat
 alias mysql="mysql --pager='pspg -s 6'"
 alias renumber="tmux movew -r"
 alias dive="sudo docker run -v /var/run/docker.sock:/var/run/docker.sock -it wagoodman/dive"
@@ -47,6 +46,10 @@ alias jb='jj b'
 
 if ! which fd &>/dev/null; then
     alias fd=fdfind
+fi
+
+if ! which bat &>/dev/null; then
+    alias bat=batcat
 fi
 
 comp() {
