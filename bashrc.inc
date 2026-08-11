@@ -208,3 +208,18 @@ function s3mount {
         s3fs -d -o use_path_request_style -o endpoint=ap-southeast-2 -o url=https://s3-ap-southeast-2.amazonaws.com "$b" "$p"
     )
 }
+_edit_command_line() {
+    local tmp
+    tmp=$(mktemp) || return
+
+    printf '%s\n' "$READLINE_LINE" >|"$tmp"
+
+    "${VISUAL:-${EDITOR:-vi}}" "$tmp"
+
+    READLINE_LINE=$(<"$tmp")
+    READLINE_POINT=${#READLINE_LINE}
+
+    rm -f "$tmp"
+}
+
+bind -x '"\C-x\C-e":_edit_command_line'
